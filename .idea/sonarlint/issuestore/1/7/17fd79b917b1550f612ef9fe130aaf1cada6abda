@@ -1,0 +1,11 @@
+
+esquid:S1192ƒ"HDefine a constant instead of duplicating this literal "message" 5 times.(İ¼âğùÿÿÿÿ
+_squid:S1192"GDefine a constant instead of duplicating this literal "status" 4 times.(Š•¾ 
+csquid:CommentedOutCodeLine«"<This block of commented-out lines of code should be removed.(‹÷Ñ
+Bsquid:S00108„")Either remove or fill this block of code.(”ı¾
+Bsquid:S00108š")Either remove or fill this block of code.(”ı¾
+Gsquid:S00108¸")Either remove or fill this block of code.(Æ¸Û‚øÿÿÿÿ
+squid:S1186Ğ"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(‡Ïû„ûÿÿÿÿ
+squid:S1186†"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(‡Ïû„ûÿÿÿÿ
+squid:S1186¿"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(‡Ïû„ûÿÿÿÿ
+[squid:UselessImportCheck%"7Remove this unused import 'java.security.spec.ECField'.(“¢á¯

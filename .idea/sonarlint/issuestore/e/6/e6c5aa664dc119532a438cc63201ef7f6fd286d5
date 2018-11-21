@@ -1,0 +1,9 @@
+
+Nsquid:S11355"2Complete the task associated to this TODO comment.(ÕÌ®şÿÿÿÿ
+Vsquid:S1118
+":Add a private constructor to hide the implicit public one.(“äá«üÿÿÿÿ
+Fsquid:S00108")Either remove or fill this block of code.(¡»¢üùÿÿÿÿ
+isquid:S00117+"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°åá
+?squid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+?squid:S1148$"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+?squid:S11486"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ

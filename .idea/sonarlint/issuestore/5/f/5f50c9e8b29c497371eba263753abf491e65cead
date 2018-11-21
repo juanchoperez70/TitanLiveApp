@@ -1,0 +1,9 @@
+
+lsquid:UnusedPrivateMethod"=Remove this unused private "getStreamingVideoBitrate" method.(ÌµÜşÿÿÿÿ8šüŸó,
+msquid:UselessImportCheck"DRemove this unused import 'org.bytedeco.javacv.FFmpegFrameRecorder'.(„Å8šüŸó,
+csquid:UnusedPrivateMethod"9Remove this unused private "getLocalVideoBitrate" method.(¬õ¬ˆ8šüŸó,
+gsquid:UselessImportCheck"9Remove this unused import 'org.bytedeco.javacpp.avcodec'.(à™Øõüÿÿÿÿ8šüŸó,
+[squid:S1118":Add a private constructor to hide the implicit public one.(ËõßÓûÿÿÿÿ8¸Ö÷Ÿó,
+lsquid:UselessImportCheck">Remove this unused import 'android.content.pm.PackageManager'.(€®¥õÿÿÿÿÿ8½ÒüŸó,
+[squid:UselessImportCheck"-Remove this unused import 'android.util.Log'.(Ô¦Ø²øÿÿÿÿ8½ÒüŸó,
+bsquid:UselessImportCheck"4Remove this unused import 'android.hardware.Camera'.(¯É‡÷úÿÿÿÿ8½ÒüŸó,

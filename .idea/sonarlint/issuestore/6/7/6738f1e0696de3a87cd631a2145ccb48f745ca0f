@@ -1,0 +1,12 @@
+
+bsquid:S1192D"KDefine a constant instead of duplicating this literal "Depuracion" 3 times.(Ìø„Ü
+Ksquid:S1066C"/Merge this if statement with the enclosing one.(Çü»ßûÿÿÿÿ
+S
+squid:S899X"=Do something with the "boolean" value returned by "renameTo".(ÞˆÑ¯
+fsquid:S3027Q"JPut single-quotes around '.' to use the faster "lastIndexOf(char)" method.(Âêÿ‰úÿÿÿÿ
+hsquid:S1192%"QDefine a constant instead of duplicating this literal "name_video_local" 3 times.(…âìî
+S
+squid:S899<"=Do something with the "boolean" value returned by "renameTo".(µÎçÀ
+<squid:S16598"%Declare "newFile" on a separate line.(‘¯Í
+Vsquid:S1118":Add a private constructor to hide the implicit public one.(ŽË‘Óùÿÿÿÿ
+dsquid:S2259L"MA "NullPointerException" could be thrown; "getMediaFolder()" can return null.(ÞËêû

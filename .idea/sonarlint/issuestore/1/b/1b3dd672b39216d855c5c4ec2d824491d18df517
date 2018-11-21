@@ -1,0 +1,80 @@
+
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8ˆÁ¢ ó,
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8ˆÁ¢ ó,
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8ˆÁ¢ ó,
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(éØ»Úûÿÿÿÿ8ˆÁ¢ ó,
+‰"squid:ClassVariableVisibilityCheck"QMake isSos a static final constant or non-public and provide accessors if needed.(´±œÎúÿÿÿÿ8ˆÁ¢ ó,
+Ysquid:S1197"8Move the array designator from the variable to the type.(ìÏÈ¿þÿÿÿÿ8ˆÁ¢ ó,
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8ˆÁ¢ ó,
+nsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(ò´§ê8ˆÁ¢ ó,
+Ksquid:S2093"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ8ˆÁ¢ ó,
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8ˆÁ¢ ó,
+_squid:S1854">Remove this useless assignment to local variable "parameters".(­øüÂøÿÿÿÿ8ˆÁ¢ ó,
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8ˆÁ¢ ó,
+gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(žœ8ˆÁ¢ ó,
+vsquid:S1192"UDefine a constant instead of duplicating this literal "Open camera failed: " 3 times.(€­³ýÿÿÿÿ8ˆÁ¢ ó,
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8ˆÁ¢ ó,
+fsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(·žÏO8ˆÁ¢ ó,
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(°éžäúÿÿÿÿ8ˆÁ¢ ó,
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(š©¨Ñýÿÿÿÿ8ˆÁ¢ ó,
+gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(¯Íêè8ˆÁ¢ ó,
+asquid:UselessImportCheck"3Remove this unused import 'android.graphics.Paint'.(êý‚•ÿÿÿÿÿ8ˆÁ¢ ó,
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(°éžäúÿÿÿÿ8ˆÁ¢ ó,
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8ˆÁ¢ ó,
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8ˆÁ¢ ó,
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8ˆÁ¢ ó,
+gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(â›‡‘8ˆÁ¢ ó,
+Jsquid:S1066"/Merge this if statement with the enclosing one.(¼¨Ú8ˆÁ¢ ó,
+¢squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(é±¼§ùÿÿÿÿ8ˆÁ¢ ó,
+Vsquid:S1141"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8ˆÁ¢ ó,
+Ksquid:S2093"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ8ˆÁ¢ ó,
+U"squid:SwitchLastCaseIsDefaultCheck""Add a default case to this switch.(ÑË“8ˆÁ¢ ó,
+gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(Ö¾ö¯8ˆÁ¢ ó,
+ssquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(¼µû‰ûÿÿÿÿ8ˆÁ¢ ó,
+fsquid:UselessImportCheck"=Remove this unused import 'org.bytedeco.javacpp.opencv_core'.(ÒƒŽ¤8ˆÁ¢ ó,
+’"squid:ClassVariableVisibilityCheck"`Make isStreamingRecording a static final constant or non-public and provide accessors if needed.(ÿ¯Ù8ˆÁ¢ ó,
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ý®´Ûüÿÿÿÿ8ˆÁ¢ ó,
+ssquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 24 to the 15 allowed.(ûÝæèþÿÿÿÿ8ˆÁ¢ ó,
+squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(îñë‡8ˆÁ¢ ó,
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(áíüÈùÿÿÿÿ8ˆÁ¢ ó,
+gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(’”8ˆÁ¢ ó,
+gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(³Á€ø8ˆÁ¢ ó,
+gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ŒÒÞÔ8ˆÁ¢ ó,
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(°éžäúÿÿÿÿ8ˆÁ¢ ó,
+bsquid:UselessImportCheck"4Remove this unused import 'android.graphics.Canvas'.(õž«•üÿÿÿÿ8ˆÁ¢ ó,
+jsquid:UselessImportCheck"ARemove this unused import 'java.io.UnsupportedEncodingException'.(Ãµ…“8ˆÁ¢ ó,
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8ˆÁ¢ ó,
+isquid:UselessImportCheck";Remove this unused import 'android.graphics.BitmapFactory'.(âàºÍûÿÿÿÿ8ˆÁ¢ ó,
+Psquid:S1481"/Remove this unused "parameters" local variable.(­øüÂøÿÿÿÿ8ˆÁ¢ ó,
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8ˆÁ¢ ó,
+jsquid:S4042"IUse "java.nio.Files#delete" here for better messages on error conditions.(²Œ­ûÿÿÿÿ8ˆÁ¢ ó,
+Xsquid:S2589"7Remove this expression which always evaluates to "true"(¯Ù˜Ïÿÿÿÿÿ8ˆÁ¢ ó,
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8ˆÁ¢ ó,
+asquid:UselessImportCheck"3Remove this unused import 'android.graphics.Color'.(øãíòþÿÿÿÿ8ˆÁ¢ ó,
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8ˆÁ¢ ó,
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(çßšöøÿÿÿÿ8ˆÁ¢ ó,
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8ˆÁ¢ ó,
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8ˆÁ¢ ó,
+…squid:UselessImportCheck"\Remove this unused import 'com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions'.(á»³Æ8ˆÁ¢ ó,
+‹"squid:ClassVariableVisibilityCheck"SMake context a static final constant or non-public and provide accessors if needed.(±¹ï±úÿÿÿÿ8ˆÁ¢ ó,
+asquid:S2147"ECombine this catch with the one at line 785, which has the same body.(ï­£Ä8ˆÁ¢ ó,
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(éØ»Úûÿÿÿÿ8ˆÁ¢ ó,
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ÝžÎ”ùÿÿÿÿ8ˆÁ¢ ó,
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8ˆÁ¢ ó,
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8ˆÁ¢ ó,
+gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ŒÒÞÔ8ˆÁ¢ ó,
+gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(¨Ã–‰8ˆÁ¢ ó,
+”"squid:ClassVariableVisibilityCheck"\Make isLocalRecording a static final constant or non-public and provide accessors if needed.(ú¨àÊÿÿÿÿÿ8ˆÁ¢ ó,
+Ysquid:S1197"8Move the array designator from the variable to the type.(À–þÜÿÿÿÿÿ8ˆÁ¢ ó,
+[
+squid:S899";Do something with the "boolean" value returned by "delete".(²Œ­ûÿÿÿÿ8ˆÁ¢ ó,
+Vsquid:S1141"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8ˆÁ¢ ó,
+csquid:S2259"BA "NullPointerException" could be thrown; "file" is nullable here.(‘¨Ñöúÿÿÿÿ8ˆÁ¢ ó,
+fsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(·žÏO8ˆÁ¢ ó,
+csquid:S2259"BA "NullPointerException" could be thrown; "file" is nullable here.(‘¨Ñöúÿÿÿÿ8ˆÁ¢ ó,
+squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(îñë‡8ˆÁ¢ ó,
+Psquid:S1481"/Remove this unused "parameters" local variable.(­øüÂøÿÿÿÿ8ˆÁ¢ ó,
+_squid:S1854">Remove this useless assignment to local variable "parameters".(­øüÂøÿÿÿÿ8ˆÁ¢ ó,
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8ˆÁ¢ ó,
+gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(Ô€æ8ˆÁ¢ ó,
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8ˆÁ¢ ó,

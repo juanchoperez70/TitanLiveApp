@@ -1,0 +1,7 @@
+
+Ksquid:S1066"/Merge this if statement with the enclosing one.(’…ÖÐ8È‹õŸó,
+gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(úºÿë8È‹õŸó,
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(éØ»Úûÿÿÿÿ8È‹õŸó,
+Nsquid:S1481"-Remove this unused "idDevice" local variable.(Ó½éúÿÿÿÿ8È‹õŸó,
+[squid:S1118":Add a private constructor to hide the implicit public one.(‹Þßìþÿÿÿÿ8È‹õŸó,
+]squid:S1854"<Remove this useless assignment to local variable "idDevice".(Ó½éúÿÿÿÿ8È‹õŸó,
