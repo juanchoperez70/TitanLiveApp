@@ -317,11 +317,19 @@
     <string name="key_streaming_framerate">streaming_framerate</string>
     <string name="default_streaming_framerate">0</string>
     <string name="title_framerate">Framerate.</string>
-    <string-array name="video_framerates">
+    <string-array name="streaming_framerates">
         <item>15</item>
         <item>20</item>
         <item>25</item>
         <item>30</item>
+    </string-array>
+
+    <string-array name="local_video_framerates">
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+        <item>60</item>
     </string-array>
 
     <!-- Strings para la configuración de vibrar y emitir un sonido cuando se hace streaming -->
@@ -368,8 +376,12 @@
 
     <!-- Strings para la configuración de la url del servidor MQTT-->
     <string name="key_url_mqtt">url_mqtt</string>
-    <!--string name="default_url_mqtt">35.165.11.242</string-->
-    <string name="default_url_mqtt">10.50.4.3</string>
+    <string name="default_url_mqtt">54.218.193.119</string>
+
+<!--
+    <string name="default_url_mqtt">35.165.11.242</string>
+-->
+    <!--<string name="default_url_mqtt">10.50.4.3</string>-->
     <!--string name="default_url_mqtt">10.80.63.236</string-->
     <string name="title_url_mqtt">Url del servidor MQTT.</string>
 
@@ -392,9 +404,12 @@
 
     <!-- Strings para la configuración de la url del servidor de aplicaciones-->
     <string name="key_url_api">url_api</string>
+    <string name="default_url_api">http://54.218.193.119:8080/titan-live/api</string>
     <!--string name="default_url_api">http://52.24.232.162:8080/titan-live/api</string-->
     <!--string name="default_url_api">http://10.50.4.3:8080/titan-live/api</string-->
+<!--
     <string name="default_url_api">http://10.80.63.235:8080/titan-live/api</string>
+-->
     <string name="title_url_api">Url del servidor API.</string>
 
     <string name="latitude">latitude</string>
@@ -403,8 +418,12 @@
 
     <!-- Strings para la configuración de la url del servidor de streaming-->
     <string name="key_url_streaming">url_streaming</string>
+    <string name="default_url_streaming">54.218.193.119</string>
+
     <!--string name="default_url_streaming">52.24.232.162</string-->
+<!--
     <string name="default_url_streaming">10.50.4.3</string>
+-->
     <!--string name="default_url_streaming">10.80.63.236</string-->
 
     <string name="title_url_streaming">Url del servidor de streaming.</string>
@@ -427,7 +446,7 @@
 
     <!-- Strings para la configuración de la contraseña del servidor de streaming-->
     <string name="key_password_streaming">password_streaming</string>
-    <string name="default_password_streaming">Tpp1L1ve</string>
+    <string name="default_password_streaming">Tpp1L1v3</string>
     <!--string name="default_password_streaming">T1t4nL1v3</string-->
     <string name="title_password_streaming">Contraseña del servidor de streaming.</string>
 

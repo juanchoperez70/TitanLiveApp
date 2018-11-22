@@ -6,11 +6,13 @@ import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.IBinder;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.bpt.tipi.streaming.ConfigHelper;
 import com.bpt.tipi.streaming.UnCaughtException;
+import com.bpt.tipi.streaming.helper.PreferencesHelper;
 import com.bpt.tipi.streaming.model.MessageEvent;
 
 import org.eclipse.paho.client.mqttv3.IMqttToken;
@@ -24,12 +26,6 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 public class MqttService extends Service {
-
-    //private static final String URL = "tcp://10.50.4.3:1883"; //Tigo Avantel
-    //private static final String URL = "tcp://35.165.11.242:1883";
-    private static final String URL = "tcp://54.218.193.119:1883";
-    //private static final String URL = "tcp://10.80.63.236:1883"; //Movistar
-    //private static final String URL = "tcp://10.126.0.229:1883";
 
     private static final String MQTT_THREAD_NAME = "MqttService";
 
@@ -88,6 +84,21 @@ public class MqttService extends Service {
         });
     }
 
+    public String getUrl() {
+        return "tcp://" + PreferencesHelper.getURLMqtt(MqttService.this) +
+                ":" + PreferencesHelper.getPortMqtt(MqttService.this);
+    }
+
+    @NonNull
+    private MqttConnectOptions getMqttConnectionOption() {
+        MqttConnectOptions mqttConnectOptions = new MqttConnectOptions();
+        mqttConnectOptions.setCleanSession(false);
+        mqttConnectOptions.setAutomaticReconnect(false);//no estaba en la version estable de antes del 22 de nov
+        mqttConnectOptions.setUserName(PreferencesHelper.getUsernameMqtt(MqttService.this));
+        mqttConnectOptions.setPassword(PreferencesHelper.getPasswordMqtt(MqttService.this).toCharArray());
+        return mqttConnectOptions;
+    }
+
     /**
      * Realiza la conexión al server MQTT.
      */
@@ -97,19 +108,12 @@ public class MqttService extends Service {
             public void run() {
                 if (!isConnected()) {
                     try {
-                        String idDevice = ConfigHelper.getDeviceName(MqttService.this);
-                        mqttClient = new MqttClient(URL, idDevice, new MemoryPersistence());
+                        String idDevice = PreferencesHelper.getDeviceId(MqttService.this);
+                        mqttClient = new MqttClient(getUrl(), idDevice, new MemoryPersistence());
                         mqttClient.setTimeToWait(8000); //8 seg
                         mqttClient.setCallback(new MqttCallbackHandler(MqttService.this));
 
-                        MqttConnectOptions options = new MqttConnectOptions();
-                        options.setCleanSession(false);
-                        //options.setUserName("tipi");
-                        //options.setUserName("mqadmin");
-                        //options.setPassword("Br0k3rM4gmnt".toCharArray());
-                        options.setUserName("titanlive");
-                        options.setPassword("T1t4nL1v3".toCharArray());
-                        //options.setPassword("Br0k3rM4gmnt".toCharArray());
+                        MqttConnectOptions options = getMqttConnectionOption();
                         IMqttToken conToken = mqttClient.connectWithResult(options);
                         conToken.waitForCompletion();
 

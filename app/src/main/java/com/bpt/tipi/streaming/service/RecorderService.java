@@ -6,11 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.ImageFormat;
-import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.SurfaceTexture;
 import android.graphics.YuvImage;
@@ -31,7 +27,6 @@ import android.util.Log;
 
 import com.bpt.tipi.streaming.BitmapUtils;
 import com.bpt.tipi.streaming.ConfigHelper;
-import com.bpt.tipi.streaming.R;
 import com.bpt.tipi.streaming.StateMachineHandler;
 import com.bpt.tipi.streaming.UnCaughtException;
 
@@ -42,10 +37,8 @@ import com.bpt.tipi.streaming.helper.IrHelper;
 import com.bpt.tipi.streaming.helper.PreferencesHelper;
 import com.bpt.tipi.streaming.helper.VideoNameHelper;
 import com.bpt.tipi.streaming.model.MessageEvent;
-import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions;
 
 import org.bytedeco.javacpp.avutil;
-import org.bytedeco.javacpp.opencv_core;
 import org.bytedeco.javacv.FFmpegFrameFilter;
 import org.bytedeco.javacv.FFmpegFrameRecorder;
 import org.bytedeco.javacv.Frame;
@@ -59,12 +52,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
 import java.nio.ShortBuffer;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class RecorderService extends Service implements Camera.PreviewCallback {
 
@@ -420,6 +413,8 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
             parameters.setPreviewFormat(ImageFormat.NV21);
             primaryCamera.setParameters(parameters);
 
+            List fps = parameters.getSupportedPreviewFpsRange();
+
             int height = parameters.getPreviewSize().height;
             switch (height) {
                 case 480:
@@ -533,10 +528,9 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
     }
 
     public void configStreamingRecorder() {
-        streamingYuvImage = new Frame(CameraRecorderHelper.getStreamingImageWidth(context),
-                CameraRecorderHelper.getStreamingImageHeight(context), Frame.DEPTH_UBYTE, 2);
-        streamingRecorder = CameraRecorderHelper.initRecorder(context, CameraRecorderHelper.RECORDER_TYPE_STREAMING,
-                CameraRecorderHelper.buildStreamEndpoint(context), CameraRecorderHelper.FORMAT_FLV);
+        streamingYuvImage = new Frame(CameraHelper.getStreamingImageWidth(context),
+                CameraHelper.getStreamingImageHeight(context), Frame.DEPTH_UBYTE, 2);
+        streamingRecorder = CameraHelper.initStreamingRecorder(context);
         String filterString = "transpose=dir=1:passthrough=portrait," +"drawtext=fontsize=15:fontfile=/system/fonts/DroidSans.ttf:fontcolor=white@0.8:text='TITAN-" +
                                 PreferencesHelper.getDeviceId(context) + " %{localtime\\:%T %d/%m/%Y}':x=20:y=20,scale=w=" +
                                 CameraHelper.getStreamingImageWidth(context) + ":h=" +
@@ -850,7 +844,7 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
         mHandler.post(new Runnable() {
             @Override
             public void run() {
-                CameraRecorderHelper.sendSignalSOS(context);
+                CameraHelper.sendSignalSOS(context);
             }
         });
     }
@@ -943,7 +937,7 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
         mHandler.post(new Runnable() {
             @Override
             public void run() {
-                CameraRecorderHelper.sendLogStreaming(context, TrafficStats.getTotalTxBytes() - mStartTX, streamingStarted);
+                CameraHelper.sendLogStreaming(context, TrafficStats.getTotalTxBytes() - mStartTX, streamingStarted);
             }
         });
     }

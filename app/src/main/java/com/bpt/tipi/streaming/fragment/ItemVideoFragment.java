@@ -1,4 +1,4 @@
-package com.bpt.tipi.streaming;
+package com.bpt.tipi.streaming.fragment;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -10,10 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.bpt.tipi.streaming.R;
 import com.bpt.tipi.streaming.activity.TaggedActivity;
 import com.bumptech.glide.Glide;
 
 import java.io.File;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -62,8 +64,8 @@ public class ItemVideoFragment extends Fragment {
             }
         });
 
-        if (file != null && file.exists()) {
-            ((TaggedActivity) getActivity()).setTitle(file.getName());
+        if (file.exists()) {
+            ((TaggedActivity) Objects.requireNonNull(getActivity())).setTitle(file.getName());
         }
 
         return rootView;

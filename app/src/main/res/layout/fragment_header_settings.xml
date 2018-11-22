@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#292929"
+    tools:context=".fragment.HeaderSettingsFragment">
+
+    <TextView
+        android:id="@+id/tvGeneralSettings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_general"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:padding="16dp"
+        android:text="Ajustes generales"
+        android:textColor="@color/white_70" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/white_70" />
+
+    <TextView
+        android:id="@+id/tvConnectionSettings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_connection"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:padding="16dp"
+        android:text="Ajustes de conexión"
+        android:textColor="@color/white_70" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/white_70" />
+
+    <TextView
+        android:id="@+id/tvVideoSettings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_film"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:padding="16dp"
+        android:text="Ajustes de video local"
+        android:textColor="@color/white_70" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/white_70" />
+
+    <TextView
+        android:id="@+id/tvStreamingSettings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_video"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:padding="16dp"
+        android:text="Ajustes de video streaming"
+        android:textColor="@color/white_70" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/white_70" />
+
+    <TextView
+        android:id="@+id/tvDeviceSettings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_cellphone_gray_24dp"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:padding="16dp"
+        android:text="Ajustes del dispositivo"
+        android:textColor="@color/white_70" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/white_70" />
+
+
+</LinearLayout>

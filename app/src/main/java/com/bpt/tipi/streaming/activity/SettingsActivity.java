@@ -1,6 +1,7 @@
 package com.bpt.tipi.streaming.activity;
 
 import android.annotation.TargetApi;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,6 +15,13 @@ import android.preference.PreferenceManager;
 import android.preference.SwitchPreference;
 import android.provider.Settings;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bpt.tipi.streaming.ConfigHelper;
@@ -21,6 +29,12 @@ import com.bpt.tipi.streaming.R;
 import com.bpt.tipi.streaming.ServiceHelper;
 import com.bpt.tipi.streaming.UnCaughtException;
 import com.bpt.tipi.streaming.Utils;
+import com.bpt.tipi.streaming.fragment.ConnectionSettingsFragment;
+import com.bpt.tipi.streaming.fragment.GeneralSettingsFragment;
+import com.bpt.tipi.streaming.fragment.HeaderSettingsFragment;
+import com.bpt.tipi.streaming.fragment.StreamingSettingsFragment;
+import com.bpt.tipi.streaming.fragment.VideoSettingsFragment;
+import com.bpt.tipi.streaming.helper.PreferencesHelper;
 import com.bpt.tipi.streaming.model.MessageEvent;
 import com.bpt.tipi.streaming.model.RemoteConfig;
 import com.bpt.tipi.streaming.mqtt.MqttService;
@@ -37,415 +51,354 @@ import org.json.JSONObject;
 import java.security.spec.ECField;
 import java.util.List;
 
-public class SettingsActivity extends AppCompatPreferenceActivity {
+public class SettingsActivity extends AppCompatActivity implements HttpInterface {
 
-    /**
-     * A preference value change listener that updates the preference's summary
-     * to reflect its new value.
-     */
-    private static Preference.OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = new Preference.OnPreferenceChangeListener() {
-        @Override
-        public boolean onPreferenceChange(Preference preference, Object value) {
-            String stringValue = value.toString();
+    public static final int CODE_HEADER_FRAGMENT = 0;
+    public static final int CODE_GENERAL_FRAGMENT = 1;
+    public static final int CODE_CONNECTION_FRAGMENT = 2;
+    public static final int CODE_VIDEO_FRAGMENT = 3;
+    public static final int CODE_STREAMING_FRAGMENT = 4;
 
-            if (preference instanceof ListPreference) {
-                ListPreference listPreference = (ListPreference) preference;
-                int index = listPreference.findIndexOfValue(stringValue);
+    private int fragmentSelected = CODE_HEADER_FRAGMENT;
 
-                preference.setSummary(
-                        index >= 0
-                                ? listPreference.getEntries()[index]
-                                : null);
+    private Context context;
 
-            } else {
-                preference.setSummary(stringValue.trim());
-            }
-            return true;
-        }
-    };
-
-    /**
-     * Helper method to determine if the device has an extra-large screen. For
-     * example, 10" tablets are extra-large.
-     */
-    private static boolean isXLargeTablet(Context context) {
-        return (context.getResources().getConfiguration().screenLayout
-                & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_XLARGE;
-    }
-
-    /**
-     * Binds a preference's summary to its value. More specifically, when the
-     * preference's value is changed, its summary (line of text below the
-     * preference title) is updated to reflect the value. The summary is also
-     * immediately updated upon calling this method. The exact display format is
-     * dependent on the type of preference.
-     *
-     * @see #sBindPreferenceSummaryToValueListener
-     */
-    private static void bindPreferenceSummaryToValue(Preference preference) {
-        // Set the listener to watch for value changes.
-        preference.setOnPreferenceChangeListener(sBindPreferenceSummaryToValueListener);
-
-        // Trigger the listener immediately with the preference's
-        // current value.
-        if (preference instanceof SwitchPreference) {
-            sBindPreferenceSummaryToValueListener.onPreferenceChange(preference,
-                    PreferenceManager
-                            .getDefaultSharedPreferences(preference.getContext())
-                            .getBoolean(preference.getKey(), false));
-        } else {
-            sBindPreferenceSummaryToValueListener.onPreferenceChange(preference,
-                    PreferenceManager
-                            .getDefaultSharedPreferences(preference.getContext())
-                            .getString(preference.getKey(), ""));
-        }
-    }
+    private EventBus bus = EventBus.getDefault();
+    private String device = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
-        setupActionBar();
+        setContentView(R.layout.activity_settings);
+
+        context = SettingsActivity.this;
+
+        onSelectContent(CODE_HEADER_FRAGMENT);
+
     }
 
-    /**
-     * Set up the {@link android.app.ActionBar}, if the API is available.
-     */
-    private void setupActionBar() {
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            // Show the Up button in the action bar.
-            actionBar.setDisplayHomeAsUpEnabled(true);
+    public void onSelectContent(int code) {
+        fragmentSelected = code;
+        switch (code) {
+            case CODE_HEADER_FRAGMENT:
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.container, HeaderSettingsFragment.newInstance()).commit();
+                break;
+            case CODE_GENERAL_FRAGMENT:
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.container, GeneralSettingsFragment.newInstance()).commit();
+                break;
+            case CODE_CONNECTION_FRAGMENT:
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.container, ConnectionSettingsFragment.newInstance()).commit();
+                break;
+            case CODE_VIDEO_FRAGMENT:
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.container, VideoSettingsFragment.newInstance()).commit();
+                break;
+            case CODE_STREAMING_FRAGMENT:
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.container, StreamingSettingsFragment.newInstance()).commit();
+                break;
         }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean onIsMultiPane() {
-        return isXLargeTablet(this);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public void onBuildHeaders(List<Header> target) {
-        loadHeadersFromResource(R.xml.pref_headers, target);
-    }
-
-    /**
-     * This method stops fragment injection in malicious applications.
-     * Make sure to deny any unknown fragments here.
-     */
-    protected boolean isValidFragment(String fragmentName) {
-        return GeneralPreferenceFragment.class.getName().equals(fragmentName)
-                || VideoLocalPreferenceFragment.class.getName().equals(fragmentName)
-                || ConnectionPreferenceFragment.class.getName().equals(fragmentName)
-                || StreamingPreferenceFragment.class.getName().equals(fragmentName);
     }
 
     @Override
-    public void onHeaderClick(Header header, int position) {
-        super.onHeaderClick(header, position);
-        if (header.id == R.id.header_general_settings) {
-            startActivity(new Intent(Settings.ACTION_SETTINGS));
+    public void onBackPressed() {
+        if (fragmentSelected != CODE_HEADER_FRAGMENT) {
+            fragmentSelected = CODE_HEADER_FRAGMENT;
+            onSelectContent(CODE_HEADER_FRAGMENT);
+        } else {
+            super.onBackPressed();
         }
     }
 
-    /**
-     * Fragmento de las preferencias de la conexión al servidor
-     */
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public static class GeneralPreferenceFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener, HttpInterface {
+    public void showAlertSetValueForSetting(int title, final int key, int inputType) {
+        final Dialog dialog = new Dialog(context, R.style.CustomDialogTheme);
+        dialog.setContentView(R.layout.enter_value_settings_dialog);
+        dialog.setCancelable(true);
 
-        String oldIdDevice = "";
+        TextView tvTitle = dialog.findViewById(R.id.tvTitle);
+        final EditText etValue = dialog.findViewById(R.id.etValue);
+        Button btnAccept = dialog.findViewById(R.id.btnAccept);
+        Button btnCancel = dialog.findViewById(R.id.btnCancel);
 
-        @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            addPreferencesFromResource(R.xml.pref_general);
-            setHasOptionsMenu(true);
+        etValue.setInputType(inputType);
 
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-            oldIdDevice = preferences.getString(getString(R.string.general_key_id_device), "");
+        tvTitle.setText(getString(title));
+        etValue.setText(getValue(key));
 
-            bindPreferenceSummaryToValue(findPreference(getString(R.string.general_key_id_device)));
-            bindPreferenceSummaryToValue(findPreference(getString(R.string.general_key_settings_password)));
-            bindPreferenceSummaryToValue(findPreference(getString(R.string.general_key_interval_location)));
-            bindPreferenceSummaryToValue(findPreference(getString(R.string.general_key_interval_location_sos)));
-        }
-
-        @Override
-        public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-            if (key.equals(getString(R.string.general_key_id_device))) {
-                registerDevice();
-            }
-            if (key.equals(getString(R.string.general_key_interval_location))) {
-                onIntervalConfigured();
-            }
-            RemoteConfig remoteConfig = ConfigHelper.getConfig(getActivity());
-            Gson gson = new Gson();
-            String json = gson.toJson(remoteConfig);
-            HttpClient httpClient = new HttpClient(this);
-            httpClient.httpRequest(json, HttpHelper.Method.SEND_CONFIG, HttpHelper.TypeRequest.TYPE_PUT, true);
-        }
-
-        @Override
-        public void onResume() {
-            super.onResume();
-            getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
-
-        }
-
-        @Override
-        public void onPause() {
-            getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
-            super.onPause();
-        }
-
-        void onIdDeviceConfigured() {
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-            String idDevice = preferences.getString(getString(R.string.general_key_id_device), "");
-            if (!idDevice.isEmpty()) {
-                if (!Utils.isServiceRunning(getActivity(), MqttService.class)) {
-                    getActivity().startService(new Intent(getActivity(), MqttService.class));
+        btnAccept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!etValue.getText().toString().trim().isEmpty()) {
+                    setValue(key, etValue.getText().toString().trim());
+                    dialog.dismiss();
                 } else {
-                    EventBus bus = EventBus.getDefault();
-                    MessageEvent messageEvent = new MessageEvent(MessageEvent.ID_DEVICE_CONFIGURED);
-                    bus.post(messageEvent);
+                    Toast.makeText(context, "Ingrese un valor válido", Toast.LENGTH_SHORT).show();
                 }
-                ServiceHelper.startLocationService(getActivity());
-            } else {
-                ServiceHelper.stopLocationService(getActivity());
-                ServiceHelper.stopMqttService(getActivity());
             }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
+
+    public void showAlertSelectValueForSetting(int title, final int key) {
+        final Dialog dialog = new Dialog(context, R.style.CustomDialogTheme);
+        dialog.setContentView(R.layout.select_value_settings_dialog);
+        dialog.setCancelable(true);
+
+        TextView tvTitle = dialog.findViewById(R.id.tvTitle);
+        final Spinner spOptions = dialog.findViewById(R.id.spOptions);
+        Button btnAccept = dialog.findViewById(R.id.btnAccept);
+        Button btnCancel = dialog.findViewById(R.id.btnCancel);
+
+        tvTitle.setText(getString(title));
+
+        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<>(
+                this, R.layout.item_list_spinner, getListOptions(key));
+        spOptions.setAdapter(spinnerArrayAdapter);
+        spOptions.setSelection(Integer.parseInt(getValue(key)));
+
+        btnAccept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int option = spOptions.getSelectedItemPosition();
+                setValue(key, "" + option);
+                dialog.dismiss();
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
+
+    public String getValue(int key) {
+        switch (key) {
+            case R.string.key_device_id:
+                return PreferencesHelper.getDeviceId(context);
+            case R.string.key_password_for_settings:
+                return PreferencesHelper.getPasswordForSettings(context);
+            case R.string.key_interval_location:
+                return "" + PreferencesHelper.getIntervalLocation(context);
+            case R.string.key_interval_location_sos:
+                return "" + PreferencesHelper.getIntervalLocationInSos(context);
+            case R.string.key_url_api:
+                return "" + PreferencesHelper.getUrlApi(context);
+            case R.string.key_url_titan:
+                return "" + PreferencesHelper.getUrlTitan(context);
+            case R.string.key_url_mqtt:
+                return "" + PreferencesHelper.getURLMqtt(context);
+            case R.string.key_port_mqtt:
+                return "" + PreferencesHelper.getPortMqtt(context);
+            case R.string.key_username_mqtt:
+                return "" + PreferencesHelper.getUsernameMqtt(context);
+            case R.string.key_password_mqtt:
+                return "" + PreferencesHelper.getPasswordMqtt(context);
+            case R.string.key_local_video_size:
+                return "" + PreferencesHelper.getLocalVideoSize(context);
+            case R.string.key_local_framerate:
+                return "" + PreferencesHelper.getLocalFramerate(context);
+            case R.string.key_local_video_duration:
+                return "" + PreferencesHelper.getLocalVideoDuration(context);
+            case R.string.key_post_video_duration:
+                return "" + PreferencesHelper.getPostVideoDuration(context);
+            case R.string.key_streaming_video_size:
+                return "" + PreferencesHelper.getStreamingVideoSize(context);
+            case R.string.key_streaming_framerate:
+                return "" + PreferencesHelper.getStreamingFramerate(context);
+            case R.string.key_url_streaming:
+                return "" + PreferencesHelper.getUrlStreaming(context);
+            case R.string.key_port_streaming:
+                return "" + PreferencesHelper.getPortStreaming(context);
+            case R.string.key_app_name_streaming:
+                return "" + PreferencesHelper.getAppNameStreaming(context);
+            case R.string.key_username_streaming:
+                return "" + PreferencesHelper.getUsernameStreaming(context);
+            case R.string.key_password_streaming:
+                return "" + PreferencesHelper.getPasswordStreaming(context);
+            default:
+                return "";
+        }
+    }
+
+    public String[] getListOptions(int key) {
+        switch (key) {
+            case R.string.key_local_video_size:
+                return getResources().getStringArray(R.array.local_video_sizes);
+            case R.string.key_local_framerate:
+                return getResources().getStringArray(R.array.local_video_framerates);
+            case R.string.key_streaming_video_size:
+                return getResources().getStringArray(R.array.streaming_video_sizes);
+            case R.string.key_streaming_framerate:
+                return getResources().getStringArray(R.array.streaming_framerates);
+            default:
+                return null;
+        }
+    }
+
+    public void setValue(int key, String value) {
+        MessageEvent event;
+        switch (key) {
+            case R.string.key_device_id:
+                device = value;
+                registerDevice(value);
+                break;
+            case R.string.key_password_for_settings:
+                PreferencesHelper.setPasswordForSettings(context, value);
+                sendConfig();
+                break;
+            case R.string.key_interval_location:
+                PreferencesHelper.setIntervalLocation(context, value);
+                event = new MessageEvent(MessageEvent.LOCATION_PARAMETERS_CONFIGURED);
+                bus.post(event);
+                sendConfig();
+                break;
+            case R.string.key_interval_location_sos:
+                PreferencesHelper.setIntervalLocationInSos(context, value);
+                sendConfig();
+                break;
+            case R.string.key_url_api:
+                PreferencesHelper.setUrlApi(context, value);
+                sendConfig();
+                break;
+            case R.string.key_url_titan:
+                PreferencesHelper.setUrlTitan(context, value);
+                sendConfig();
+                break;
+            case R.string.key_url_mqtt:
+                PreferencesHelper.setUrlMqtt(context, value);
+                event = new MessageEvent(MessageEvent.MQTT_PARAMETERS_CONFIGURED);
+                bus.post(event);
+                sendConfig();
+                break;
+            case R.string.key_port_mqtt:
+                PreferencesHelper.setPortMqtt(context, value);
+                event = new MessageEvent(MessageEvent.MQTT_PARAMETERS_CONFIGURED);
+                bus.post(event);
+                sendConfig();
+                break;
+            case R.string.key_username_mqtt:
+                PreferencesHelper.setUsernameMqtt(context, value);
+                event = new MessageEvent(MessageEvent.MQTT_PARAMETERS_CONFIGURED);
+                bus.post(event);
+                sendConfig();
+                break;
+            case R.string.key_password_mqtt:
+                PreferencesHelper.setPasswordMqtt(context, value);
+                event = new MessageEvent(MessageEvent.MQTT_PARAMETERS_CONFIGURED);
+                bus.post(event);
+                sendConfig();
+                break;
+            case R.string.key_local_video_size:
+                PreferencesHelper.setLocalVideoSize(context, value);
+                sendConfig();
+                break;
+            case R.string.key_local_framerate:
+                PreferencesHelper.setLocalFramerate(context, value);
+                sendConfig();
+                break;
+            case R.string.key_local_video_duration:
+                PreferencesHelper.setLocalVideoDuration(context, value);
+                sendConfig();
+                break;
+            case R.string.key_post_video_duration:
+                PreferencesHelper.setPostVideoDuration(context, value);
+                sendConfig();
+                break;
+            case R.string.key_streaming_video_size:
+                PreferencesHelper.setStreamingVideoSize(context, value);
+                sendConfig();
+                break;
+            case R.string.key_streaming_framerate:
+                PreferencesHelper.setStreamingFramerate(context, value);
+                sendConfig();
+                break;
+            case R.string.key_url_streaming:
+                PreferencesHelper.setUrlStreaming(context, value);
+                sendConfig();
+                break;
+            case R.string.key_port_streaming:
+                PreferencesHelper.setPortStreaming(context, value);
+                sendConfig();
+                break;
+            case R.string.key_app_name_streaming:
+                PreferencesHelper.setAppNameStreaming(context, value);
+                sendConfig();
+                break;
+            case R.string.key_username_streaming:
+                PreferencesHelper.setUsernameStreaming(context, value);
+                sendConfig();
+                break;
+            case R.string.key_password_streaming:
+                PreferencesHelper.setPasswordStreaming(context, value);
+                sendConfig();
+                break;
+        }
+    }
+
+    public void registerDevice(String device) {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("imei", Utils.getImeiDevice(context));
+            jsonObject.put("deviceName", device);
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
 
-        void onIntervalConfigured() {
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-            String idDevice = preferences.getString(getString(R.string.general_key_id_device), "");
+        HttpClient httpClient = new HttpClient(context, this);
+        httpClient.httpRequest(jsonObject.toString(), HttpHelper.Method.REGISTER_ID, HttpHelper.TypeRequest.TYPE_POST, true);
+    }
 
-            if (!idDevice.isEmpty()) {
-                if (!Utils.isServiceRunning(getActivity(), LocationService.class)) {
-                    getActivity().startService(new Intent(getActivity(), LocationService.class));
+    public void sendConfig() {
+        RemoteConfig remoteConfig = PreferencesHelper.getConfig(context);
+        Gson gson = new Gson();
+        String json = gson.toJson(remoteConfig);
+        HttpClient httpClient = new HttpClient(context, this);
+        httpClient.httpRequest(json, HttpHelper.Method.SEND_CONFIG, HttpHelper.TypeRequest.TYPE_PUT, true);
+    }
+
+    @Override
+    public void onSuccess(String method, JSONObject response) {
+        if (method.equals(HttpHelper.Method.REGISTER_ID)) {
+            Toast.makeText(context, response.optString("message"), Toast.LENGTH_LONG).show();
+            if (response.optString("status").equals("1")) {
+                PreferencesHelper.setDeviceId(context, device);
+
+                if (!ServiceHelper.isServiceRunning(context, org.eclipse.paho.android.service.MqttService.class)) {
+                    ServiceHelper.startMqttService(context);
                 } else {
-                    ServiceHelper.stopLocationService(getActivity());
-                    ServiceHelper.startLocationService(getActivity());
+                    MessageEvent event = new MessageEvent(MessageEvent.ID_DEVICE_CONFIGURED);
+                    bus.post(event);
+                }
+                if (!ServiceHelper.isServiceRunning(context, LocationService.class)) {
+                    ServiceHelper.startLocationService(context);
                 }
             }
         }
-
-        public void registerDevice() {
-            JSONObject jsonObject = new JSONObject();
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-            try {
-                jsonObject.put("imei", Utils.getImeiDevice(getActivity()));
-                jsonObject.put("deviceName", preferences.getString(getString(R.string.general_key_id_device), ""));
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            HttpClient httpClient = new HttpClient(this);
-            httpClient.httpRequest(jsonObject.toString(), HttpHelper.Method.REGISTER_ID, HttpHelper.TypeRequest.TYPE_POST, true);
-        }
-
-        @Override
-        public void onSuccess(String method, JSONObject response) {
-            if (response.optString("status").equals("1")) {
-                try {
-                    Toast.makeText(getActivity(), response.optString("message"), Toast.LENGTH_LONG).show();
-                } catch (Exception e) {
-
-                }
-
-                onIdDeviceConfigured();
-            } else {
-                Toast.makeText(getActivity(), response.optString("message"), Toast.LENGTH_LONG).show();
-                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.putString(getString(R.string.general_key_id_device), oldIdDevice);
-                editor.apply();
-            }
-        }
-
-        @Override
-        public void onFailed(String method, JSONObject errorResponse) {
-            try {
-                Toast.makeText(getActivity(), "Ocurrió un error al registrar el ID, intente mas tarde", Toast.LENGTH_LONG).show();
-                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.putString(getString(R.string.general_key_id_device), oldIdDevice);
-                editor.apply();
-            } catch (Exception e) {
-
-            }
+        if (method.equals(HttpHelper.Method.SEND_CONFIG)) {
+            Toast.makeText(context, response.optString("message"), Toast.LENGTH_LONG).show();
         }
     }
 
-    /**
-     * Fragmento de las preferencias de la conexión al servidor
-     */
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public static class ConnectionPreferenceFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener, HttpInterface {
-        @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            addPreferencesFromResource(R.xml.pref_connection);
-            setHasOptionsMenu(true);
-
-            bindPreferenceSummaryToValue(findPreference(getString(R.string.key_host_address)));
-            bindPreferenceSummaryToValue(findPreference(getString(R.string.key_port_number)));
-            bindPreferenceSummaryToValue(findPreference(getString(R.string.key_stream_app_name)));
-            bindPreferenceSummaryToValue(findPreference(getString(R.string.key_username)));
-            bindPreferenceSummaryToValue(findPreference(getString(R.string.key_password)));
+    @Override
+    public void onFailed(String method, JSONObject errorResponse) {
+        if (method.equals(HttpHelper.Method.REGISTER_ID)) {
+            Toast.makeText(context, "Ocurrió un error al registrar el ID, intente mas tarde", Toast.LENGTH_LONG).show();
         }
-
-        @Override
-        public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
-            RemoteConfig remoteConfig = ConfigHelper.getConfig(getActivity());
-            Gson gson = new Gson();
-            String json = gson.toJson(remoteConfig);
-            HttpClient httpClient = new HttpClient(this);
-            httpClient.httpRequest(json, HttpHelper.Method.SEND_CONFIG, HttpHelper.TypeRequest.TYPE_PUT, true);
-        }
-
-        @Override
-        public void onResume() {
-            super.onResume();
-            getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
-
-        }
-
-        @Override
-        public void onPause() {
-            getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
-            super.onPause();
-        }
-
-        @Override
-        public void onSuccess(String method, JSONObject response) {
-            if (response.optString("status").equals("1")) {
-                Toast.makeText(getActivity(), response.optString("message"), Toast.LENGTH_LONG).show();
-            }
-        }
-
-        @Override
-        public void onFailed(String method, JSONObject errorResponse) {
-
-        }
-    }
-
-    /**
-     * Fragmento de las preferencias de video grabados localmente
-     */
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public static class VideoLocalPreferenceFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener, HttpInterface {
-        @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            addPreferencesFromResource(R.xml.pref_video_local);
-            setHasOptionsMenu(true);
-
-            bindPreferenceSummaryToValue(findPreference(getString(R.string.local_key_video_size)));
-            bindPreferenceSummaryToValue(findPreference(getString(R.string.local_key_framerate)));
-            bindPreferenceSummaryToValue(findPreference(getString(R.string.local_key_video_duration)));
-            bindPreferenceSummaryToValue(findPreference(getString(R.string.local_key_vibrate_and_sound)));
-            bindPreferenceSummaryToValue(findPreference(getString(R.string.local_key_post_recorder)));
-            bindPreferenceSummaryToValue(findPreference(getString(R.string.local_key_post_video_duration)));
-        }
-
-        @Override
-        public void onResume() {
-            super.onResume();
-            getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
-
-        }
-
-        @Override
-        public void onPause() {
-            getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
-            super.onPause();
-        }
-
-        @Override
-        public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
-            RemoteConfig remoteConfig = ConfigHelper.getConfig(getActivity());
-            Gson gson = new Gson();
-            String json = gson.toJson(remoteConfig);
-            HttpClient httpClient = new HttpClient(this);
-            httpClient.httpRequest(json, HttpHelper.Method.SEND_CONFIG, HttpHelper.TypeRequest.TYPE_PUT, true);
-        }
-
-        @Override
-        public void onSuccess(String method, JSONObject response) {
-            if (response.optString("status").equals("1")) {
-                Toast.makeText(getActivity(), response.optString("message"), Toast.LENGTH_LONG).show();
-            }
-        }
-
-        @Override
-        public void onFailed(String method, JSONObject errorResponse) {
-
-        }
-    }
-
-    /**
-     * Fragmento de las preferencias de video en streaming
-     */
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public static class StreamingPreferenceFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener, HttpInterface {
-        @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            addPreferencesFromResource(R.xml.pref_video_streaming);
-            setHasOptionsMenu(true);
-
-            bindPreferenceSummaryToValue(findPreference(getString(R.string.streaming_key_video_size)));
-            bindPreferenceSummaryToValue(findPreference(getString(R.string.streaming_key_framerate)));
-            bindPreferenceSummaryToValue(findPreference(getString(R.string.streaming_key_vibrate_and_sound)));
-        }
-
-        @Override
-        public void onResume() {
-            super.onResume();
-            getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
-
-        }
-
-        @Override
-        public void onPause() {
-            getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
-            super.onPause();
-        }
-
-        @Override
-        public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
-            /*
-            RemoteConfig remoteConfig = ConfigHelper.getConfig(getActivity());
-            Gson gson = new Gson();
-            String json = gson.toJson(remoteConfig);
-            HttpClient httpClient = new HttpClient(this);
-            httpClient.httpRequest(json, HttpHelper.Method.SEND_CONFIG, HttpHelper.TypeRequest.TYPE_PUT, true);
-            */
-        }
-
-        @Override
-        public void onSuccess(String method, JSONObject response) {
-            if (response.optString("status").equals("1")) {
-                try {
-                    Toast.makeText(getActivity(), response.optString("message"), Toast.LENGTH_LONG).show();
-                } catch (Exception ignored) {
-
-                }
-            }
-        }
-
-        @Override
-        public void onFailed(String method, JSONObject errorResponse) {
-
+        if (method.equals(HttpHelper.Method.SEND_CONFIG)) {
+            Toast.makeText(context, "Ocurrió un error al actualizar la configuración en el servidor, intente mas tarde", Toast.LENGTH_LONG).show();
         }
     }
 }

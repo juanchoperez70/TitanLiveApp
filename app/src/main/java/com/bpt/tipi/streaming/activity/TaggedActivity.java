@@ -1,6 +1,5 @@
 package com.bpt.tipi.streaming.activity;
 
-import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -15,9 +14,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bpt.tipi.streaming.ItemVideoFragment;
 import com.bpt.tipi.streaming.R;
 import com.bpt.tipi.streaming.Utils;
+import com.bpt.tipi.streaming.fragment.ItemVideoFragment;
 import com.bpt.tipi.streaming.helper.VideoNameHelper;
 import com.bpt.tipi.streaming.model.ItemVideo;
 import com.bpt.tipi.streaming.model.Label;

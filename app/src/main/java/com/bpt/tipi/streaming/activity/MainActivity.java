@@ -31,6 +31,7 @@ import com.bpt.tipi.streaming.ServiceHelper;
 import com.bpt.tipi.streaming.UnCaughtException;
 import com.bpt.tipi.streaming.Utils;
 import com.bpt.tipi.streaming.helper.LaserHelper;
+import com.bpt.tipi.streaming.helper.PreferencesHelper;
 import com.bpt.tipi.streaming.helper.VideoNameHelper;
 import com.bpt.tipi.streaming.model.Label;
 import com.bpt.tipi.streaming.model.MessageEvent;
@@ -291,8 +292,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void showDialogPassword() {
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
-        final String password = preferences.getString(getString(R.string.general_key_settings_password), getString(R.string.pref_default_settings_password));
+        final String password = PreferencesHelper.getPasswordForSettings(MainActivity.this);
         final Dialog dialog = new Dialog(MainActivity.this, R.style.CustomDialogTheme);
         dialog.setContentView(R.layout.enter_password_dialog);
         dialog.setCancelable(true);
@@ -482,9 +482,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void setIdStatus() {
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
-        String idDevice = preferences.getString(getString(R.string.general_key_id_device), "");
-        String user = preferences.getString("user", "");
+        String idDevice = PreferencesHelper.getDeviceId(MainActivity.this);
+        String user = PreferencesHelper.getLoggedUser(MainActivity.this);
 
         TextView tvIdCamera = findViewById(R.id.tvIdCamera);
         if (idDevice.isEmpty()) {

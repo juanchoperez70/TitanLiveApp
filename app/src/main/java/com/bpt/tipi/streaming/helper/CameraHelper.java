@@ -1,17 +1,38 @@
 package com.bpt.tipi.streaming.helper;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.media.MediaPlayer;
+import android.net.TrafficStats;
+import android.os.CountDownTimer;
 import android.os.Vibrator;
+import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.bpt.tipi.streaming.ConfigHelper;
 import com.bpt.tipi.streaming.R;
+import com.bpt.tipi.streaming.network.HttpClient;
+import com.bpt.tipi.streaming.network.HttpHelper;
+import com.bpt.tipi.streaming.network.HttpInterface;
+import com.bpt.tipi.streaming.service.RecorderService;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.SyncHttpClient;
 
+import org.apache.http.Header;
+import org.apache.http.entity.StringEntity;
 import org.bytedeco.javacpp.avcodec;
 import org.bytedeco.javacv.FFmpegFrameRecorder;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.UnsupportedEncodingException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import static org.bytedeco.javacpp.avutil.AV_PIX_FMT_YUV420P;
 
@@ -119,7 +140,7 @@ public class CameraHelper {
 
     private static int getStreamingFramerate(Context context) {
         int select = PreferencesHelper.getStreamingFramerate(context);
-        String[] framerates = context.getResources().getStringArray(R.array.video_framerates);
+        String[] framerates = context.getResources().getStringArray(R.array.streaming_framerates);
         return Integer.parseInt(framerates[select]);
     }
 
@@ -185,8 +206,32 @@ public class CameraHelper {
 
     private static int getLocalFramerate(Context context) {
         int select = PreferencesHelper.getLocalFramerate(context);
-        String[] framerates = context.getResources().getStringArray(R.array.video_framerates);
+        String[] framerates = context.getResources().getStringArray(R.array.local_video_framerates);
         return Integer.parseInt(framerates[select]);
+    }
+
+    public static FFmpegFrameRecorder initStreamingRecorder(Context context) {
+        FFmpegFrameRecorder frameRecorder = new FFmpegFrameRecorder(CameraHelper.buildStreamEndpoint(context), getStreamingImageWidth(context), getStreamingImageHeight(context), 1);
+        frameRecorder.setFrameRate(ConfigHelper.getStreamingFramerate(context));
+        frameRecorder.setVideoBitrate(getStreamingVideoBitrate(context));
+
+        frameRecorder.setFormat("flv");
+        frameRecorder.setInterleaved(true);
+        frameRecorder.setVideoOption("preset", "ultrafast");
+        frameRecorder.setVideoOption("tune", "zerolatency");
+        frameRecorder.setVideoOption("fflags", "nobuffer");
+        frameRecorder.setVideoOption("analyzeduration", "0");
+        frameRecorder.setVideoOption("crf", "28");
+        frameRecorder.setGopSize(30);
+        frameRecorder.setVideoCodec(avcodec.AV_CODEC_ID_H264);
+        frameRecorder.setPixelFormat(AV_PIX_FMT_YUV420P);
+        frameRecorder.setAudioBitrate(RecorderService.AUDIO_BITRATE);
+        frameRecorder.setAudioOption("crf", "0");
+        frameRecorder.setAudioQuality(0);
+        frameRecorder.setAudioCodec(avcodec.AV_CODEC_ID_AAC);
+        frameRecorder.setSampleRate(RecorderService.AUDIO_RATE_IN_HZ);
+
+        return frameRecorder;
     }
 
     public static String buildStreamEndpoint(Context context) {
@@ -206,6 +251,47 @@ public class CameraHelper {
         builder.append(appName).append("/");
         builder.append(streamName);
         return builder.toString();
+    }
+
+    public static void sendSignalSOS(final Context context) {
+        HttpClient httpClient = new HttpClient(context, new HttpInterface() {
+            @Override
+            public void onSuccess(String method, JSONObject response) {
+
+            }
+
+            @Override
+            public void onFailed(String method, JSONObject errorResponse) {
+
+            }
+        });
+        String method = HttpHelper.Method.SOS + "/" + PreferencesHelper.getDeviceId(context);
+        httpClient.httpRequest("", method, HttpHelper.TypeRequest.TYPE_PUT, false);
+    }
+
+    public static void sendLogStreaming(Context context, long bytesTransmited, Date startDate) {
+        HttpClient httpClient = new HttpClient(context, new HttpInterface() {
+            @Override
+            public void onSuccess(String method, JSONObject response) {
+
+            }
+
+            @Override
+            public void onFailed(String method, JSONObject errorResponse) {
+
+            }
+        });
+
+        JSONObject json = new JSONObject();
+        try {
+            DateFormat dt = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+            json.put("deviceName", PreferencesHelper.getDeviceId(context));
+            json.put("startStr", dt.format(startDate));
+            json.put("bytesTransmited", bytesTransmited);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        httpClient.httpRequest(json.toString(), HttpHelper.Method.LOG_STREAMING, HttpHelper.TypeRequest.TYPE_POST, false);
     }
 
     public static void soundStart(Context context) {

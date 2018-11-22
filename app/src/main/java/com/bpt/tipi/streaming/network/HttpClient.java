@@ -9,6 +9,7 @@ package com.bpt.tipi.streaming.network;
 import android.content.Context;
 import android.util.Log;
 
+import com.bpt.tipi.streaming.helper.PreferencesHelper;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.SyncHttpClient;
@@ -24,26 +25,6 @@ import java.io.UnsupportedEncodingException;
  * la librería externa <a href="http://loopj.com/android-async-http">Android Asynchronous Http Client</a>.
  */
 public class HttpClient {
-
-    //Amazon
-    //public static final String URL = "http://52.24.232.162:8080/titan-live/api";
-    //public static final String URL_ALT = "http://52.24.232.162:8081/Evidencias-RestAPI/api/v1";
-    //--
-
-    //Amazon titanlive
-    public static final String URL = "http://54.218.193.119:8080/titan-live/api";
-    public static final String URL_ALT = "http://52.24.232.162:8081/Evidencias-RestAPI/api/v1";
-    //--
-
-    //movistar
-    //public static final String URL = "http://10.80.63.235:8080/titan-live/api";
-    //public static final String URL_ALT = "http://10.80.63.235:8081/Evidencias-RestAPI/api/v1";
-    //--
-
-    //Tigo y Avantel
-    //public static final String URL = "http://10.50.4.1:8080/titan-live/api";
-    //public static final String URL_ALT = "http://10.50.4.1:8081/Evidencias-RestAPI/api/v1";
-    //--
 
     private HttpInterface mHttpInterface;
     private Context mContext;
@@ -78,9 +59,9 @@ public class HttpClient {
     public void httpRequest(String jsonParams, final String method, int typeRequest, boolean isAsync) {
         String url;
         if (method.equals(HttpHelper.Method.LOGIN) || method.equals(HttpHelper.Method.LABELS)) {
-            url = URL_ALT + method;
+            url = PreferencesHelper.getUrlTitan(mContext) + method;
         } else {
-            url = URL + method;
+            url = PreferencesHelper.getUrlApi(mContext) + method;
         }
         Log.i("Depuracion", "url request " + url);
         Log.i("Depuracion", "RequestParams " + jsonParams);

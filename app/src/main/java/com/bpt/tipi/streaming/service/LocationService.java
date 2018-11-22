@@ -1,6 +1,7 @@
 package com.bpt.tipi.streaming.service;
 
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.Location;
@@ -19,6 +20,7 @@ import android.util.Log;
 import com.bpt.tipi.streaming.ConfigHelper;
 import com.bpt.tipi.streaming.R;
 import com.bpt.tipi.streaming.UnCaughtException;
+import com.bpt.tipi.streaming.helper.PreferencesHelper;
 import com.bpt.tipi.streaming.model.Device;
 import com.bpt.tipi.streaming.model.MessageEvent;
 import com.bpt.tipi.streaming.network.HttpClient;
@@ -37,6 +39,7 @@ public class LocationService extends Service implements LocationListener, HttpIn
 
     MyCounter myCounter;
 
+    private Context context;
     private EventBus bus = EventBus.getDefault();
 
     private final IBinder mBinder = new LocalBinder();
@@ -60,6 +63,8 @@ public class LocationService extends Service implements LocationListener, HttpIn
         Log.i("Depuracion", "LocationService onCreate() ");
         Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
         locationManager = (LocationManager) this.getSystemService(LOCATION_SERVICE);
+
+        context = LocationService.this;
 
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
         HandlerThread thread = new HandlerThread("LocationService");
@@ -148,23 +153,21 @@ public class LocationService extends Service implements LocationListener, HttpIn
         @Override
         public void onFinish() {
             try {
-                String idDevice = ConfigHelper.getDeviceName(LocationService.this);
-                //if (mLocation != null && !idDevice.isEmpty()) {
-                //double latitude = 6.2325358;//mLocation.getLatitude();//
-                //double longitude = -75.6434221;//mLocation.getLongitude();//
-                double latitude = mLocation.getLatitude();//
-                double longitude = mLocation.getLongitude();//
-                BatteryManager bm = (BatteryManager) getSystemService(BATTERY_SERVICE);
-                int batLevel = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY);
-                Device device = new Device(idDevice, "CONNECTED", latitude, longitude, batLevel);
-                Gson gson = new Gson();
-                String json = gson.toJson(device);
+                String idDevice = PreferencesHelper.getDeviceId(context);
+                if (mLocation != null && !idDevice.isEmpty()) {
+                    double latitude = mLocation.getLatitude();//
+                    double longitude = mLocation.getLongitude();//
+                    BatteryManager bm = (BatteryManager) getSystemService(BATTERY_SERVICE);
+                    int batLevel = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY);
+                    Device device = new Device(idDevice, "CONNECTED", latitude, longitude, batLevel);
+                    Gson gson = new Gson();
+                    String json = gson.toJson(device);
 
-                HttpClient httpClient = new HttpClient(LocationService.this);
-                httpClient.httpRequest(json, HttpHelper.Method.REPORT_STATUS, HttpHelper.TypeRequest.TYPE_POST, true);
-                //} else {
-                //    Log.i("Depuracion", "mLocation " + mLocation);
-                //}
+                    HttpClient httpClient = new HttpClient(context,LocationService.this);
+                    httpClient.httpRequest(json, HttpHelper.Method.REPORT_STATUS, HttpHelper.TypeRequest.TYPE_POST, true);
+                } else {
+                    Log.i("Depuracion", "mLocation " + mLocation);
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
