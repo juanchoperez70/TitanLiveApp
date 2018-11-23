@@ -580,8 +580,8 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
             //Log.e("Depuracion", "Error " + e.getMessage());
         }
         if (playSound) {
-            if (ConfigHelper.getLocalVibrateAndSound(context)) {
-                CameraRecorderHelper.soundStart(context);
+            if (PreferencesHelper.getLocalVibrateAndSound(context)) {
+                CameraHelper.soundStart(context);
             }
             bus.post(new MessageEvent(MessageEvent.START_LOCAL_RECORDING));
         }
@@ -641,8 +641,8 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
             MessageEvent event = new MessageEvent(MessageEvent.STOP_STREAMING);
             bus.post(event);
         }
-        if (ConfigHelper.getStreamingVibrateAndSound(context)) {
-            CameraRecorderHelper.soundStart(context);
+        if (PreferencesHelper.getStreamingVibrateAndSound(context)) {
+            CameraHelper.soundStart(context);
         }
     }
 
