@@ -146,7 +146,7 @@ public class CameraHelper {
 
     public static int getLocalImageWidth(Context context) {
         int videoSize = PreferencesHelper.getLocalVideoSize(context);
-        switch (videoSize) {
+        /*switch (videoSize) {
             case 0:
             case 1:
             case 2:
@@ -161,12 +161,28 @@ public class CameraHelper {
                 return 640;
             default:
                 return 0;
+        }*/
+        switch (videoSize) {
+            case 1:
+            case 2:
+            case 3:
+                return 1920;
+            case 4:
+            case 5:
+            case 6:
+                return 1280;
+            case 7:
+            case 8:
+            case 9:
+                return 640;
+            default:
+                return 0;
         }
     }
 
     public static int getLocalImageHeight(Context context) {
         int videoSize = PreferencesHelper.getLocalVideoSize(context);
-        switch (videoSize) {
+        /*switch (videoSize) {
             case 0:
             case 1:
             case 2:
@@ -178,6 +194,22 @@ public class CameraHelper {
             case 6:
             case 7:
             case 8:
+                return 480;
+            default:
+                return 0;
+        }*/
+        switch (videoSize) {
+            case 1:
+            case 2:
+            case 3:
+                return 1080;
+            case 4:
+            case 5:
+            case 6:
+                return 720;
+            case 7:
+            case 8:
+            case 9:
                 return 480;
             default:
                 return 0;
@@ -204,7 +236,7 @@ public class CameraHelper {
         }
     }
 
-    private static int getLocalFramerate(Context context) {
+    public static int getLocalFramerate(Context context) {
         int select = PreferencesHelper.getLocalFramerate(context);
         String[] framerates = context.getResources().getStringArray(R.array.local_video_framerates);
         return Integer.parseInt(framerates[select]);

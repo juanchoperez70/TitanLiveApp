@@ -1,0 +1,9 @@
+
+Jsquid:S1659"0Declare "linearUsernameMqtt" on a separate line.(åÊÅ©şÿÿÿÿ
+Fsquid:S1659",Declare "linearUrlTitan" on a separate line.(•Çê³ùÿÿÿÿ
+Jsquid:S1659"0Declare "linearPasswordMqtt" on a separate line.(åÊÅ©şÿÿÿÿ
+Xsquid:UselessImportCheck"1Remove this unused import 'android.widget.Toast'.(©›ïÍúÿÿÿÿ
+S"squid:SwitchLastCaseIsDefaultCheck""Add a default case to this switch.(×“¾ñùÿÿÿÿ
+Fsquid:S1659",Declare "linearPortMqtt" on a separate line.(åÊÅ©şÿÿÿÿ
+Esquid:S1659"+Declare "linearUrlMqtt" on a separate line.(•Çê³ùÿÿÿÿ
+ssquid:UselessImportCheck"LRemove this unused import 'com.bpt.tipi.streaming.helper.PreferencesHelper'.(ÍÃ÷æúÿÿÿÿ

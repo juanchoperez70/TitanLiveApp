@@ -1,9 +1,22 @@
 
-lsquid:UnusedPrivateMethod"=Remove this unused private "getStreamingVideoBitrate" method.(ÌµÜşÿÿÿÿ8šüŸó,
-msquid:UselessImportCheck"DRemove this unused import 'org.bytedeco.javacv.FFmpegFrameRecorder'.(„Å8šüŸó,
-csquid:UnusedPrivateMethod"9Remove this unused private "getLocalVideoBitrate" method.(¬õ¬ˆ8šüŸó,
-gsquid:UselessImportCheck"9Remove this unused import 'org.bytedeco.javacpp.avcodec'.(à™Øõüÿÿÿÿ8šüŸó,
-[squid:S1118":Add a private constructor to hide the implicit public one.(ËõßÓûÿÿÿÿ8¸Ö÷Ÿó,
-lsquid:UselessImportCheck">Remove this unused import 'android.content.pm.PackageManager'.(€®¥õÿÿÿÿÿ8½ÒüŸó,
-[squid:UselessImportCheck"-Remove this unused import 'android.util.Log'.(Ô¦Ø²øÿÿÿÿ8½ÒüŸó,
-bsquid:UselessImportCheck"4Remove this unused import 'android.hardware.Camera'.(¯É‡÷úÿÿÿÿ8½ÒüŸó,
+csquid:UselessImportCheck"3Remove this unused import 'org.apache.http.Header'.(ËÇ¶òûÿÿÿÿ8»ëËóó,
+nsquid:UselessImportCheck">Remove this unused import 'android.content.pm.PackageManager'.(€®¥õÿÿÿÿÿ8»ëËóó,
+psquid:UselessImportCheck"@Remove this unused import 'org.apache.http.entity.StringEntity'.(ş©Ú‹şÿÿÿÿ8»ëËóó,
+]squid:S1118'":Add a private constructor to hide the implicit public one.(ËõßÓûÿÿÿÿ8»ëËóó,
+esquid:UselessImportCheck"5Remove this unused import 'android.net.TrafficStats'.(¤Úâ‡ùÿÿÿÿ8»ëËóó,
+{squid:UselessImportCheck"KRemove this unused import 'com.loopj.android.http.JsonHttpResponseHandler'.(”äöúÿÿÿÿ8»ëËóó,
+lsquid:UselessImportCheck "ARemove this unused import 'java.io.UnsupportedEncodingException'.(Ãµ…“8»ëËóó,
+osquid:CommentedOutCodeLine•"<This block of commented-out lines of code should be removed.(úáªùÿÿÿÿ8ñÛÍóó,
+¥squid:S1186¸"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(‡Ïû„ûÿÿÿÿ8­ŒÌóó,
+ssquid:UselessImportCheck"CRemove this unused import 'com.loopj.android.http.AsyncHttpClient'.(¬¹×àúÿÿÿÿ8»ëËóó,
+]squid:UselessImportCheck"-Remove this unused import 'android.util.Log'.(Ô¦Ø²øÿÿÿÿ8»ëËóó,
+¥squid:S1186¨"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(‡Ïû„ûÿÿÿÿ8­ŒÌóó,
+dsquid:UselessImportCheck"4Remove this unused import 'android.hardware.Camera'.(¯É‡÷úÿÿÿÿ8»ëËóó,
+rsquid:UselessImportCheck"BRemove this unused import 'com.loopj.android.http.SyncHttpClient'.(Øô¹Àùÿÿÿÿ8»ëËóó,
+¥squid:S1186³"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(üüÊºøÿÿÿÿ8­ŒÌóó,
+osquid:CommentedOutCodeLine¹"<This block of commented-out lines of code should be removed.(úáªùÿÿÿÿ8»ëËóó,
+asquid:UselessImportCheck	"6Remove this unused import 'android.os.CountDownTimer'.(Ğˆ“ë8»ëËóó,
+fsquid:UnusedPrivateMethodÛ"9Remove this unused private "getLocalVideoBitrate" method.(¬õ¬ˆ8­ŒÌóó,
+hsquid:UselessImportCheck">Remove this unused import 'android.content.SharedPreferences'.(íÎÉr8»ëËóó,
+lsquid:UselessImportCheck"ARemove this unused import 'android.preference.PreferenceManager'.(ìùÖõ8»ëËóó,
+¥squid:S1186£"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(üüÊºøÿÿÿÿ8­ŒÌóó,

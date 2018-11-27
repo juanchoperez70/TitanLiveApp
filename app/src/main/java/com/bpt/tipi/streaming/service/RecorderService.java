@@ -406,14 +406,14 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
         }
         if (primaryCamera != null) {
             Camera.Parameters parameters = primaryCamera.getParameters();
-
-            parameters.setPreviewSize(CameraRecorderHelper.getLocalImageWidth(context), CameraRecorderHelper.getLocalImageHeight(context));
-            parameters.setPreviewFrameRate(ConfigHelper.getLocalFramerate(context));
+            int fps =  CameraHelper.getLocalFramerate(context);
+            parameters.setPreviewSize(CameraHelper.getLocalImageWidth(context), CameraHelper.getLocalImageHeight(context));
+            parameters.setPreviewFrameRate(fps);
 
             parameters.setPreviewFormat(ImageFormat.NV21);
             primaryCamera.setParameters(parameters);
 
-            List fps = parameters.getSupportedPreviewFpsRange();
+            List posible = parameters.getSupportedPreviewFpsRange();
 
             int height = parameters.getPreviewSize().height;
             switch (height) {
@@ -430,11 +430,12 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
                     profile = CamcorderProfile.get(CamcorderProfile.QUALITY_480P);
                     break;
             }
-            profile.videoFrameRate = parameters.getPreviewFrameRate();
+
+            profile.videoFrameRate = fps;
             profile.videoFrameWidth = parameters.getPreviewSize().width;
             profile.videoFrameHeight = parameters.getPreviewSize().height;
 
-            int size = CameraRecorderHelper.getLocalImageWidth(context) * CameraRecorderHelper.getLocalImageHeight(context);
+            int size = CameraHelper.getLocalImageWidth(context) * CameraHelper.getLocalImageHeight(context);
 
             size = size * ImageFormat.getBitsPerPixel(parameters.getPreviewFormat()) / 8;
             primaryBuffer = new byte[size];
@@ -523,8 +524,20 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
         mediaRecorder.setCamera(primaryCamera);
         mediaRecorder.setAudioSource(MediaRecorder.AudioSource.DEFAULT);
         mediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
-        mediaRecorder.setProfile(profile);
+        mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.DEFAULT);
+
+        mediaRecorder.setMaxDuration(50000);
+        mediaRecorder.setVideoFrameRate(60);
+        mediaRecorder.setCaptureRate(60);
+        mediaRecorder.setVideoSize(1280, 720);
+        mediaRecorder.setVideoEncodingBitRate(3000000);
+        mediaRecorder.setAudioEncodingBitRate(8000);
+
+        mediaRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.DEFAULT);
+        mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+        //mediaRecorder.setProfile(profile);
         mediaRecorder.setOutputFile(VideoNameHelper.getOutputFile(context, sequence).getAbsolutePath());
+        //mediaRecorder.setVideoFrameRate(60);
     }
 
     public void configStreamingRecorder() {
@@ -618,7 +631,7 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
         videoDuration = 0;
         sequence = 1;
         if (ConfigHelper.getLocalVibrateAndSound(context)) {
-            CameraRecorderHelper.soundStop(context);
+            CameraHelper.soundStop(context);
         }
         bus.post(new MessageEvent(MessageEvent.STOP_LOCAL_RECORDING));
     }
@@ -677,7 +690,7 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
             streamingYuvImage = null;
         }
         if (ConfigHelper.getStreamingVibrateAndSound(context)) {
-            CameraRecorderHelper.soundStop(context);
+            CameraHelper.soundStop(context);
         }
     }
 
@@ -757,7 +770,7 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
                     new Rect(0, 0, image.getWidth(), image.getHeight()), 90,
                     file);
 
-            CameraRecorderHelper.soundTakePhoto(context);
+            CameraHelper.soundTakePhoto(context);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -775,7 +788,7 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
         try {
             file = new FileOutputStream(VideoNameHelper.getNamePhoto(context));
             file.write(data);
-            CameraRecorderHelper.soundTakePhoto(context);
+            CameraHelper.soundTakePhoto(context);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -1004,7 +1017,7 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
 
     public void showVideoDuration() {
         if (videoDuration % 120 == 0) {
-            CameraRecorderHelper.soundStart(context);
+            CameraHelper.soundStart(context);
         }
         @SuppressLint("DefaultLocale")
         String value = String.format("%02d:%02d", videoDuration / 60, videoDuration % 60);
