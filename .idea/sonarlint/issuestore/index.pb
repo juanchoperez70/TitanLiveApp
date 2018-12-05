@@ -23,8 +23,6 @@ p
 @app/src/main/java/com/bpt/tipi/streaming/model/MessageEvent.java,3\a\3ac17ba42fe55f888acfb2caef7a8d0cc01a3ee1
 q
 Aapp/src/main/java/com/bpt/tipi/streaming/helper/CameraHelper.java,5\f\5f50c9e8b29c497371eba263753abf491e65cead
-y
-Iapp/src/main/java/com/bpt/tipi/streaming/helper/CameraRecorderHelper.java,f\7\f7413e35b03afe576d532c8b58ad0207175ca31e
 p
 @app/src/main/java/com/bpt/tipi/streaming/model/RemoteConfig.java,3\6\362e04f30cddb2cc01c292aef1fa054ba67dbcb9
 m
@@ -107,3 +105,13 @@ R
 "app/src/main/res/values/colors.xml,9\6\969faa2a5d9f5e8390e958d2c07f2cfd54676e6b
 [
 +app/src/main/res/layout/activity_tagged.xml,d\9\d9d1d56bf74f4296b72b51d2c9ca66b165eb2742
+t
+Dapp/src/main/java/com/bpt/tipi/streaming/helper/WatermarkHelper.java,5\c\5c6e608e3f8d7da6a5e4f585d185d54a2bb26cd1
+
+Oapp/src/main/java/com/bpt/tipi/streaming/receiver/events/SimChangeReceiver.java,5\2\52eda2ff07d93bd72626649416cb5fea473a467f
+€
+Papp/src/main/java/com/bpt/tipi/streaming/receiver/events/CameraEventHandler.java,1\7\17cbe829e2e8dea5b756e007c5e45752663de484
+p
+@app/src/main/java/com/bpt/tipi/streaming/ConfigReaderHelper.java,4\2\42a11bb3d537e1afe1a96b7a592dcd150e3bcbac
+n
+>app/src/main/java/com/bpt/tipi/streaming/model/UrlsConfig.java,9\c\9c4008bfe6fdf1e8d7017cdcf66ae93b3b956a5f

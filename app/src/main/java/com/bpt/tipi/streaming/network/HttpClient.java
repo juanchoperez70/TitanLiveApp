@@ -60,7 +60,7 @@ public class HttpClient {
         String url;
         if (method.equals(HttpHelper.Method.LOGIN) || method.equals(HttpHelper.Method.LABELS)) {
             url = PreferencesHelper.getUrlTitan(mContext) + method;
-        } else {
+        }else {
             url = PreferencesHelper.getUrlApi(mContext) + method;
         }
         Log.i("Depuracion", "url request " + url);

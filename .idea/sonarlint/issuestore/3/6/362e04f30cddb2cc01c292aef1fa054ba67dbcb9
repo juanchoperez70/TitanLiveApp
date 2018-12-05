@@ -1,24 +1,23 @@
 
-„"squid:ClassVariableVisibilityCheck"VMake deviceName a static final constant or non-public and provide accessors if needed.(ü÷”
-ˆ"squid:ClassVariableVisibilityCheck	"UMake masterPwd a static final constant or non-public and provide accessors if needed.(„¥×¹şÿÿÿÿ
-"squid:ClassVariableVisibilityCheck
-"`Make locationTimeInterval a static final constant or non-public and provide accessors if needed.(—©ñ”
-"squid:ClassVariableVisibilityCheck"[Make sosTimeInterval a static final constant or non-public and provide accessors if needed.(¢¸¯Ôøÿÿÿÿ
-"squid:ClassVariableVisibilityCheck"ZMake localFrameRate a static final constant or non-public and provide accessors if needed.(«Ş¦€ıÿÿÿÿ
-”"squid:ClassVariableVisibilityCheck"aMake localVideoDurationMin a static final constant or non-public and provide accessors if needed.(Ï–µóøÿÿÿÿ
-“"squid:ClassVariableVisibilityCheck"`Make postRecordingTimeMin a static final constant or non-public and provide accessors if needed.(¹¡¿Ñùÿÿÿÿ
-‘"squid:ClassVariableVisibilityCheck"^Make streamingFrameRate a static final constant or non-public and provide accessors if needed.(ÈÔëşüÿÿÿÿ
-‘"squid:ClassVariableVisibilityCheck"^Make streamingVideoSize a static final constant or non-public and provide accessors if needed.(Ä×†Ğüÿÿÿÿ
-‡"squid:ClassVariableVisibilityCheck"ZMake localVideoSize a static final constant or non-public and provide accessors if needed.(ßŠ¿,
-‘"squid:ClassVariableVisibilityCheck"cMake vibrateAndSoundOnRecord a static final constant or non-public and provide accessors if needed.(Ó¦å˜
-"squid:ClassVariableVisibilityCheck"`Make postRecordingEnabled a static final constant or non-public and provide accessors if needed.(Üìçå
-™"squid:ClassVariableVisibilityCheck"fMake vibrateAndSoundOnStreaming a static final constant or non-public and provide accessors if needed.(ûÔşÿÿÿÿ
-"squid:ClassVariableVisibilityCheck"SMake mqttUrl a static final constant or non-public and provide accessors if needed.(˜ë¬›
-"squid:ClassVariableVisibilityCheck"TMake mqttPort a static final constant or non-public and provide accessors if needed.(âÀ†=
-"squid:ClassVariableVisibilityCheck"SMake mqttUsr a static final constant or non-public and provide accessors if needed.(”§
-€"squid:ClassVariableVisibilityCheck"SMake mqttPwd a static final constant or non-public and provide accessors if needed.(­¶È
-"squid:ClassVariableVisibilityCheck"RMake apiUrl a static final constant or non-public and provide accessors if needed.(¼“¶9
-Œ"squid:ClassVariableVisibilityCheck"YMake evidenciasApi a static final constant or non-public and provide accessors if needed.(Ğà¤şÿÿÿÿ
-"squid:ClassVariableVisibilityCheckD"\Make generalParameter a static final constant or non-public and provide accessors if needed.(é°ùûÿÿÿÿ
-_squid:S00107"BConstructor has 20 parameters, which is greater than 7 authorized.(¹ãíüûÿÿÿÿ
-Zsquid:S001073"BConstructor has 14 parameters, which is greater than 7 authorized.(øıÍã
+"squid:ClassVariableVisibilityCheck"cMake vibrateAndSoundOnRecord a static final constant or non-public and provide accessors if needed.(Ó¦å˜
+’"squid:ClassVariableVisibilityCheck"aMake localVideoDurationMin a static final constant or non-public and provide accessors if needed.(Ï–µóøÿÿÿÿ
+]squid:S00107"BConstructor has 20 parameters, which is greater than 7 authorized.(¹ãíüûÿÿÿÿ
+‹"squid:ClassVariableVisibilityCheck"ZMake localFrameRate a static final constant or non-public and provide accessors if needed.(«Ş¦€ıÿÿÿÿ
+"squid:ClassVariableVisibilityCheck"SMake mqttUrl a static final constant or non-public and provide accessors if needed.(˜ë¬›
+"squid:ClassVariableVisibilityCheck"^Make streamingVideoSize a static final constant or non-public and provide accessors if needed.(Ä×†Ğüÿÿÿÿ
+—"squid:ClassVariableVisibilityCheck"fMake vibrateAndSoundOnStreaming a static final constant or non-public and provide accessors if needed.(ûÔşÿÿÿÿ
+Š"squid:ClassVariableVisibilityCheck"YMake evidenciasApi a static final constant or non-public and provide accessors if needed.(Ğà¤şÿÿÿÿ
+…"squid:ClassVariableVisibilityCheck"ZMake localVideoSize a static final constant or non-public and provide accessors if needed.(ßŠ¿,
+Œ"squid:ClassVariableVisibilityCheck"[Make sosTimeInterval a static final constant or non-public and provide accessors if needed.(¢¸¯Ôøÿÿÿÿ
+"squid:ClassVariableVisibilityCheck"^Make streamingFrameRate a static final constant or non-public and provide accessors if needed.(ÈÔëşüÿÿÿÿ
+Œ"squid:ClassVariableVisibilityCheck"`Make locationTimeInterval a static final constant or non-public and provide accessors if needed.(—©ñ”
+"squid:ClassVariableVisibilityCheck"\Make generalParameter a static final constant or non-public and provide accessors if needed.(é°ùûÿÿÿÿ
+Xsquid:S00107"BConstructor has 14 parameters, which is greater than 7 authorized.(øıÍã
+}"squid:ClassVariableVisibilityCheck"RMake apiUrl a static final constant or non-public and provide accessors if needed.(¼“¶9
+Œ"squid:ClassVariableVisibilityCheck"`Make postRecordingEnabled a static final constant or non-public and provide accessors if needed.(Üìçå
+‘"squid:ClassVariableVisibilityCheck"`Make postRecordingTimeMin a static final constant or non-public and provide accessors if needed.(¹¡¿Ñùÿÿÿÿ
+~"squid:ClassVariableVisibilityCheck"SMake mqttPwd a static final constant or non-public and provide accessors if needed.(­¶È
+"squid:ClassVariableVisibilityCheck"SMake mqttUsr a static final constant or non-public and provide accessors if needed.(”§
+‚"squid:ClassVariableVisibilityCheck"VMake deviceName a static final constant or non-public and provide accessors if needed.(ü÷”
+†"squid:ClassVariableVisibilityCheck"UMake masterPwd a static final constant or non-public and provide accessors if needed.(„¥×¹şÿÿÿÿ
+"squid:ClassVariableVisibilityCheck"TMake mqttPort a static final constant or non-public and provide accessors if needed.(âÀ†=

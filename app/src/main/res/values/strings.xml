@@ -458,6 +458,20 @@
     <string name="title_url_titan">Url del servidor Titan.</string>
     <string name="key_logged_user">logged_user</string>
 
+    <string-array name="url_configs">
+        <item>Url del servidor API</item>
+        <item>Url del servidor Titan</item>
+        <item>Url del servidor MQTT</item>
+        <item>Puerto del servidor MQTT</item>
+        <item>Usuario del servidor MQTT</item>
+        <item>Contraseña del servidor MQTT</item>
+        <item>Url del servidor de streaming</item>
+        <item>Puerto del servidor de streaming</item>
+        <item>Nombre del servidor de streaming</item>
+        <item>Usuario del servidor de streaming</item>
+        <item>Contraseña del servidor de streaming</item>
+    </string-array>
+
     <string-array name="labels_tagging">
         <item>Seleccione…</item>
         <item>Accidente de transito</item>

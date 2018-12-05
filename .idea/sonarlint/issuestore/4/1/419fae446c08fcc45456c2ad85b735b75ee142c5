@@ -1,10 +1,10 @@
 
-Nsquid:S1444"2Make this "public static firstConnect" field final(›ùÑ»ùÿÿÿÿ
-gsquid:CommentedOutCodeLine$"<This block of commented-out lines of code should be removed.(æ²ÁÊýÿÿÿÿ
-bsquid:CommentedOutCodeLine/"<This block of commented-out lines of code should be removed.(éêµñ
-gsquid:CommentedOutCodeLine6"<This block of commented-out lines of code should be removed.(šæµòûÿÿÿÿ
-Rsquid:S2696"6Make the enclosing method "static" or remove this set.(œý¥åüÿÿÿÿ
-Rsquid:S2696:"6Make the enclosing method "static" or remove this set.(·£ü¦þÿÿÿÿ
-‹"squid:ClassVariableVisibilityCheck"XMake firstConnect a static final constant or non-public and provide accessors if needed.(›ùÑ»ùÿÿÿÿ
-˜squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(îñë‡
-wsquid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(®ƒ§Ñþÿÿÿÿ
+usquid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(®ƒ§Ñþÿÿÿÿ
+`squid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(éêµñ
+esquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(šæµòûÿÿÿÿ
+Lsquid:S1444"2Make this "public static firstConnect" field final(›ùÑ»ùÿÿÿÿ
+Psquid:S2696"6Make the enclosing method "static" or remove this set.(œý¥åüÿÿÿÿ
+Psquid:S2696"6Make the enclosing method "static" or remove this set.(·£ü¦þÿÿÿÿ
+esquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(æ²ÁÊýÿÿÿÿ
+–squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(îñë‡
+‰"squid:ClassVariableVisibilityCheck"XMake firstConnect a static final constant or non-public and provide accessors if needed.(›ùÑ»ùÿÿÿÿ

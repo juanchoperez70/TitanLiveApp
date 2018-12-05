@@ -46,7 +46,7 @@ import static org.bytedeco.javacpp.avutil.AV_PIX_FMT_YUV420P;
  * Created by jpujolji on 26/11/17.
  */
 
-public class CameraRecorderHelper {
+public class WatermarkHelper {
 
     public static final int RECORDER_TYPE_LOCAL = 0;
     public static final int RECORDER_TYPE_STREAMING = 1;
@@ -134,69 +134,5 @@ public class CameraRecorderHelper {
 
 
         return result;
-    }
-
-    public static int getStreamingImageWidth(Context context) {
-        int videoSize = ConfigHelper.getStreamingVideoSize(context);
-        switch (videoSize) {
-            case 1:
-            case 2:
-            case 3:
-                return 320;
-            case 4:
-            case 5:
-            case 6:
-                return 352;
-            case 7:
-            case 8:
-            case 9:
-                return 480;
-            case 10:
-            case 11:
-            case 12:
-                return 640;
-            case 13:
-            case 14:
-            case 15:
-                return 800;
-            case 16:
-            case 17:
-            case 18:
-                return 1280;
-            default:
-                return 0;
-        }
-    }
-
-    public static int getStreamingImageHeight(Context context) {
-        int videoSize = ConfigHelper.getStreamingVideoSize(context);
-        switch (videoSize) {
-            case 1:
-            case 2:
-            case 3:
-                return 240;
-            case 4:
-            case 5:
-            case 6:
-                return 288;
-            case 7:
-            case 8:
-            case 9:
-                return 320;
-            case 10:
-            case 11:
-            case 12:
-                return 480;
-            case 13:
-            case 14:
-            case 15:
-                return 600;
-            case 16:
-            case 17:
-            case 18:
-                return 720;
-            default:
-                return 0;
-        }
     }
 }

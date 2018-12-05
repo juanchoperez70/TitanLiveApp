@@ -1,9 +1,9 @@
 
-isquid:S1301W"KReplace this "switch" statement by "if" statements to increase readability.(ÑË“8šâììó,
- squid:S1186½"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(çÅğÙ8šâììó,
- squid:S1186¸"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÀÄŞ’8šâììó,
- squid:S1186²"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(îñë‡8šâììó,
- squid:S1186Â"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÁïÕÒ8šâììó,
-Gsquid:S1148¬"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8šâììó,
-hsquid:S1192?"KDefine a constant instead of duplicating this literal "Depuracion" 4 times.(á¬èk8šâììó,
-W"squid:SwitchLastCaseIsDefaultCheckW""Add a default case to this switch.(ÑË“8šâììó,
+U"squid:SwitchLastCaseIsDefaultCheck""Add a default case to this switch.(ÑË“8šâììó,
+squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(çÅğÙ8šâììó,
+squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(îñë‡8šâììó,
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8šâììó,
+squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÀÄŞ’8šâììó,
+fsquid:S1192"KDefine a constant instead of duplicating this literal "Depuracion" 4 times.(á¬èk8šâììó,
+gsquid:S1301"KReplace this "switch" statement by "if" statements to increase readability.(ÑË“8šâììó,
+squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÁïÕÒ8šâììó,

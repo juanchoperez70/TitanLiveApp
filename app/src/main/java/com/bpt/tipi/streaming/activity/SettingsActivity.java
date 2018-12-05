@@ -42,6 +42,7 @@ import com.bpt.tipi.streaming.network.HttpClient;
 import com.bpt.tipi.streaming.network.HttpHelper;
 import com.bpt.tipi.streaming.network.HttpInterface;
 import com.bpt.tipi.streaming.service.LocationService;
+import com.bpt.tipi.streaming.service.RecorderService;
 import com.google.gson.Gson;
 
 import org.greenrobot.eventbus.EventBus;
@@ -319,6 +320,10 @@ public class SettingsActivity extends AppCompatActivity implements HttpInterface
                 break;
             case R.string.key_streaming_video_size:
                 PreferencesHelper.setStreamingVideoSize(context, value);
+                ServiceHelper.stopMqttService(context);
+                ServiceHelper.stopRecorderService(context);
+                ServiceHelper.startMqttService(context);
+                ServiceHelper.startRecorderService(context);
                 sendConfig();
                 break;
             case R.string.key_streaming_framerate:

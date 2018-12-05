@@ -32,7 +32,7 @@ import com.bpt.tipi.streaming.UnCaughtException;
 
 import com.bpt.tipi.streaming.Utils;
 import com.bpt.tipi.streaming.helper.CameraHelper;
-import com.bpt.tipi.streaming.helper.CameraRecorderHelper;
+import com.bpt.tipi.streaming.helper.WatermarkHelper;
 import com.bpt.tipi.streaming.helper.IrHelper;
 import com.bpt.tipi.streaming.helper.PreferencesHelper;
 import com.bpt.tipi.streaming.helper.VideoNameHelper;
@@ -249,7 +249,7 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
 
                 Camera.Parameters parameters = camera.getParameters();
 
-                parameters.setPreviewSize(CameraRecorderHelper.getStreamingImageWidth(context), CameraRecorderHelper.getStreamingImageHeight(context));
+                parameters.setPreviewSize(CameraHelper.getStreamingImageWidth(context), CameraHelper.getStreamingImageHeight(context));
                 parameters.setPreviewFrameRate(ConfigHelper.getStreamingFramerate(context));
 
                 parameters.setPreviewFormat(ImageFormat.NV21);
@@ -274,7 +274,7 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
                 profile.videoFrameWidth = parameters.getPreviewSize().width;
                 profile.videoFrameHeight = parameters.getPreviewSize().height;
 
-                int size = CameraRecorderHelper.getStreamingImageWidth(context) * CameraRecorderHelper.getStreamingImageHeight(context);
+                int size = CameraHelper.getStreamingImageWidth(context) * CameraHelper.getStreamingImageHeight(context);
 
                 size = size * ImageFormat.getBitsPerPixel(parameters.getPreviewFormat()) / 8;
                 buffer = new byte[size];
@@ -306,10 +306,8 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
         if (!Utils.isCameraExist(context)) {
             throw new IllegalStateException("There is no device, not possible to start recording");
         }
-        deviceId = ConfigHelper.getDeviceName(context);
+        deviceId = PreferencesHelper.getDeviceId(context);
         if (camera == null) {
-            //camera = Utils.getCameraInstance(Camera.CameraInfo.CAMERA_FACING_BACK);
-
             try {
                 camera = Camera.open(Camera.CameraInfo.CAMERA_FACING_BACK);
             } catch (Exception e) {
@@ -317,17 +315,19 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
             }
         }
         if (camera != null) {
-            //camera.setDisplayOrientation(270);
             Camera.Parameters parameters = camera.getParameters();
 
-            parameters.setPreviewSize(CameraRecorderHelper.getStreamingImageWidth(context), CameraRecorderHelper.getStreamingImageHeight(context));
-            parameters.setPreviewFrameRate(ConfigHelper.getStreamingFramerate(context));
-            //parameters.setRotation(270);
+            //List<Camera.Size> previewSizes = camera.getParameters().getSupportedPreviewSizes();
+
+            int width = CameraHelper.getStreamingImageWidth(context);
+            int height = CameraHelper.getStreamingImageHeight(context);
+
+            parameters.setPreviewSize(width, height);
+            parameters.setPreviewFrameRate(CameraHelper.getStreamingFramerate(context));
             parameters.setPreviewFormat(ImageFormat.NV21);
             camera.setParameters(parameters);
-            //camera.setDisplayOrientation(270);
 
-            int height = parameters.getPreviewSize().height;
+            /*int height = parameters.getPreviewSize().height;
             switch (height) {
                 case 480:
                     profile = CamcorderProfile.get(CamcorderProfile.QUALITY_480P);
@@ -344,9 +344,9 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
             }
             profile.videoFrameRate = parameters.getPreviewFrameRate();
             profile.videoFrameWidth = parameters.getPreviewSize().width;
-            profile.videoFrameHeight = parameters.getPreviewSize().height;
+            profile.videoFrameHeight = parameters.getPreviewSize().height;*/
 
-            int size = CameraRecorderHelper.getStreamingImageWidth(context) * CameraRecorderHelper.getStreamingImageHeight(context);
+            int size = width * height;
 
             size = size * ImageFormat.getBitsPerPixel(parameters.getPreviewFormat()) / 8;
             buffer = new byte[size];
@@ -376,21 +376,13 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
                 camera.startPreview();
             } catch (Exception e) {
                 e.printStackTrace();
-                //finishCamera();
             }
-            //IrHelper.setIrState(IrHelper.STATE_ON);
         } else {
             Log.d(TAG, "Get camera from service failed");
         }
-//            }
-//        });
     }
 
     public void initPrimaryCamera() {
-//        mHandler.post(new Runnable() {
-//            @Override
-//            public void run() {
-        //finishCamera();
         if (!Utils.isCameraExist(context)) {
             throw new IllegalStateException("There is no device, not possible to start recording");
         }
@@ -407,15 +399,17 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
         if (primaryCamera != null) {
             Camera.Parameters parameters = primaryCamera.getParameters();
             int fps =  CameraHelper.getLocalFramerate(context);
-            parameters.setPreviewSize(CameraHelper.getLocalImageWidth(context), CameraHelper.getLocalImageHeight(context));
+            int height =CameraHelper.getLocalImageHeight(context);
+            int width = CameraHelper.getLocalImageWidth(context);
+
+            parameters.setPreviewSize(width, height);
             parameters.setPreviewFrameRate(fps);
+
+            List<Camera.Size> previewSizes = primaryCamera.getParameters().getSupportedPreviewSizes();
 
             parameters.setPreviewFormat(ImageFormat.NV21);
             primaryCamera.setParameters(parameters);
 
-            List posible = parameters.getSupportedPreviewFpsRange();
-
-            int height = parameters.getPreviewSize().height;
             switch (height) {
                 case 480:
                     profile = CamcorderProfile.get(CamcorderProfile.QUALITY_480P);
@@ -432,10 +426,11 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
             }
 
             profile.videoFrameRate = fps;
-            profile.videoFrameWidth = parameters.getPreviewSize().width;
-            profile.videoFrameHeight = parameters.getPreviewSize().height;
+            profile.videoFrameWidth = width;
+            profile.videoFrameHeight = height;
+            //profile.videoCodec =
 
-            int size = CameraHelper.getLocalImageWidth(context) * CameraHelper.getLocalImageHeight(context);
+            int size = width * height;
 
             size = size * ImageFormat.getBitsPerPixel(parameters.getPreviewFormat()) / 8;
             primaryBuffer = new byte[size];
@@ -471,8 +466,6 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
         } else {
             Log.d(TAG, "Get camera from service failed");
         }
-//            }
-//        });
     }
 
     public void initPhotoCamera(){
@@ -519,25 +512,25 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
     }
 
     public void configLocalMediaRecorder() {
+        int fps =  CameraHelper.getLocalFramerate(context);
         primaryCamera.unlock();
         mediaRecorder = new MediaRecorder();
         mediaRecorder.setCamera(primaryCamera);
         mediaRecorder.setAudioSource(MediaRecorder.AudioSource.DEFAULT);
         mediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
-        mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.DEFAULT);
 
-        mediaRecorder.setMaxDuration(50000);
-        mediaRecorder.setVideoFrameRate(60);
-        mediaRecorder.setCaptureRate(60);
-        mediaRecorder.setVideoSize(1280, 720);
-        mediaRecorder.setVideoEncodingBitRate(3000000);
-        mediaRecorder.setAudioEncodingBitRate(8000);
+        mediaRecorder.setVideoEncodingBitRate(CameraHelper.getLocalVideoBitrate(context)*1024);
 
-        mediaRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.DEFAULT);
-        mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
-        //mediaRecorder.setProfile(profile);
+        //mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
+
+        //# Video settings
+        //mediaRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.H264);
+
+        mediaRecorder.setProfile(profile);
+        mediaRecorder.setVideoFrameRate(fps);
+        mediaRecorder.setCaptureRate(fps);
+
         mediaRecorder.setOutputFile(VideoNameHelper.getOutputFile(context, sequence).getAbsolutePath());
-        //mediaRecorder.setVideoFrameRate(60);
     }
 
     public void configStreamingRecorder() {
@@ -702,7 +695,7 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
         mat.put(0, 0, bytes);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String currentDate = sdf.format(new Date());
-        CameraRecorderHelper.putWaterMark(mat, currentDate, "TITAN-" + deviceId);
+        WatermarkHelper.putWaterMark(mat, currentDate, "TITAN-" + deviceId);
 
         int bufferSize = (int) (mat.total() * mat.elemSize());
         byte[] b = new byte[bufferSize];
@@ -745,7 +738,7 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                     String currentDate = sdf.format(new Date());
 
-                    Bitmap bmpWm = CameraRecorderHelper.applyWaterMarkEffect(bmp, currentDate,"TITAN-" + deviceId, context);
+                    Bitmap bmpWm = WatermarkHelper.applyWaterMarkEffect(bmp, currentDate,"TITAN-" + deviceId, context);
 
                     byte[] data = BitmapUtils.convertBitmapToByteArray(bmpWm);
                     savePhotoDirect(data);

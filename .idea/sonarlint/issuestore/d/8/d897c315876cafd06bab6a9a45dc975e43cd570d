@@ -1,9 +1,9 @@
 
 Zsquid:S2259"EA "NullPointerException" could be thrown; "adapter" is nullable here.(…ÁÑÞ
-`squid:HiddenFieldCheck";Rename "adapter" which hides the field declared at line 37.(‡ ÷îÿÿÿÿÿ
-=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
 ›squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ø´´øÿÿÿÿ
-›squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(™Î«þÿÿÿÿ
+`squid:HiddenFieldCheck";Rename "adapter" which hides the field declared at line 37.(‡ ÷îÿÿÿÿÿ
 ^squid:HiddenFieldCheck"9Rename "files" which hides the field declared at line 33.(—¾èÒÿÿÿÿÿ
+›squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(™Î«þÿÿÿÿ
+=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
 ?squid:S00108")Either remove or fill this block of code.(”ý¾
 Xsquid:S1155">Use isEmpty() to check whether the collection is empty or not.(ä·ƒáüÿÿÿÿ

@@ -25,6 +25,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bpt.tipi.streaming.ConfigReaderHelper;
 import com.bpt.tipi.streaming.CustomEditText;
 import com.bpt.tipi.streaming.R;
 import com.bpt.tipi.streaming.ServiceHelper;
@@ -199,6 +200,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             loadLabels();
         }
         setupTagDialog();
+
+        //ConfigReaderHelper.readFile(this);
+        try {
+            boolean isConfig = ConfigReaderHelper.loadConfig(this);
+            if(isConfig){
+                //borrar el archivo de configuuracion
+                ConfigReaderHelper.deleteFile(this);
+            }
+
+            System.out.print("Configuraciones de url realizadas: " + isConfig);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void bindService() {
@@ -369,7 +383,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                    HttpClient httpClient = new HttpClient(MainActivity.this);
+                    HttpClient httpClient = new HttpClient(MainActivity.this, MainActivity.this);
                     httpClient.httpRequest(json.toString(), HttpHelper.Method.LOGIN, HttpHelper.TypeRequest.TYPE_POST, true);
                     dialog.dismiss();
                 } else {
