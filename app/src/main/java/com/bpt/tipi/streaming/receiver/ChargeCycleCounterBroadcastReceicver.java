@@ -30,7 +30,7 @@ import java.util.Calendar;
 
 public class ChargeCycleCounterBroadcastReceicver extends BroadcastReceiver {
 
-    private float a(Context context) {
+    private float getCurrentLevel(Context context) {
         float f = 0.0f;
         try {
             //BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(context.openFileInput("batteryStat.txt")));
@@ -76,11 +76,11 @@ public class ChargeCycleCounterBroadcastReceicver extends BroadcastReceiver {
         return f;
     }
 
-    private String a() {
+    private String getCurrentDate() {
         return new SimpleDateFormat("yyyy/MM/dd").format(Calendar.getInstance().getTime());
     }
 
-    private void a(float f, Context context) {
+    private void setCurrentLevel(float f, Context context) {
         //File file = new File(context.getFilesDir(), "batteryStat.txt");
         //SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         File logStorageDir = new File(Environment.getExternalStoragePublicDirectory("DCIM"), "LOG");
@@ -126,7 +126,7 @@ public class ChargeCycleCounterBroadcastReceicver extends BroadcastReceiver {
                 if (!valueOf2.booleanValue()) {
                     Toast.makeText(context, context.getResources().getString(R.string.charger_conected_message) + " " + valueOf + "%", Toast.LENGTH_LONG).show();
                 }
-                a();
+                getCurrentDate();
                 try {
                     //BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(new File(context.getFilesDir(), "batteryTemp.txt")));
                     File logStorageDir = new File(Environment.getExternalStoragePublicDirectory("DCIM"), "LOG");
@@ -181,17 +181,17 @@ public class ChargeCycleCounterBroadcastReceicver extends BroadcastReceiver {
                     }
                     if (intExtra > i) {
                         float f = (((float) intExtra) - ((float) i)) / 100.0f;
-                        a(a(context) + f, context);
-                        action = a();
-                        rVar.a(new CycleCount(action, rVar.a(action).getCycleCount() + f));
+                        setCurrentLevel(getCurrentLevel(context) + f, context);
+                        action = getCurrentDate();
+                        rVar.addCycleCount(new CycleCount(action, rVar.getCycleCount(action).getCycleCount() + f));
                         try {
                             int day = new SimpleDateFormat("yyyy/MM/dd").parse(action).getDay();
-                            CycleCountWeekDay a = rVar.a(day);
-                            String a2 = a.getLastDate();
-                            float b = a.getWeekdayCycleCount();
-                            int c = a.getNumOfWeekdays();
+                            CycleCountWeekDay cycleCountWeekDay = rVar.getCycleCountWeekDay(day);
+                            String a2 = cycleCountWeekDay.getLastDate();
+                            float b = cycleCountWeekDay.getWeekdayCycleCount();
+                            int c = cycleCountWeekDay.getNumOfWeekdays();
                             if (a2 == null) {
-                                a.setWeekday(day);
+                                cycleCountWeekDay.setWeekday(day);
                                 c++;
                                 a2 = action;
                             }
@@ -202,10 +202,10 @@ public class ChargeCycleCounterBroadcastReceicver extends BroadcastReceiver {
                                 c++;
                                 f += b;
                             }
-                            a.setNumOfWeekdays(c);
-                            a.setLastDate(action);
-                            a.setWeekdayCycleCount(f);
-                            rVar.a(a);
+                            cycleCountWeekDay.setNumOfWeekdays(c);
+                            cycleCountWeekDay.setLastDate(action);
+                            cycleCountWeekDay.setWeekdayCycleCount(f);
+                            rVar.addCycleCountWeekDay(cycleCountWeekDay);
                         } catch (ParseException e4) {
                             e4.printStackTrace();
                         }
@@ -213,9 +213,19 @@ public class ChargeCycleCounterBroadcastReceicver extends BroadcastReceiver {
                 } catch (FileNotFoundException e5) {
                     e5.printStackTrace();
                 }
-                //context.deleteFile("batteryTemp.txt");
+                deleteFile(context);
             }
             rVar.close();
+        }
+    }
+
+    private void deleteFile(Context context) {
+        try {
+            File logStorageDir = new File(Environment.getExternalStoragePublicDirectory("DCIM"), "LOG");
+            File file = new File(logStorageDir, "BatteryStat.txt");
+            boolean deleted = file.delete();
+        } catch (Exception e) {
+            Toast.makeText(context,"-- No se pudo eliminar archivo", Toast.LENGTH_LONG).show();
         }
     }
 }

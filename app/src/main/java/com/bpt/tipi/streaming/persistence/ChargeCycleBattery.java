@@ -25,7 +25,7 @@ public class ChargeCycleBattery {
         dbHelper = new DbHelper(context, Database.DB_NAME, null, Database.DB_VERSION);
     }
 
-    public int a(CycleCountWeekDay aeVar) {
+    public int addCycleCountWeekDay(CycleCountWeekDay aeVar) {
         writableDatabase = dbHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("lastDate", aeVar.getLastDate());
@@ -40,7 +40,7 @@ public class ChargeCycleBattery {
         return update;
     }
 
-    public CycleCount a(String str) {
+    public CycleCount getCycleCount(String str) {
         Cursor query = dbHelper.getReadableDatabase().query("cycleCount", b, " date = ?", new String[]{String.valueOf(str)}, null, null, null, null);
         CycleCount aVar = new CycleCount(str, 0.0f);
         if (query != null && query.getCount() > 0) {
@@ -51,8 +51,8 @@ public class ChargeCycleBattery {
         return aVar;
     }
 
-    public CycleCountWeekDay a(int i) {
-        Cursor query = dbHelper.getReadableDatabase().query("cycleCountWeekDay", c, " weekday = ?", new String[]{String.valueOf(i)}, null, null, null, null);
+    public CycleCountWeekDay getCycleCountWeekDay(int weekday) {
+        Cursor query = dbHelper.getReadableDatabase().query("cycleCountWeekDay", c, " weekday = ?", new String[]{String.valueOf(weekday)}, null, null, null, null);
         CycleCountWeekDay aeVar = new CycleCountWeekDay();
         if (query != null && query.getCount() > 0) {
             query.moveToFirst();
@@ -64,7 +64,7 @@ public class ChargeCycleBattery {
         return aeVar;
     }
 
-    public List a() {
+    public List listCycleCountWeekDay() {
         List linkedList = new LinkedList();
         Cursor rawQuery = dbHelper.getWritableDatabase().rawQuery("SELECT * FROM cycleCountWeekDay", null);
         if (rawQuery.moveToFirst()) {
@@ -80,7 +80,7 @@ public class ChargeCycleBattery {
         return linkedList;
     }
 
-    public void a(CycleCount aVar) {
+    public void addCycleCount(CycleCount aVar) {
         SQLiteDatabase writableDatabase = dbHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("date", aVar.getDate());
