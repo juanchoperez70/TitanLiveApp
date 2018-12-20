@@ -268,10 +268,10 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
                 parameters.setPreviewFrameRate(ConfigHelper.getStreamingFramerate(context));
 
                 parameters.setPreviewFormat(ImageFormat.NV21);
-                if(parameters.isAutoExposureLockSupported() && parameters.isAutoWhiteBalanceLockSupported()){
+                /*if(parameters.isAutoExposureLockSupported() && parameters.isAutoWhiteBalanceLockSupported()){
                     parameters.setAutoExposureLock(true);
                     parameters.setAutoWhiteBalanceLock(true);
-                }
+                }*/
                 camera.setParameters(parameters);
 
                 int height = parameters.getPreviewSize().height;
@@ -343,10 +343,10 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
 
             parameters.setPreviewSize(width, height);
             parameters.setPreviewFrameRate(CameraHelper.getStreamingFramerate(context));
-            if(parameters.isAutoExposureLockSupported() && parameters.isAutoWhiteBalanceLockSupported()){
+            /*if(parameters.isAutoExposureLockSupported() && parameters.isAutoWhiteBalanceLockSupported()){
                 parameters.setAutoExposureLock(true);
                 parameters.setAutoWhiteBalanceLock(true);
-            }
+            }*/
             parameters.setPreviewFormat(ImageFormat.NV21);
             camera.setParameters(parameters);
 
@@ -409,10 +409,10 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
             parameters.setPreviewSize(width, height);
             parameters.setPreviewFpsRange(fps*1000, fps*1000);
             parameters.setPreviewFrameRate(fps);
-            if(parameters.isAutoExposureLockSupported() && parameters.isAutoWhiteBalanceLockSupported()){
+            /*if(parameters.isAutoExposureLockSupported() && parameters.isAutoWhiteBalanceLockSupported()){
                 parameters.setAutoExposureLock(true);
                 parameters.setAutoWhiteBalanceLock(true);
-            }
+            }*/
 
             //List<Camera.Size> previewSizes = primaryCamera.getParameters().getSupportedPreviewSizes();
 
@@ -560,10 +560,6 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
         mediaRecorder.setProfile(profile);
         mediaRecorder.setVideoFrameRate(fps);
         //mediaRecorder.setCaptureRate(fps * 100);
-        //mediaRecorder.setAudioEncoder(avcodec.AV_CODEC_ID_AAC);
-        //mediaRecorder.setAudioEncodingBitRate(AUDIO_BITRATE);
-        //mediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
-        //mediaRecorder.setAudioSource(MediaRecorder.AudioSource.DEFAULT);
 
         mediaRecorder.setOutputFile(VideoNameHelper.getOutputFile(context, sequence).getAbsolutePath());
     }
