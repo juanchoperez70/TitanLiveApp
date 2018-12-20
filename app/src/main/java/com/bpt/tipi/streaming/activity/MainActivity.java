@@ -211,6 +211,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             System.out.print("Configuraciones de url realizadas: " + isConfig);
         } catch (Exception e) {
+            ConfigReaderHelper.writeTxt(e.getMessage());
             e.printStackTrace();
         }
     }

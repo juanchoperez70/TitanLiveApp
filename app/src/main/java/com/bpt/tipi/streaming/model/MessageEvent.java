@@ -38,6 +38,8 @@ public class MessageEvent {
 
     public static final String RECONNECT = "reconnect";
 
+    public static final String FORCE_RECORDER_STOP = "forceRecorderStop";
+
     public String key;
     public String content;
 

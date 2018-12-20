@@ -18,5 +18,6 @@ public enum StateAction {
     PR_START,
     PR_STOP,
     TAKE_PHOTO,
-    TAKE_PHOTO_DIRECT
+    TAKE_PHOTO_DIRECT,
+    FORCE_STOP
 }

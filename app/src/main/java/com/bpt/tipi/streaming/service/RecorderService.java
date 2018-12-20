@@ -27,6 +27,7 @@ import android.util.Log;
 
 import com.bpt.tipi.streaming.BitmapUtils;
 import com.bpt.tipi.streaming.ConfigHelper;
+import com.bpt.tipi.streaming.ServiceHelper;
 import com.bpt.tipi.streaming.StateMachineHandler;
 import com.bpt.tipi.streaming.UnCaughtException;
 
@@ -38,6 +39,7 @@ import com.bpt.tipi.streaming.helper.PreferencesHelper;
 import com.bpt.tipi.streaming.helper.VideoNameHelper;
 import com.bpt.tipi.streaming.model.MessageEvent;
 
+import org.bytedeco.javacpp.avcodec;
 import org.bytedeco.javacpp.avutil;
 import org.bytedeco.javacv.FFmpegFrameFilter;
 import org.bytedeco.javacv.FFmpegFrameRecorder;
@@ -60,6 +62,9 @@ import java.util.Date;
 import java.util.List;
 
 public class RecorderService extends Service implements Camera.PreviewCallback {
+
+    //ForceStrop
+    public boolean isForceDestroy = false;
 
     //TAG para Log
     private static final String TAG = "RecorderService";
@@ -163,7 +168,14 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
     public void onDestroy() {
         bus.unregister(this);
         Log.i(TAG, "RecorderService onDestroy()");
-        finishCamera();
+        if(isForceDestroy) {
+            isStreamingRecording = false;
+            isForceDestroy = false;
+            finishCameraDestroy();
+        }
+        else{
+            finishCamera();
+        }
         finishPrimaryCamera();
         super.onDestroy();
     }
@@ -227,6 +239,9 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
                 }
                 flashOn = !flashOn;
                 break;
+            case MessageEvent.FORCE_RECORDER_STOP:
+                setForceDestroy();
+                break;
         }
     }
 
@@ -253,6 +268,10 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
                 parameters.setPreviewFrameRate(ConfigHelper.getStreamingFramerate(context));
 
                 parameters.setPreviewFormat(ImageFormat.NV21);
+                if(parameters.isAutoExposureLockSupported() && parameters.isAutoWhiteBalanceLockSupported()){
+                    parameters.setAutoExposureLock(true);
+                    parameters.setAutoWhiteBalanceLock(true);
+                }
                 camera.setParameters(parameters);
 
                 int height = parameters.getPreviewSize().height;
@@ -324,27 +343,12 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
 
             parameters.setPreviewSize(width, height);
             parameters.setPreviewFrameRate(CameraHelper.getStreamingFramerate(context));
+            if(parameters.isAutoExposureLockSupported() && parameters.isAutoWhiteBalanceLockSupported()){
+                parameters.setAutoExposureLock(true);
+                parameters.setAutoWhiteBalanceLock(true);
+            }
             parameters.setPreviewFormat(ImageFormat.NV21);
             camera.setParameters(parameters);
-
-            /*int height = parameters.getPreviewSize().height;
-            switch (height) {
-                case 480:
-                    profile = CamcorderProfile.get(CamcorderProfile.QUALITY_480P);
-                    break;
-                case 720:
-                    profile = CamcorderProfile.get(CamcorderProfile.QUALITY_720P);
-                    break;
-                case 1080:
-                    profile = CamcorderProfile.get(CamcorderProfile.QUALITY_1080P);
-                    break;
-                default:
-                    profile = CamcorderProfile.get(CamcorderProfile.QUALITY_480P);
-                    break;
-            }
-            profile.videoFrameRate = parameters.getPreviewFrameRate();
-            profile.videoFrameWidth = parameters.getPreviewSize().width;
-            profile.videoFrameHeight = parameters.getPreviewSize().height;*/
 
             int size = width * height;
 
@@ -403,9 +407,14 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
             int width = CameraHelper.getLocalImageWidth(context);
 
             parameters.setPreviewSize(width, height);
+            parameters.setPreviewFpsRange(fps*1000, fps*1000);
             parameters.setPreviewFrameRate(fps);
+            if(parameters.isAutoExposureLockSupported() && parameters.isAutoWhiteBalanceLockSupported()){
+                parameters.setAutoExposureLock(true);
+                parameters.setAutoWhiteBalanceLock(true);
+            }
 
-            List<Camera.Size> previewSizes = primaryCamera.getParameters().getSupportedPreviewSizes();
+            //List<Camera.Size> previewSizes = primaryCamera.getParameters().getSupportedPreviewSizes();
 
             parameters.setPreviewFormat(ImageFormat.NV21);
             primaryCamera.setParameters(parameters);
@@ -428,7 +437,6 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
             profile.videoFrameRate = fps;
             profile.videoFrameWidth = width;
             profile.videoFrameHeight = height;
-            //profile.videoCodec =
 
             int size = width * height;
 
@@ -496,6 +504,28 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
 
     }
 
+    public void setForceDestroy(){
+        isForceDestroy = true;
+        ServiceHelper.stopAllServices(context);
+    }
+
+    public void finishCameraDestroy() {
+        try {
+            if (camera != null) {
+                camera.stopPreview();
+                camera.setPreviewCallback(null);
+                camera.lock();
+                camera.release();
+                camera = null;
+                ServiceHelper.startAllServices(context);
+            }
+            //IrHelper.setIrState(IrHelper.STATE_OFF);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public void finishPrimaryCamera() {
         try {
             if (primaryCamera != null) {
@@ -519,6 +549,7 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
         mediaRecorder.setAudioSource(MediaRecorder.AudioSource.DEFAULT);
         mediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
 
+        //mediaRecorder.setVideoEncodingBitRate(CameraHelper.getLocalVideoBitrate(context));
         mediaRecorder.setVideoEncodingBitRate(CameraHelper.getLocalVideoBitrate(context)*1024);
 
         //mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
@@ -528,7 +559,11 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
 
         mediaRecorder.setProfile(profile);
         mediaRecorder.setVideoFrameRate(fps);
-        mediaRecorder.setCaptureRate(fps);
+        //mediaRecorder.setCaptureRate(fps * 100);
+        //mediaRecorder.setAudioEncoder(avcodec.AV_CODEC_ID_AAC);
+        //mediaRecorder.setAudioEncodingBitRate(AUDIO_BITRATE);
+        //mediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
+        //mediaRecorder.setAudioSource(MediaRecorder.AudioSource.DEFAULT);
 
         mediaRecorder.setOutputFile(VideoNameHelper.getOutputFile(context, sequence).getAbsolutePath());
     }
@@ -538,7 +573,7 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
                 CameraHelper.getStreamingImageHeight(context), Frame.DEPTH_UBYTE, 2);
         streamingRecorder = CameraHelper.initStreamingRecorder(context);
         String filterString = "transpose=dir=1:passthrough=portrait," +"drawtext=fontsize=15:fontfile=/system/fonts/DroidSans.ttf:fontcolor=white@0.8:text='TITAN-" +
-                                PreferencesHelper.getDeviceId(context) + " %{localtime\\:%T %d/%m/%Y}':x=20:y=20,scale=w=" +
+                                PreferencesHelper.getDeviceId(context) + " %{localtime\\:%T %d/%m/%Y}':x=5:y=20,scale=w=" +
                                 CameraHelper.getStreamingImageWidth(context) + ":h=" +
                                 CameraHelper.getStreamingImageHeight(context);
         //String filterString = "transpose=dir=1:passthrough=portrait";

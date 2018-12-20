@@ -37,7 +37,7 @@ public class ConfigReaderHelper {
     private static final Pattern PATTERN_PWD = Pattern.compile(
             "^[a-zA-Z0-9]*");
 
-    private static void writeTxt(String text) {
+    public static void writeTxt(String text) {
 
         String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/DCIM/CONFIG/url_config_failed.txt";
 

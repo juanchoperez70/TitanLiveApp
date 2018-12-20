@@ -1,5 +1,5 @@
 
-Ssquid:UselessImportCheck"1Remove this unused import 'android.app.Activity'.(á Õ∆
-`squid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(±≠÷¿
-]squid:S2166"CRename this class to remove "Exception" or correct its inheritance.(ßÛ¢ê˝ˇˇˇˇ
-8squid:S1148"#Use a logger to log this exception.(«í«Í
+_squid:S2166"CRename this class to remove "Exception" or correct its inheritance.(ßÛ¢ê˝ˇˇˇˇ
+bsquid:CommentedOutCodeLine)"<This block of commented-out lines of code should be removed.(±≠÷¿
+:squid:S1148 "#Use a logger to log this exception.(«í«Í
+Usquid:UselessImportCheck"1Remove this unused import 'android.app.Activity'.(á Õ∆

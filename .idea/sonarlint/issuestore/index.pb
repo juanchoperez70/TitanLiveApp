@@ -115,3 +115,5 @@ p
 @app/src/main/java/com/bpt/tipi/streaming/ConfigReaderHelper.java,4\2\42a11bb3d537e1afe1a96b7a592dcd150e3bcbac
 n
 >app/src/main/java/com/bpt/tipi/streaming/model/UrlsConfig.java,9\c\9c4008bfe6fdf1e8d7017cdcf66ae93b3b956a5f
+v
+Fapp/src/main/java/com/bpt/tipi/streaming/mqtt/MqttCallbackHandler.java,4\d\4df8c704c842afc1ff85d01629db81c973cb73df

@@ -67,6 +67,7 @@ public class LocationService extends Service implements LocationListener, HttpIn
         context = LocationService.this;
 
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+
         HandlerThread thread = new HandlerThread("LocationService");
         thread.start();
         mHandler = new Handler(thread.getLooper());

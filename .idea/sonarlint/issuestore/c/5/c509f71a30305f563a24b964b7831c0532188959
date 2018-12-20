@@ -1,5 +1,5 @@
 
-jsquid:UselessImportCheck"ARemove this unused import 'android.preference.PreferenceManager'.(ìùÖõ8ÙûÈêó,
-[squid:S1118":Add a private constructor to hide the implicit public one.(‹Şßìşÿÿÿÿ8ÿáÈêó,
-fsquid:UselessImportCheck">Remove this unused import 'android.content.SharedPreferences'.(íÎÉr8ÙûÈêó,
-Ksquid:S1066"/Merge this if statement with the enclosing one.(’…ÖĞ8ÿáÈêó,
+]squid:S1118":Add a private constructor to hide the implicit public one.(‹Şßìşÿÿÿÿ8ÿáÈêó,
+lsquid:UselessImportCheck"ARemove this unused import 'android.preference.PreferenceManager'.(ìùÖõ8ÙûÈêó,
+hsquid:UselessImportCheck">Remove this unused import 'android.content.SharedPreferences'.(íÎÉr8ÙûÈêó,
+Msquid:S1066D"/Merge this if statement with the enclosing one.(’…ÖĞ8ÿáÈêó,

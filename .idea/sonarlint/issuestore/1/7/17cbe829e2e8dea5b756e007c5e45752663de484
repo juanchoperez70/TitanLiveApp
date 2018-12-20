@@ -1,10 +1,10 @@
 
-Dsquid:S1066"/Merge this if statement with the enclosing one.(¨Ü©ä
+gsquid:S2095"LUse try-with-resources or close this "BufferedWriter" in a "finally" clause.( ¿—-8ÎŸ»‡ö,
+V
+squid:S899"BDo something with the "boolean" value returned by "createNewFile".(Ì’Ñì
 esquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(Öíæšþÿÿÿÿ
 =squid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
 =squid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
-gsquid:S2095"LUse try-with-resources or close this "BufferedWriter" in a "finally" clause.( ¿—-8ÎŸ»‡ö,
 Osquid:S1118":Add a private constructor to hide the implicit public one.(¶®Æ¿
-V
-squid:S899"BDo something with the "boolean" value returned by "createNewFile".(Ì’Ñì
+Dsquid:S1066"/Merge this if statement with the enclosing one.(¨Ü©ä
 Isquid:S1172"/Remove this unused method parameter "deviceId".(Ã¬÷¼þÿÿÿÿ

@@ -1,9 +1,9 @@
 
-U"squid:SwitchLastCaseIsDefaultCheck""Add a default case to this switch.(ÑË“8šø¼ìó,
-gsquid:S1301"KReplace this "switch" statement by "if" statements to increase readability.(ÑË“8šø¼ìó,
-squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(îñë‡8šø¼ìó,
-isquid:UselessImportCheck"@Remove this unused import 'com.bpt.tipi.streaming.ConfigHelper'.(ŠÖş8šø¼ìó,
-zsquid:UselessImportCheck"QRemove this unused import 'org.eclipse.paho.client.mqttv3.MqttClientPersistence'.(éöÛÂ8šø¼ìó,
-Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8šø¼ìó,
-Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8šø¼ìó,
-Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8šø¼ìó,
+X"squid:SwitchLastCaseIsDefaultCheck""Add a default case to this switch.(ÑË“8šø¼ìó,
+jsquid:S1301"KReplace this "switch" statement by "if" statements to increase readability.(ÑË“8šø¼ìó,
+Fsquid:S1148{"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8šø¼ìó,
+ squid:S1186µ"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(îñë‡8šø¼ìó,
+Gsquid:S1148š"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8šø¼ìó,
+|squid:UselessImportCheck"QRemove this unused import 'org.eclipse.paho.client.mqttv3.MqttClientPersistence'.(éöÛÂ8šø¼ìó,
+ksquid:UselessImportCheck"@Remove this unused import 'com.bpt.tipi.streaming.ConfigHelper'.(ŠÖş8šø¼ìó,
+Fsquid:S1148Q"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8šø¼ìó,

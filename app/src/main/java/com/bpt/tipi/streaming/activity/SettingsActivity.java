@@ -320,10 +320,9 @@ public class SettingsActivity extends AppCompatActivity implements HttpInterface
                 break;
             case R.string.key_streaming_video_size:
                 PreferencesHelper.setStreamingVideoSize(context, value);
-                ServiceHelper.stopMqttService(context);
-                ServiceHelper.stopRecorderService(context);
-                ServiceHelper.startMqttService(context);
-                ServiceHelper.startRecorderService(context);
+                //Send message to stop recorder
+                event = new MessageEvent(MessageEvent.FORCE_RECORDER_STOP);
+                bus.post(event);
                 sendConfig();
                 break;
             case R.string.key_streaming_framerate:

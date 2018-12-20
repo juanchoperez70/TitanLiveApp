@@ -1,16 +1,25 @@
 
-msquid:S2095"LUse try-with-resources or close this "BufferedReader" in a "finally" clause.(¹®Ùœÿÿÿÿÿ8ÒÌÓÛ÷,
-msquid:S2095"LUse try-with-resources or close this "BufferedWriter" in a "finally" clause.(ÕÖÎÁûÿÿÿÿ8ÒÌÓÛ÷,
-Isquid:S1481"-Remove this unused "contains" local variable.(ôëÃ¡8ÒÌÓÛ÷,
-Xsquid:S1854"<Remove this useless assignment to local variable "contains".(ôëÃ¡8ÒÌÓÛ÷,
-Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ÒÌÓÛ÷,
-b
-squid:S899"BDo something with the "boolean" value returned by "createNewFile".(´¸ö×şÿÿÿÿ8ÒÌÓÛ÷,
-gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ƒÆª8’ıÓÛ÷,
-Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ÒÌÓÛ÷,
-Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ÒÌÓÛ÷,
-lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(Â‚ºÄıÿÿÿÿ8ÒÌÓÛ÷,
-Ssquid:S1135"2Complete the task associated to this TODO comment.(ÕÌ®şÿÿÿÿ8ÒÌÓÛ÷,
-Ssquid:S1135"2Complete the task associated to this TODO comment.(ÕÌ®şÿÿÿÿ8ÒÌÓÛ÷,
-hsquid:S00112"FDefine and throw a dedicated exception instead of using a generic one.(¿ÃÁÄùÿÿÿÿ8ÒÌÓÛ÷,
-]squid:S1075"ARefactor your code to get this URI from a customizable parameter.(›«8ÒÌÓÛ÷,
+Usquid:S11352"2Complete the task associated to this TODO comment.(ÕÌ®şÿÿÿÿ8…æö„ø,
+Fsquid:S1148\"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8…æö„ø,
+Ksquid:S1481T"-Remove this unused "contains" local variable.(ôëÃ¡8…æö„ø,
+]squid:S1118":Add a private constructor to hide the implicit public one.(ŒÅ¤­øÿÿÿÿ8…æö„ø,
+jsquid:S00112q"FDefine and throw a dedicated exception instead of using a generic one.(¿ÃÁÄùÿÿÿÿ8…æö„ø,
+d
+squid:S8990"BDo something with the "boolean" value returned by "createNewFile".(´¸ö×şÿÿÿÿ8…æö„ø,
+dsquid:S1075I"ARefactor your code to get this URI from a customizable parameter.(£ÕÊıÿÿÿÿ8…æö„ø,
+fsquid:S4042k"IUse "java.nio.Files#delete" here for better messages on error conditions.(¶ûÜ)8…æö„ø,
+lsquid:S4042i"IUse "java.nio.Files#delete" here for better messages on error conditions.(²Œ­ûÿÿÿÿ8…æö„ø,
+nsquid:CommentedOutCodeLinet"<This block of commented-out lines of code should be removed.(ÀÄ¼¨úÿÿÿÿ8…æö„ø,
+]
+squid:S899i";Do something with the "boolean" value returned by "delete".(²Œ­ûÿÿÿÿ8…æö„ø,
+osquid:S2095O"LUse try-with-resources or close this "BufferedReader" in a "finally" clause.(¹®Ùœÿÿÿÿÿ8…æö„ø,
+osquid:S20958"LUse try-with-resources or close this "BufferedWriter" in a "finally" clause.(ÕÖÎÁûÿÿÿÿ8…æö„ø,
+Usquid:S1135="2Complete the task associated to this TODO comment.(ÕÌ®şÿÿÿÿ8…æö„ø,
+Fsquid:S1148>"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8…æö„ø,
+Msquid:S1066"/Merge this if statement with the enclosing one.(¨Ü©ä8…æö„ø,
+_squid:S1075f"ARefactor your code to get this URI from a customizable parameter.(—›©—8…æö„ø,
+usquid:S3776q"RRefactor this method to reduce its Cognitive Complexity from 39 to the 15 allowed.(¿ÃÁÄùÿÿÿÿ8…æö„ø,
+Zsquid:S1854T"<Remove this useless assignment to local variable "contains".(ôëÃ¡8…æö„ø,
+Fsquid:S11483"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8…æö„ø,
+W
+squid:S899k";Do something with the "boolean" value returned by "delete".(¶ûÜ)8…æö„ø,

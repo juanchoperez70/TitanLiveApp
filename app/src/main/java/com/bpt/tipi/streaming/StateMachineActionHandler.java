@@ -56,6 +56,9 @@ public class StateMachineActionHandler {
                 case TAKE_PHOTO_DIRECT:
                     recorderService.takePhotoDirect();
                     break;
+                case FORCE_STOP:
+                    recorderService.setForceDestroy();
+                    break;
             }
         }
     }
