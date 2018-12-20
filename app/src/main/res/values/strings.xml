@@ -480,4 +480,7 @@
         <item>84</item>
         <item>43</item>
     </string-array>
+
+    <string name="charger_conected_message">Charger connected</string>
+    <string name="charger_disconnected_message">Charger disconnected</string>
 </resources>

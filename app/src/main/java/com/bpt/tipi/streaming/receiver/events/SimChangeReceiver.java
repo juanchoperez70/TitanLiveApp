@@ -25,7 +25,7 @@ public class SimChangeReceiver extends BroadcastReceiver {
         if (ACTION_SIM_STATE_CHANGED.equals(action)) {
             Bundle extras = intent.getExtras();
             String state = extras.getString(EXTRA_SIM_STATE);
-            Log.d(TAG, "SIM Action : " + action + " / State : " + state);
+            Log.d(TAG, "SIM CycleCount : " + action + " / State : " + state);
             if (SIM_STATE_ABSENT.equals(state)) {
                 //Sim card desactivada (retirada)
                 CameraEventHandler.appendEventLog(context, "SIM_EXTRAIDA ABSENT");

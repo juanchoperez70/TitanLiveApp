@@ -12,8 +12,8 @@ import java.util.List;
 
 public class Database {
 
-    private static final String DB_NAME = "titan_live.db";
-    private static final int DB_VERSION = 1;
+    public static final String DB_NAME = "titan_live.db";
+    public static final int DB_VERSION = 2;
 
     private DbHelper dbHelper;
     private Context context;
