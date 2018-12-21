@@ -1,9 +1,9 @@
 
-U"squid:SwitchLastCaseIsDefaultCheck""Add a default case to this switch.(ÑË“8û¿’ü,
-fsquid:S1192"KDefine a constant instead of duplicating this literal "Depuracion" 4 times.(á¬èk8û¿’ü,
-gsquid:S1301"KReplace this "switch" statement by "if" statements to increase readability.(ÑË“8û¿’ü,
-squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÀÄŞ’8û¿’ü,
-squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(çÅğÙ8û¿’ü,
-squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÁïÕÒ8û¿’ü,
-squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(îñë‡8û¿’ü,
-Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8û¿’ü,
+ squid:S1186¹"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÀÄŞ’8û¿’ü,
+ squid:S1186³"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(îñë‡8û¿’ü,
+W"squid:SwitchLastCaseIsDefaultCheckX""Add a default case to this switch.(ÑË“8û¿’ü,
+ squid:S1186¾"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(çÅğÙ8û¿’ü,
+ squid:S1186Ã"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÁïÕÒ8û¿’ü,
+hsquid:S1192?"KDefine a constant instead of duplicating this literal "Depuracion" 4 times.(á¬èk8û¿’ü,
+Gsquid:S1148­"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8û¿’ü,
+isquid:S1301X"KReplace this "switch" statement by "if" statements to increase readability.(ÑË“8û¿’ü,

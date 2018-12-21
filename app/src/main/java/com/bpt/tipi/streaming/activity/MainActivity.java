@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -62,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     RecorderService cameraService;
     boolean mBound = false;
     private EventBus bus = EventBus.getDefault();
-    TextView tvRecord, tvTimeElapsed;
+    TextView tvRecord, tvTimeElapsed, tvVersion;
     private Dialog tagDialog;
 
     //Varible para guardar el usuario que se ingresa en el dialog de login.
@@ -77,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         tvRecord = findViewById(R.id.tvRecord);
         tvTimeElapsed = findViewById(R.id.tvTimeElapsed);
+        tvVersion = findViewById(R.id.tvVersion);
         LinearLayout linearCamera = findViewById(R.id.linearCamera);
         RelativeLayout relativeTagging = findViewById(R.id.linearTagging);
         LinearLayout linearSettings = findViewById(R.id.linearSettings);
@@ -97,6 +100,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         initServices();
         lockStatusBar();
+        showGradleVersion();
 
     }
 
@@ -212,6 +216,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             System.out.print("Configuraciones de url realizadas: " + isConfig);
         } catch (Exception e) {
             ConfigReaderHelper.writeTxt(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public void showGradleVersion(){
+        try {
+            PackageInfo pInfo = this.getPackageManager().getPackageInfo(getPackageName(), 0);
+            String version = pInfo.versionName;
+            tvVersion.setText("Titan Live " + version);
+        } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
     }

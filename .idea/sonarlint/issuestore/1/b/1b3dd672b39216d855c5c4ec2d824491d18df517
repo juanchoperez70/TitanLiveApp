@@ -1,73 +1,76 @@
 
-X"squid:SwitchLastCaseIsDefaultCheck¸""Add a default case to this switch.(ÑË“8‰ó“–ü,
-osquid:CommentedOutCodeLineá"<This block of commented-out lines of code should be removed.(çßšöøÿÿÿÿ8¥û¯™ü,
-msquid:S4042"IUse "java.nio.Files#delete" here for better messages on error conditions.(²Œ­ûÿÿÿÿ8¥û¯™ü,
-dsquid:S2147·"ECombine this catch with the one at line 821, which has the same body.(ï­£Ä8¥û¯™ü,
-Ysquid:S1141¨"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8‰ó“–ü,
-jsquid:CommentedOutCodeLine‚"<This block of commented-out lines of code should be removed.(ŒÒŞÔ8‰ó“–ü,
-osquid:CommentedOutCodeLineÜ"<This block of commented-out lines of code should be removed.(°éäúÿÿÿÿ8‰ó“–ü,
-Gsquid:S1148«"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‰ó“–ü,
-Gsquid:S1148¡"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¥û¯™ü,
-^
-squid:S899";Do something with the "boolean" value returned by "delete".(²Œ­ûÿÿÿÿ8¥û¯™ü,
-‹"squid:ClassVariableVisibilityCheckt"QMake isSos a static final constant or non-public and provide accessors if needed.(´±œÎúÿÿÿÿ8‰ó“–ü,
-ysquid:S1192¹"UDefine a constant instead of duplicating this literal "Open camera failed: " 3 times.(€­³ıÿÿÿÿ8‰ó“–ü,
-Gsquid:S1148¤"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¥û¯™ü,
-Gsquid:S1148Â"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¥û¯™ü,
-jsquid:CommentedOutCodeLine”"<This block of commented-out lines of code should be removed.(³Á€ø8‰ó“–ü,
-Gsquid:S1148Ë"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¥û¯™ü,
-jsquid:CommentedOutCodeLineé"<This block of commented-out lines of code should be removed.(œ8¥û¯™ü,
-Gsquid:S1148Ö"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‰ó“–ü,
-Gsquid:S1148ª"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¥û¯™ü,
-"squid:ClassVariableVisibilityCheckB"ZMake isForceDestroy a static final constant or non-public and provide accessors if needed.(Ó×8ò‡±™ü,
-Gsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‰ó“–ü,
-Nsquid:S2093˜"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ8¥û¯™ü,
-Gsquid:S1148Û"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‰ó“–ü,
-Gsquid:S1148Û"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¥û¯™ü,
-jsquid:CommentedOutCodeLine®"<This block of commented-out lines of code should be removed.(»™óÆ8Ü‡”–ü,
-Gsquid:S1148½"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¥û¯™ü,
-Ssquid:S1481ò"/Remove this unused "parameters" local variable.(­øüÂøÿÿÿÿ8‰ó“–ü,
-jsquid:CommentedOutCodeLineÍ"<This block of commented-out lines of code should be removed.(è¢–Ü8‰ó“–ü,
-jsquid:CommentedOutCodeLineÄ"<This block of commented-out lines of code should be removed.(â›‡‘8¥û¯™ü,
-Gsquid:S1148¶"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¥û¯™ü,
-[squid:S2589â"7Remove this expression which always evaluates to "true"(¯Ù˜Ïÿÿÿÿÿ8¥û¯™ü,
-jsquid:CommentedOutCodeLineÚ"<This block of commented-out lines of code should be removed.(’”8¥û¯™ü,
-”"squid:ClassVariableVisibilityCheckm"`Make isStreamingRecording a static final constant or non-public and provide accessors if needed.(ÿ¯Ù8‰ó“–ü,
-jsquid:CommentedOutCodeLineÜ"<This block of commented-out lines of code should be removed.(¯Íêè8¥û¯™ü,
-[squid:S1197["8Move the array designator from the variable to the type.(À–şÜÿÿÿÿÿ8‰ó“–ü,
-Nsquid:S2093±"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ8¥û¯™ü,
-jsquid:CommentedOutCodeLineî"<This block of commented-out lines of code should be removed.(Ö¾ö¯8¥û¯™ü,
-Gsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¥û¯™ü,
-¥squid:S1186ö"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(é±¼§ùÿÿÿÿ8¥û¯™ü,
-Gsquid:S1148¸"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¥û¯™ü,
-[squid:S1197\"8Move the array designator from the variable to the type.(ìÏÈ¿şÿÿÿÿ8‰ó“–ü,
-Gsquid:S1148å"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¥û¯™ü,
-Usquid:S1481¥"1Remove this unused "previewSizes" local variable.(µñÁŞûÿÿÿÿ8‰ó“–ü,
-Gsquid:S1148‡"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‰ó“–ü,
-–"squid:ClassVariableVisibilityCheckr"\Make isLocalRecording a static final constant or non-public and provide accessors if needed.(ú¨àÊÿÿÿÿÿ8‰ó“–ü,
-osquid:CommentedOutCodeLine°"<This block of commented-out lines of code should be removed.(¹ÉÌøÿÿÿÿ8¥û¯™ü,
-Gsquid:S1148±"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‰ó“–ü,
-fsquid:S2259¨"BA "NullPointerException" could be thrown; "file" is nullable here.(‘¨Ñöúÿÿÿÿ8¥û¯™ü,
-fsquid:S2259»"BA "NullPointerException" could be thrown; "file" is nullable here.(‘¨Ñöúÿÿÿÿ8¥û¯™ü,
-bsquid:S1854ò">Remove this useless assignment to local variable "parameters".(­øüÂøÿÿÿÿ8‰ó“–ü,
-"squid:ClassVariableVisibilityCheckQ"SMake context a static final constant or non-public and provide accessors if needed.(±¹ï±úÿÿÿÿ8‰ó“–ü,
-osquid:CommentedOutCodeLineø"<This block of commented-out lines of code should be removed.(š©¨Ñıÿÿÿÿ8‰ó“–ü,
-osquid:CommentedOutCodeLine×"<This block of commented-out lines of code should be removed.(×¼‡Öÿÿÿÿÿ8‰ó“–ü,
-osquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(š©¨Ñıÿÿÿÿ8¥û¯™ü,
-Gsquid:S1148ú"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‰ó“–ü,
-osquid:CommentedOutCodeLine²"<This block of commented-out lines of code should be removed.(°éäúÿÿÿÿ8‰ó“–ü,
-Gsquid:S1148ª"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¥û¯™ü,
-Msquid:S1066Ö"/Merge this if statement with the enclosing one.(¼¨Ú8¥û¯™ü,
-vsquid:S3776¶"RRefactor this method to reduce its Cognitive Complexity from 24 to the 15 allowed.(ûİæèşÿÿÿÿ8‰ó“–ü,
-Gsquid:S1148‘"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¥û¯™ü,
-qsquid:S3776¾"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(ò´§ê8‰ó“–ü,
-dsquid:S1854¥"@Remove this useless assignment to local variable "previewSizes".(µñÁŞûÿÿÿÿ8‰ó“–ü,
-jsquid:CommentedOutCodeLineı"<This block of commented-out lines of code should be removed.(¨Ã–‰8¥û¯™ü,
-isquid:CommentedOutCodeLine³"<This block of commented-out lines of code should be removed.(ÂïÄ48¥û¯™ü,
-Gsquid:S1148°"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¥û¯™ü,
- squid:S1186’"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(îñë‡8¥û¯™ü,
-Ssquid:S1481Ø"/Remove this unused "parameters" local variable.(­øüÂøÿÿÿÿ8¥û¯™ü,
-vsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(¼µû‰ûÿÿÿÿ8‰ó“–ü,
- squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(îñë‡8¥û¯™ü,
-bsquid:S1854Ø">Remove this useless assignment to local variable "parameters".(­øüÂøÿÿÿÿ8¥û¯™ü,
+osquid:CommentedOutCodeLineó"<This block of commented-out lines of code should be removed.(š©¨Ñıÿÿÿÿ8‰ó“–ü,
+‹"squid:ClassVariableVisibilityChecku"QMake isSos a static final constant or non-public and provide accessors if needed.(´±œÎúÿÿÿÿ8‰ó“–ü,
+Gsquid:S1148¥"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¥û¯™ü,
+ squid:S1186ü"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(îñë‡8¥û¯™ü,
 Ysquid:S1141®"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8‰ó“–ü,
+Gsquid:S1148ø"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¥û¯™ü,
+osquid:CommentedOutCodeLineŠ"<This block of commented-out lines of code should be removed.(š©¨Ñıÿÿÿÿ8¥û¯™ü,
+qsquid:S3776Ä"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(ò´§ê8‰ó“–ü,
+bsquid:S1854Ó">Remove this useless assignment to local variable "parameters".(­øüÂøÿÿÿÿ8¥û¯™ü,
+ysquid:S1192¿"UDefine a constant instead of duplicating this literal "Open camera failed: " 3 times.(€­³ıÿÿÿÿ8‰ó“–ü,
+jsquid:CommentedOutCodeLine‹"<This block of commented-out lines of code should be removed.(³Á€ø8‰ó“–ü,
+dsquid:S2147²"ECombine this catch with the one at line 816, which has the same body.(ï­£Ä8¥û¯™ü,
+msquid:S4042ü"IUse "java.nio.Files#delete" here for better messages on error conditions.(²Œ­ûÿÿÿÿ8¥û¯™ü,
+jsquid:CommentedOutCodeLineÕ"<This block of commented-out lines of code should be removed.(’”8¥û¯™ü,
+jsquid:CommentedOutCodeLine„"<This block of commented-out lines of code should be removed.(ŒÒŞÔ8‰ó“–ü,
+jsquid:CommentedOutCodeLine¿"<This block of commented-out lines of code should be removed.(â›‡‘8¥û¯™ü,
+Gsquid:S1148œ"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‰ó“–ü,
+Gsquid:S1148Ÿ"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¥û¯™ü,
+Gsquid:S1148±"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¥û¯™ü,
+^
+squid:S899ü";Do something with the "boolean" value returned by "delete".(²Œ­ûÿÿÿÿ8¥û¯™ü,
+jsquid:CommentedOutCodeLineé"<This block of commented-out lines of code should be removed.(Ö¾ö¯8¥û¯™ü,
+jsquid:CommentedOutCodeLine×"<This block of commented-out lines of code should be removed.(¯Íêè8¥û¯™ü,
+Gsquid:S1148·"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‰ó“–ü,
+fsquid:S2259£"BA "NullPointerException" could be thrown; "file" is nullable here.(‘¨Ñöúÿÿÿÿ8¥û¯™ü,
+vsquid:S3776…"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(¼µû‰ûÿÿÿÿ8‰ó“–ü,
+osquid:CommentedOutCodeLine×"<This block of commented-out lines of code should be removed.(°éäúÿÿÿÿ8‰ó“–ü,
+jsquid:CommentedOutCodeLineÓ"<This block of commented-out lines of code should be removed.(è¢–Ü8‰ó“–ü,
+Gsquid:S1148Æ"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¥û¯™ü,
+[squid:S2589İ"7Remove this expression which always evaluates to "true"(¯Ù˜Ïÿÿÿÿÿ8¥û¯™ü,
+vsquid:S3776¸"RRefactor this method to reduce its Cognitive Complexity from 24 to the 15 allowed.(ûİæèşÿÿÿÿ8‰ó“–ü,
+Gsquid:S1148‹"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¥û¯™ü,
+jsquid:CommentedOutCodeLineø"<This block of commented-out lines of code should be removed.(¨Ã–‰8¥û¯™ü,
+Msquid:S1066Ñ"/Merge this if statement with the enclosing one.(¼¨Ú8¥û¯™ü,
+"squid:ClassVariableVisibilityCheckC"ZMake isForceDestroy a static final constant or non-public and provide accessors if needed.(Ó×8ò‡±™ü,
+Gsquid:S1148«"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¥û¯™ü,
+Gsquid:S1148à"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‰ó“–ü,
+Gsquid:S1148Ö"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¥û¯™ü,
+Gsquid:S1148³"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‰ó“–ü,
+X"squid:SwitchLastCaseIsDefaultCheckº""Add a default case to this switch.(ÑË“8‰ó“–ü,
+isquid:CommentedOutCodeLine®"<This block of commented-out lines of code should be removed.(ÂïÄ48Ü‡”–ü,
+–"squid:ClassVariableVisibilityChecks"\Make isLocalRecording a static final constant or non-public and provide accessors if needed.(ú¨àÊÿÿÿÿÿ8‰ó“–ü,
+Nsquid:S2093“"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ8¥û¯™ü,
+[squid:S1197\"8Move the array designator from the variable to the type.(À–şÜÿÿÿÿÿ8‰ó“–ü,
+Gsquid:S1148±"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‰ó“–ü,
+¥squid:S1186ñ"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(é±¼§ùÿÿÿÿ8¥û¯™ü,
+Gsquid:S1148õ"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¥û¯™ü,
+Gsquid:S1148½"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¥û¯™ü,
+fsquid:S2259¶"BA "NullPointerException" could be thrown; "file" is nullable here.(‘¨Ñöúÿÿÿÿ8¥û¯™ü,
+osquid:CommentedOutCodeLineÜ"<This block of commented-out lines of code should be removed.(çßšöøÿÿÿÿ8¥û¯™ü,
+Nsquid:S2093¬"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ8¥û¯™ü,
+Gsquid:S1148ş"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¥û¯™ü,
+ squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(îñë‡8¥û¯™ü,
+Gsquid:S1148Ñ"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¥û¯™ü,
+osquid:CommentedOutCodeLine«"<This block of commented-out lines of code should be removed.(¹ÉÌøÿÿÿÿ8¥û¯™ü,
+osquid:CommentedOutCodeLine¸"<This block of commented-out lines of code should be removed.(°éäúÿÿÿÿ8‰ó“–ü,
+Ssquid:S1481Ó"/Remove this unused "parameters" local variable.(­øüÂøÿÿÿÿ8¥û¯™ü,
+Gsquid:S1148¥"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‰ó“–ü,
+Gsquid:S1148Œ"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¥û¯™ü,
+”"squid:ClassVariableVisibilityCheckn"`Make isStreamingRecording a static final constant or non-public and provide accessors if needed.(ÿ¯Ù8‰ó“–ü,
+Gsquid:S1148Ö"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‰ó“–ü,
+Gsquid:S1148¸"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¥û¯™ü,
+Ysquid:S1141´"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8‰ó“–ü,
+"squid:ClassVariableVisibilityCheckR"SMake context a static final constant or non-public and provide accessors if needed.(±¹ï±úÿÿÿÿ8‰ó“–ü,
+Ssquid:S1481é"/Remove this unused "parameters" local variable.(­øüÂøÿÿÿÿ8‰ó“–ü,
+bsquid:S1854é">Remove this useless assignment to local variable "parameters".(­øüÂøÿÿÿÿ8‰ó“–ü,
+[squid:S1197]"8Move the array designator from the variable to the type.(ìÏÈ¿şÿÿÿÿ8€êñü,
+isquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(éò¦M8€êñü,
+isquid:CommentedOutCodeLineÚ"<This block of commented-out lines of code should be removed.(éò¦M8€êñü,
+isquid:CommentedOutCodeLineœ"<This block of commented-out lines of code should be removed.(éò¦M8€êñü,
+osquid:CommentedOutCodeLine¡"<This block of commented-out lines of code should be removed.(ê§Å²üÿÿÿÿ8€êñü,
+osquid:CommentedOutCodeLine¨"<This block of commented-out lines of code should be removed.(ğ ¢øûÿÿÿÿ8€êñü,
+osquid:CommentedOutCodeLine²"<This block of commented-out lines of code should be removed.(æ§–µùÿÿÿÿ8€êñü,
+jsquid:CommentedOutCodeLineä"<This block of commented-out lines of code should be removed.(œ8€êñü,
+isquid:UselessImportCheck*"9Remove this unused import 'org.bytedeco.javacpp.avcodec'.(à™Øõüÿÿÿÿ8€êñü,
