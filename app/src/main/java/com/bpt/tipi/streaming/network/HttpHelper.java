@@ -25,6 +25,7 @@ public abstract class HttpHelper {
         public static final String LOGIN = "/buscarUsuario";
         public static final String LABELS = "/findLabelsCamera";
         public static final String LOG_STREAMING = "/streaming-logs";
+        public static final String LOGIN_SERVER_STREAMING = "/auteticacionStreming";
         public static final String LOGIN_SERVER = "/devices/login";
         public static final String SEND_CONFIG = "/device-configurations";
     }

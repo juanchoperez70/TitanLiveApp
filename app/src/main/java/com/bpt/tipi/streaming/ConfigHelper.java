@@ -6,6 +6,7 @@ import android.preference.PreferenceManager;
 
 import com.bpt.tipi.streaming.model.GeneralParameter;
 import com.bpt.tipi.streaming.model.RemoteConfig;
+import com.bpt.tipi.streaming.model.TitanUserDTO;
 
 /**
  * Created by jpujolji on 8/03/18.
@@ -274,5 +275,13 @@ public class ConfigHelper {
     public static String getStreamPassword(Context context) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         return preferences.getString(context.getString(R.string.key_password), context.getString(R.string.pref_default_password));
+    }
+
+    public static void updateUserLogin(Context context, TitanUserDTO user) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("user", user.getName() + " " + user.getLastname());
+        editor.putBoolean("isLogin", true);
+        editor.apply();
     }
 }

@@ -58,7 +58,7 @@ public class HttpClient {
      */
     public void httpRequest(String jsonParams, final String method, int typeRequest, boolean isAsync) {
         String url;
-        if (method.equals(HttpHelper.Method.LOGIN) || method.equals(HttpHelper.Method.LABELS)) {
+        if (method.equals(HttpHelper.Method.LOGIN) || method.equals(HttpHelper.Method.LABELS ) || method.equals(HttpHelper.Method.LOGIN_SERVER_STREAMING)) {
             url = PreferencesHelper.getUrlTitan(mContext) + method;
         }else {
             url = PreferencesHelper.getUrlApi(mContext) + method;

@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     //Varible para guardar el usuario que se ingresa en el dialog de login.
     String username;
+    String contrasena;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -390,17 +391,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String user = etUser.getText();
                 username = user;
                 String password = etPassword.getText();
+                contrasena = password;
                 if (!user.isEmpty() && !password.isEmpty()) {
-                    JSONObject json = new JSONObject();
-                    try {
-                        json.put("usuario", user);
-                        json.put("cotrasena", password);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+                    SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+                    String serialId = preferences.getString("device_id", "");
+                    if (serialId == null || serialId.length() == 0) {
+                        Toast.makeText(MainActivity.this, "Por favor configure el ID del dispositivo", Toast.LENGTH_SHORT).show();
+                    } else {
+                        JSONObject json = new JSONObject();
+                        try {
+                            json.put("usuario", user);
+                            json.put("cotrasena", password);
+                            json.put("serial", serialId);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        HttpClient httpClient = new HttpClient(MainActivity.this, MainActivity.this);
+                        //httpClient.httpRequest(json.toString(), HttpHelper.Method.LOGIN, HttpHelper.TypeRequest.TYPE_POST, true);
+                        httpClient.httpRequest(json.toString(), HttpHelper.Method.LOGIN_SERVER_STREAMING, HttpHelper.TypeRequest.TYPE_POST, true);
+                        dialog.dismiss();
                     }
-                    HttpClient httpClient = new HttpClient(MainActivity.this, MainActivity.this);
-                    httpClient.httpRequest(json.toString(), HttpHelper.Method.LOGIN, HttpHelper.TypeRequest.TYPE_POST, true);
-                    dialog.dismiss();
+
                 } else {
                     Toast.makeText(MainActivity.this, "Por favor ingrese usuario y contraseña", Toast.LENGTH_SHORT).show();
                 }
@@ -525,6 +536,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onSuccess(String method, JSONObject response) {
         switch (method) {
+            case HttpHelper.Method.LOGIN_SERVER_STREAMING:
+                try {
+                    if (response.getJSONObject("result").optString("code", "").equals("100")) {
+                        JSONObject json = new JSONObject();
+                        try {
+                            json.put("usuario", username);
+                            json.put("cotrasena", contrasena);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        HttpClient httpClient = new HttpClient(MainActivity.this, MainActivity.this);
+                        httpClient.httpRequest(json.toString(), HttpHelper.Method.LOGIN, HttpHelper.TypeRequest.TYPE_POST, true);
+                    } else {
+                        Toast.makeText(MainActivity.this, response.getJSONObject("result").optString("description", ""), Toast.LENGTH_LONG).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                break;
             case HttpHelper.Method.LOGIN:
                 if (response.optString("status", "").equals("OK") && response.optString("data", "").equals("true")) {
                     SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
@@ -537,6 +568,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     editor.apply();
                     Toast.makeText(MainActivity.this, "Login realizado con éxito", Toast.LENGTH_LONG).show();
                     setIdStatus();
+                    /*
                     JSONObject json = new JSONObject();
                     try {
                         json.put("deviceName", preferences.getString(getString(R.string.id_device), ""));
@@ -546,6 +578,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                     HttpClient httpClient = new HttpClient(MainActivity.this);
                     httpClient.httpRequest(json.toString(), HttpHelper.Method.LOGIN_SERVER, HttpHelper.TypeRequest.TYPE_POST, true);
+                    */
                 } else {
                     Toast.makeText(MainActivity.this, "Usuario o contraseña incorrectos, verifique sus credenciales e intente nuevamente", Toast.LENGTH_LONG).show();
                 }

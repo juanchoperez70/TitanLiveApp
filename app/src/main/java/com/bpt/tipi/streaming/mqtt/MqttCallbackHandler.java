@@ -7,6 +7,7 @@ import com.bpt.tipi.streaming.ConfigHelper;
 import com.bpt.tipi.streaming.ServiceHelper;
 import com.bpt.tipi.streaming.model.MessageEvent;
 import com.bpt.tipi.streaming.model.RemoteConfig;
+import com.bpt.tipi.streaming.model.TitanUserDTO;
 import com.google.gson.Gson;
 
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
@@ -22,6 +23,8 @@ public class MqttCallbackHandler implements MqttCallback {
     private static final String TYPE_PARAMS = "PARAMS";
     private static final String TYPE_START_STREAMING = "START_STREAMING";
     private static final String TYPE_STOP_STREAMING = "STOP_STREAMING";
+    private static final String TYPE_UPDATE_USER_LOGIN = "UPDATE_USER_LOGIN";
+
     private Context mContext;
 
     MqttCallbackHandler(Context context) {
@@ -54,6 +57,16 @@ public class MqttCallbackHandler implements MqttCallback {
             case TYPE_STOP_STREAMING:
                 event = new MessageEvent(MessageEvent.STOP_STREAMING);
                 bus.post(event);
+                break;
+            case TYPE_UPDATE_USER_LOGIN:
+                try {
+                    Gson gsonBody = new Gson();
+                    TitanUserDTO user = gsonBody.fromJson(jsonObject.optString("body"), TitanUserDTO.class);
+                    ConfigHelper.updateUserLogin(mContext, user);
+                } catch (Exception e) {
+                    Log.e("MqttCallbackHandler", "--Error: " + e.getMessage());
+                }
+
                 break;
         }
     }
