@@ -539,6 +539,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case HttpHelper.Method.LOGIN_SERVER_STREAMING:
                 try {
                     if (response.getJSONObject("result").optString("code", "").equals("100")) {
+                        //Registrar el usuario y contraseña
+                        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+                        SharedPreferences.Editor editor = preferences.edit();
+                        editor.putString("userTitan", username);
+                        editor.putString("passwordTitan", contrasena);
+                        editor.apply();
+
                         JSONObject json = new JSONObject();
                         try {
                             json.put("usuario", username);
