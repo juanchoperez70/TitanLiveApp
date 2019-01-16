@@ -4,7 +4,9 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.widget.Toast;
 
+import com.bpt.tipi.streaming.R;
 import com.bpt.tipi.streaming.model.CycleCountWeekDay;
 import com.bpt.tipi.streaming.model.CycleCount;
 
@@ -26,6 +28,7 @@ public class ChargeCycleBattery {
     }
 
     public int addCycleCountWeekDay(CycleCountWeekDay aeVar) {
+        Toast.makeText(context, "--addCycleCountWeekDay", Toast.LENGTH_LONG).show();
         writableDatabase = dbHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("lastDate", aeVar.getLastDate());
@@ -43,6 +46,17 @@ public class ChargeCycleBattery {
     public CycleCount getCycleCount(String str) {
         Cursor query = dbHelper.getReadableDatabase().query("cycleCount", b, " date = ?", new String[]{String.valueOf(str)}, null, null, null, null);
         CycleCount aVar = new CycleCount(str, 0.0f);
+        if (query != null && query.getCount() > 0) {
+            query.moveToFirst();
+            aVar.setDate(query.getString(0));
+            aVar.setCycleCount(Float.parseFloat(query.getString(1)));
+        }
+        return aVar;
+    }
+
+    public CycleCount getCycleCount() {
+        Cursor query = dbHelper.getReadableDatabase().query("cycleCount", b, null, null, null, null, null, null);
+        CycleCount aVar = new CycleCount("", 0.0f);
         if (query != null && query.getCount() > 0) {
             query.moveToFirst();
             aVar.setDate(query.getString(0));
@@ -81,6 +95,7 @@ public class ChargeCycleBattery {
     }
 
     public void addCycleCount(CycleCount aVar) {
+        Toast.makeText(context, "--addCycleCount", Toast.LENGTH_LONG).show();
         SQLiteDatabase writableDatabase = dbHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("date", aVar.getDate());
