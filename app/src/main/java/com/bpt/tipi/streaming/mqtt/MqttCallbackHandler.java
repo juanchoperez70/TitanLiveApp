@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.bpt.tipi.streaming.ConfigHelper;
 import com.bpt.tipi.streaming.ServiceHelper;
+import com.bpt.tipi.streaming.helper.PreferencesHelper;
 import com.bpt.tipi.streaming.model.MessageEvent;
 import com.bpt.tipi.streaming.model.RemoteConfig;
 import com.bpt.tipi.streaming.model.TitanUserDTO;
@@ -46,9 +47,9 @@ public class MqttCallbackHandler implements MqttCallback {
             case TYPE_PARAMS:
                 Gson gson = new Gson();
                 RemoteConfig remoteConfig = gson.fromJson(jsonObject.optString("body"), RemoteConfig.class);
-                ConfigHelper.saveConfig(mContext, remoteConfig);
-                ServiceHelper.stopLocationService(mContext);
-                ServiceHelper.startLocationService(mContext);
+                PreferencesHelper.saveConfig(mContext, remoteConfig);
+                //ServiceHelper.stopLocationService(mContext);
+                //ServiceHelper.startLocationService(mContext);
                 break;
             case TYPE_START_STREAMING:
                 event = new MessageEvent(MessageEvent.START_STREAMING);

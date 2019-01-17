@@ -569,7 +569,7 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
                 CameraHelper.getStreamingImageHeight(context), Frame.DEPTH_UBYTE, 2);
         streamingRecorder = CameraHelper.initStreamingRecorder(context);
         String filterString = "transpose=dir=1:passthrough=portrait," +"drawtext=fontsize=15:fontfile=/system/fonts/DroidSans.ttf:fontcolor=white@0.8:text='TITAN-" +
-                                PreferencesHelper.getDeviceId(context) + " %{localtime\\:%T %d/%m/%Y}':x=5:y=20,scale=w=" +
+                                PreferencesHelper.getDeviceId(context) + " %{localtime\\:%T %d/%m/%Y}':x=2:y=20,scale=w=" +
                                 CameraHelper.getStreamingImageWidth(context) + ":h=" +
                                 CameraHelper.getStreamingImageHeight(context);
         //String filterString = "transpose=dir=1:passthrough=portrait";

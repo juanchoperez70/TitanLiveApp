@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.CountDownTimer;
 import android.widget.Toast;
 
+import com.bpt.tipi.streaming.ConfigReaderHelper;
 import com.bpt.tipi.streaming.ServiceHelper;
 import com.bpt.tipi.streaming.helper.IrHelper;
 import com.bpt.tipi.streaming.model.MessageEvent;
@@ -50,6 +51,7 @@ public class USBConnectionReceiver extends BroadcastReceiver {
                             Toast.makeText(context, ".:Se detienen los servicios:.", Toast.LENGTH_SHORT).show();
                         } else {
                             // USB was disconnected
+                            leerConfiguracionUrls(context);
                             ServiceHelper.startAllServices(context);
                             //bus.post(new MessageEvent(MessageEvent.START_SERVICES));
                             Toast.makeText(context, ".:Se inician los servicios:.", Toast.LENGTH_SHORT).show();
@@ -58,6 +60,22 @@ public class USBConnectionReceiver extends BroadcastReceiver {
                     firstConnect = true;
                 }
             }.start();
+        }
+    }
+
+    private void leerConfiguracionUrls(Context context){
+        try {
+            boolean isConfig = ConfigReaderHelper.loadConfig(context);
+            if(isConfig){
+                //borrar el archivo de configuuracion
+                ConfigReaderHelper.deleteFile(context);
+            }
+
+            System.out.print("Configuraciones de url realizadas: " + isConfig);
+        } catch (Exception e) {
+            ConfigReaderHelper.writeTxt(e.getMessage());
+            Toast.makeText(context, "Error al leer archivo de configuracion URL", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
         }
     }
 }
