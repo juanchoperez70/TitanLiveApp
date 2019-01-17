@@ -36,11 +36,13 @@ import com.bpt.tipi.streaming.Utils;
 import com.bpt.tipi.streaming.helper.LaserHelper;
 import com.bpt.tipi.streaming.helper.PreferencesHelper;
 import com.bpt.tipi.streaming.helper.VideoNameHelper;
+import com.bpt.tipi.streaming.model.CycleCount;
 import com.bpt.tipi.streaming.model.Label;
 import com.bpt.tipi.streaming.model.MessageEvent;
 import com.bpt.tipi.streaming.network.HttpClient;
 import com.bpt.tipi.streaming.network.HttpHelper;
 import com.bpt.tipi.streaming.network.HttpInterface;
+import com.bpt.tipi.streaming.persistence.ChargeCycleBattery;
 import com.bpt.tipi.streaming.persistence.Database;
 import com.bpt.tipi.streaming.service.RecorderService;
 import com.google.gson.Gson;
@@ -219,6 +221,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             ConfigReaderHelper.writeTxt(e.getMessage());
             e.printStackTrace();
         }
+
+        ChargeCycleBattery rVar = new ChargeCycleBattery(this);
+        List list = rVar.listCycleCountWeekDay();
+        CycleCount cycle = rVar.getCycleCount();
+        System.out.print("--LyfeCycle: " + list);
+        System.out.print("--cycle: " + cycle);
     }
 
     public void showGradleVersion(){
@@ -539,6 +547,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case HttpHelper.Method.LOGIN_SERVER_STREAMING:
                 try {
                     if (response.getJSONObject("result").optString("code", "").equals("100")) {
+                        //Registrar el usuario y contraseña
+                        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+                        SharedPreferences.Editor editor = preferences.edit();
+                        editor.putString("userTitan", username);
+                        editor.putString("passwordTitan", contrasena);
+
+                        if (response.getJSONObject("deviceUser") != null) {
+                            JSONObject user = response.getJSONObject("deviceUser").getJSONObject("userId");
+                            editor.putString("user", user.getString("name") + " " + user.getString("lastname"));
+                        }
+                        editor.putBoolean("isLogin", true);
+                        editor.apply();
+                        Toast.makeText(MainActivity.this, "Login realizado con éxito", Toast.LENGTH_LONG).show();
+                        setIdStatus();
+
+                        /*
                         JSONObject json = new JSONObject();
                         try {
                             json.put("usuario", username);
@@ -548,6 +572,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         }
                         HttpClient httpClient = new HttpClient(MainActivity.this, MainActivity.this);
                         httpClient.httpRequest(json.toString(), HttpHelper.Method.LOGIN, HttpHelper.TypeRequest.TYPE_POST, true);
+                        */
                     } else {
                         Toast.makeText(MainActivity.this, response.getJSONObject("result").optString("description", ""), Toast.LENGTH_LONG).show();
                     }

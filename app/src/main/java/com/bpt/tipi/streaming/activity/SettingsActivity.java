@@ -389,6 +389,21 @@ public class SettingsActivity extends AppCompatActivity implements HttpInterface
                 if (!ServiceHelper.isServiceRunning(context, LocationService.class)) {
                     ServiceHelper.startLocationService(context);
                 }
+
+                //Reportar cambio en Gestion de evidencias si hay un usuario logeado en la cámara
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+                if (preferences.getBoolean("isLogin", false)) {
+                    JSONObject json = new JSONObject();
+                    try {
+                        json.put("usuario", preferences.getString("userTitan", ""));
+                        json.put("cotrasena", preferences.getString("passwordTitan", ""));
+                        json.put("serial", device);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    HttpClient httpClient = new HttpClient(this, this);
+                    httpClient.httpRequest(json.toString(), HttpHelper.Method.LOGIN_SERVER_STREAMING, HttpHelper.TypeRequest.TYPE_POST, true);
+                }
             }
         }
         if (method.equals(HttpHelper.Method.SEND_CONFIG)) {

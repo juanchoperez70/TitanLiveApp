@@ -153,13 +153,18 @@ public class ChargeCycleCounterBroadcastReceicver extends BroadcastReceiver {
                     Toast.makeText(context, e.getMessage() + " Unable to write to storage.", Toast.LENGTH_LONG).show();
                 }
             } else if (action.equals("android.intent.action.ACTION_POWER_DISCONNECTED")) {
+                //Toast.makeText(context, "--ACTION_POWER_DISCONNECTED", Toast.LENGTH_SHORT).show();
                 try {
-                    InputStream openFileInput = context.openFileInput("batteryTemp.txt");
+                    File logStorageDir = new File(Environment.getExternalStoragePublicDirectory("DCIM"), "LOG");
+                    File file = new File(logStorageDir, "BatteryStat.txt");
+                    //InputStream openFileInput = context.openFileInput("BatteryStat.txt");
+                    InputStream openFileInput = new FileInputStream(file);
                     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(openFileInput));
                     StringBuilder stringBuilder = new StringBuilder();
                     while (true) {
                         try {
                             String readLine = bufferedReader.readLine();
+                            //Toast.makeText(context, "--readLine " + readLine, Toast.LENGTH_LONG).show();
                             if (readLine == null) {
                                 break;
                             }
@@ -179,6 +184,7 @@ public class ChargeCycleCounterBroadcastReceicver extends BroadcastReceiver {
                     } catch (IOException e3) {
                         e3.printStackTrace();
                     }
+                    //Toast.makeText(context, "--intExtra " + intExtra + " i " + i, Toast.LENGTH_LONG).show();
                     if (intExtra > i) {
                         float f = (((float) intExtra) - ((float) i)) / 100.0f;
                         setCurrentLevel(getCurrentLevel(context) + f, context);
@@ -211,6 +217,7 @@ public class ChargeCycleCounterBroadcastReceicver extends BroadcastReceiver {
                         }
                     }
                 } catch (FileNotFoundException e5) {
+                    Toast.makeText(context, "--ERROR " + e5.getMessage(), Toast.LENGTH_SHORT).show();
                     e5.printStackTrace();
                 }
                 deleteFile(context);

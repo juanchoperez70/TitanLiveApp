@@ -282,6 +282,8 @@ public class ConfigHelper {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("user", user.getName() + " " + user.getLastname());
         editor.putBoolean("isLogin", true);
+        editor.putString("userTitan", user.getLogin());
+        editor.putString("passwordTitan", user.getSecret());
         editor.apply();
     }
 }
