@@ -44,6 +44,7 @@ import com.bpt.tipi.streaming.network.HttpHelper;
 import com.bpt.tipi.streaming.network.HttpInterface;
 import com.bpt.tipi.streaming.persistence.ChargeCycleBattery;
 import com.bpt.tipi.streaming.persistence.Database;
+import com.bpt.tipi.streaming.receiver.events.CameraEventHandler;
 import com.bpt.tipi.streaming.service.RecorderService;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -345,8 +346,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (!etPassword.getText().toString().isEmpty()) {
                     if (etPassword.getText().toString().equals(password)) {
                         dialog.dismiss();
+                        //Ingreso a la configuración
+                        CameraEventHandler.appendEventLog(MainActivity.this, "INGRESO CONFIGURACION");
                         startActivity(new Intent(MainActivity.this, SettingsActivity.class));
                     } else {
+                        //Intento fallido ingreso a la configuración
+                        CameraEventHandler.appendEventLog(MainActivity.this, "INTENTO FALLIDO INGRESO CONFIGURACION");
                         Toast.makeText(MainActivity.this, "Contraseña incorrecta", Toast.LENGTH_SHORT).show();
                         etPassword.setText("");
                     }
@@ -443,6 +448,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 linearLogin.setVisibility(View.VISIBLE);
                 linearExit.setVisibility(View.INVISIBLE);
                 setIdStatus();
+                //Logout del usuario
+                CameraEventHandler.appendEventLog(MainActivity.this, "CIERRE SESION");
             }
         });
         dialog.show();
@@ -486,6 +493,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Label label = labels.get(spOptions.getSelectedItemPosition() - 1);
                     VideoNameHelper.taggedVideo(nameVideo, label.id);
                     tagDialog.dismiss();
+
+                    //Etiquetado
+                    CameraEventHandler.appendEventLog(MainActivity.this, "VIDEO ETIQUETADO");
                 } else {
                     Toast.makeText(MainActivity.this, "Seleccione una etiqueta", Toast.LENGTH_SHORT).show();
                 }
@@ -573,6 +583,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         HttpClient httpClient = new HttpClient(MainActivity.this, MainActivity.this);
                         httpClient.httpRequest(json.toString(), HttpHelper.Method.LOGIN, HttpHelper.TypeRequest.TYPE_POST, true);
                         */
+                        //Login de usuario
+                        CameraEventHandler.appendEventLog(this, "INICIO SESION");
                     } else {
                         Toast.makeText(MainActivity.this, response.getJSONObject("result").optString("description", ""), Toast.LENGTH_LONG).show();
                     }

@@ -38,6 +38,7 @@ import com.bpt.tipi.streaming.helper.IrHelper;
 import com.bpt.tipi.streaming.helper.PreferencesHelper;
 import com.bpt.tipi.streaming.helper.VideoNameHelper;
 import com.bpt.tipi.streaming.model.MessageEvent;
+import com.bpt.tipi.streaming.receiver.events.CameraEventHandler;
 
 import org.bytedeco.javacpp.avcodec;
 import org.bytedeco.javacpp.avutil;
@@ -192,9 +193,13 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
                     sosPressed = true;
                     isSos = true;
                     sendSos();
+                    //Se inicia SOS
+                    CameraEventHandler.appendEventLog(context, "INICIO SOS");
                 } else {
                     isSos = false;
                     setLocalRecorderStateMachine();
+                    //Se detiene SOS
+                    CameraEventHandler.appendEventLog(context, "FIN SOS");
                 }
                 break;
             case MessageEvent.LOCAL_RECORD:
@@ -202,6 +207,14 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
                     isSos = false;
                 }
                 setLocalRecorderStateMachine();
+                //Evento de grabación
+                if (isLocalRecording) {
+                    //Se inicia grabación LOCAL
+                    CameraEventHandler.appendEventLog(context, "INICIO GRABACION");
+                } else {
+                    //Se inicia grabación LOCAL
+                    CameraEventHandler.appendEventLog(context, "FIN GRABACION");
+                }
                 break;
             case MessageEvent.START_STREAMING:
                 if (!proccesingStreming) {
@@ -229,6 +242,8 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
                 break;
             case MessageEvent.TAKE_PHOTO:
                 machineHandler.sendEmptyMessage(StateMachineHandler.TAKE_PHOTO);
+                //Se toma fotografía
+                CameraEventHandler.appendEventLog(context, "CAPTURA FOTO");
                 break;
             case MessageEvent.STATE_FLASH:
                 if (!flashOn) {
