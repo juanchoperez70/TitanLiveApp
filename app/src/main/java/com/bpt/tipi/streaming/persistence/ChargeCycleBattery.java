@@ -10,6 +10,7 @@ import com.bpt.tipi.streaming.R;
 import com.bpt.tipi.streaming.model.CycleCountWeekDay;
 import com.bpt.tipi.streaming.model.CycleCount;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -63,6 +64,25 @@ public class ChargeCycleBattery {
             aVar.setCycleCount(Float.parseFloat(query.getString(1)));
         }
         return aVar;
+    }
+
+    public List<CycleCount> getCycleCountList() {
+        Cursor query = dbHelper.getReadableDatabase().query("cycleCount", b, null, null, null, null, null, null);
+        List<CycleCount> list = new ArrayList<>();
+        try {
+            if (query.moveToFirst()) {
+                do {
+                    CycleCount aVar = new CycleCount("", 0.0f);
+                    aVar.setDate(query.getString(0));
+                    aVar.setCycleCount(Float.parseFloat(query.getString(1)));
+                    list.add(aVar);
+                } while (query.moveToNext());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return list;
     }
 
     public CycleCountWeekDay getCycleCountWeekDay(int weekday) {

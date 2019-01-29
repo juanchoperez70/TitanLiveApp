@@ -10,9 +10,11 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -56,6 +58,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -224,10 +233,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         ChargeCycleBattery rVar = new ChargeCycleBattery(this);
-        List list = rVar.listCycleCountWeekDay();
-        CycleCount cycle = rVar.getCycleCount();
-        System.out.print("--LyfeCycle: " + list);
-        System.out.print("--cycle: " + cycle);
+        List<CycleCount> cycle = rVar.getCycleCountList();
+        writeChargeCycleBattery(cycle);
+        //List list = rVar.listCycleCountWeekDay();
+        //CycleCount cycle = rVar.getCycleCount();
+        //System.out.print("--LyfeCycle: " + list);
+        //System.out.print("--Cycle: " + cycle);
     }
 
     public void showGradleVersion(){
@@ -705,6 +716,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             HttpClient httpClient = new HttpClient(MainActivity.this);
             httpClient.httpRequest(json.toString(), HttpHelper.Method.LABELS, HttpHelper.TypeRequest.TYPE_POST, true);
+        }
+    }
+
+    private void writeChargeCycleBattery(List<CycleCount> cycleCounts) {
+        try {
+            File logStorageDir = new File(Environment.getExternalStoragePublicDirectory("DCIM"), "LOG");
+            if (!logStorageDir.exists()) {
+                if (!logStorageDir.mkdirs()) {
+                    Log.i("Depuracion", "--Error al crear el directorio");
+                }
+            }
+
+            File file = new File(logStorageDir, "TitanLive_ChargeCycleBattery.txt");
+            if (!file.exists()) {
+                try {
+                    file.createNewFile();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            BufferedWriter buf = new BufferedWriter(new FileWriter(file, false));
+            for (CycleCount cycleCount : cycleCounts) {
+                buf.append(cycleCount.getDate() + "\t" + cycleCount.getCycleCount());
+                buf.newLine();
+            }
+            buf.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
