@@ -9,11 +9,16 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.PixelFormat;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputType;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -239,6 +244,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //CycleCount cycle = rVar.getCycleCount();
         //System.out.print("--LyfeCycle: " + list);
         //System.out.print("--Cycle: " + cycle);
+
+        SensorManager mSensorManager= (SensorManager) getSystemService(SENSOR_SERVICE);
+        Sensor sen  = mSensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+        mSensorManager.registerListener(new SensorEventListener() {
+            @Override
+            public void onSensorChanged(SensorEvent event) {
+                System.out.println("--Sensor accuracy: " + event);
+            }
+
+            @Override
+            public void onAccuracyChanged(Sensor sensor, int accuracy) {
+                if (sensor.getType() == Sensor.TYPE_LIGHT) {
+                    System.out.println("--Sensor accuracy: " + accuracy);
+                }
+            }
+        }, sen, SensorManager.SENSOR_DELAY_NORMAL);
+        // List of Sensors Available
+        List<Sensor> msensorList = mSensorManager.getSensorList(Sensor.TYPE_ALL);
+        for (Sensor sensor : msensorList) {
+            String name = sensor.getName();
+            System.out.println("--Sensor name: " + sensor);
+        }
     }
 
     public void showGradleVersion(){
@@ -381,6 +408,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         dialog.show();
     }
 
+    CustomEditText etUser;
+    CustomEditText etPassword;
+
     public void showDialogLogin() {
         final Dialog dialog = new Dialog(MainActivity.this, R.style.CustomDialogTheme);
         dialog.setContentView(R.layout.login_dialog);
@@ -400,8 +430,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             linearExit.setVisibility(View.INVISIBLE);
         }
 
-        final CustomEditText etUser = dialog.findViewById(R.id.etUser);
-        final CustomEditText etPassword = dialog.findViewById(R.id.etPassword);
+        etUser = dialog.findViewById(R.id.etUser);
+        etPassword = dialog.findViewById(R.id.etPassword);
+
+        etUser.etValue.setInputType(InputType.TYPE_CLASS_NUMBER);
+        etPassword.etValue.setInputType(InputType.TYPE_CLASS_NUMBER);
 
         Button btnAccept = dialog.findViewById(R.id.btnAccept);
         Button btnCancel = dialog.findViewById(R.id.btnCancel);

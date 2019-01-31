@@ -32,7 +32,7 @@ public class CustomEditText extends RelativeLayout implements View.OnFocusChange
     Drawable icon;
     int inputType;
     int maxLength;
-    EditText etValue;
+    public EditText etValue;
     TextInputLayout tiValue;
     private OnFocusChangeListener mListener;
     int mId;
