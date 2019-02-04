@@ -4,9 +4,16 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import com.bpt.tipi.streaming.activity.SettingsActivity;
 import com.bpt.tipi.streaming.model.GeneralParameter;
 import com.bpt.tipi.streaming.model.RemoteConfig;
 import com.bpt.tipi.streaming.model.TitanUserDTO;
+import com.bpt.tipi.streaming.network.HttpClient;
+import com.bpt.tipi.streaming.network.HttpHelper;
+import com.bpt.tipi.streaming.network.HttpInterface;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Created by jpujolji on 8/03/18.
@@ -285,5 +292,27 @@ public class ConfigHelper {
         editor.putString("userTitan", user.getLogin());
         editor.putString("passwordTitan", user.getSecret());
         editor.apply();
+
+        //Registrar usuario asociado al dispositivo
+        JSONObject json = new JSONObject();
+        try {
+            json.put("deviceName", preferences.getString("device_id", ""));
+            json.put("loggedUser", user.getName() + " " + user.getLastname());
+
+            HttpClient httpClient = new HttpClient(new HttpInterface() {
+                @Override
+                public void onSuccess(String method, JSONObject response) {
+
+                }
+
+                @Override
+                public void onFailed(String method, JSONObject errorResponse) {
+
+                }
+            });
+            httpClient.httpRequest(json.toString(), HttpHelper.Method.LOGIN_SERVER, HttpHelper.TypeRequest.TYPE_POST, true);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }

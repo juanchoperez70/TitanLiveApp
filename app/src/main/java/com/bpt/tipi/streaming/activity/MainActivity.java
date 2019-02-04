@@ -606,15 +606,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         SharedPreferences.Editor editor = preferences.edit();
                         editor.putString("userTitan", username);
                         editor.putString("passwordTitan", contrasena);
-
+                        String name = "";
                         if (response.getJSONObject("deviceUser") != null) {
                             JSONObject user = response.getJSONObject("deviceUser").getJSONObject("userId");
+                            name = user.getString("name") + " " + user.getString("lastname");
                             editor.putString("user", user.getString("name") + " " + user.getString("lastname"));
                         }
                         editor.putBoolean("isLogin", true);
                         editor.apply();
                         Toast.makeText(MainActivity.this, "Login realizado con éxito", Toast.LENGTH_LONG).show();
                         setIdStatus();
+
+                        //Registrar usuario asociado al dispositivo
+                        JSONObject json = new JSONObject();
+                        try {
+                            json.put("deviceName", preferences.getString("device_id", ""));
+                            json.put("loggedUser", name);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        HttpClient httpClient = new HttpClient(MainActivity.this);
+                        httpClient.httpRequest(json.toString(), HttpHelper.Method.LOGIN_SERVER, HttpHelper.TypeRequest.TYPE_POST, true);
 
                         /*
                         JSONObject json = new JSONObject();
@@ -649,17 +661,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     editor.apply();
                     Toast.makeText(MainActivity.this, "Login realizado con éxito", Toast.LENGTH_LONG).show();
                     setIdStatus();
-                    /*
+
+                    //Registrar usuario asociado al dispositivo
                     JSONObject json = new JSONObject();
                     try {
-                        json.put("deviceName", preferences.getString(getString(R.string.id_device), ""));
+                        json.put("deviceName", preferences.getString("device_id", ""));
                         json.put("loggedUser", username);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                     HttpClient httpClient = new HttpClient(MainActivity.this);
                     httpClient.httpRequest(json.toString(), HttpHelper.Method.LOGIN_SERVER, HttpHelper.TypeRequest.TYPE_POST, true);
-                    */
+
                 } else {
                     Toast.makeText(MainActivity.this, "Usuario o contraseña incorrectos, verifique sus credenciales e intente nuevamente", Toast.LENGTH_LONG).show();
                 }
