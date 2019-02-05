@@ -2,7 +2,10 @@ package com.bpt.tipi.streaming;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Handler;
+import android.os.Looper;
 import android.preference.PreferenceManager;
+import android.util.Log;
 
 import com.bpt.tipi.streaming.activity.SettingsActivity;
 import com.bpt.tipi.streaming.model.GeneralParameter;
@@ -284,7 +287,7 @@ public class ConfigHelper {
         return preferences.getString(context.getString(R.string.key_password), context.getString(R.string.pref_default_password));
     }
 
-    public static void updateUserLogin(Context context, TitanUserDTO user) {
+    public static void updateUserLogin(final Context context, TitanUserDTO user) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("user", user.getName() + " " + user.getLastname());
@@ -293,26 +296,36 @@ public class ConfigHelper {
         editor.putString("passwordTitan", user.getSecret());
         editor.apply();
 
-        //Registrar usuario asociado al dispositivo
-        JSONObject json = new JSONObject();
-        try {
-            json.put("deviceName", preferences.getString("device_id", ""));
-            json.put("loggedUser", user.getName() + " " + user.getLastname());
+        final String deviceName = preferences.getString("device_id", "");
+        final String loggedUser = user.getName() + " " + user.getLastname();
 
-            HttpClient httpClient = new HttpClient(new HttpInterface() {
-                @Override
-                public void onSuccess(String method, JSONObject response) {
+        Handler mainHandler = new Handler(Looper.getMainLooper());
+        Runnable myRunnable = new Runnable() {
+            @Override
+            public void run() {
+                JSONObject json = new JSONObject();
+                try {
+                    json.put("deviceName", deviceName);
+                    json.put("loggedUser", loggedUser);
 
+                    HttpClient httpClient = new HttpClient(context, new HttpInterface() {
+                        @Override
+                        public void onSuccess(String method, JSONObject response) {
+                            Log.d("-- ", method);
+                        }
+
+                        @Override
+                        public void onFailed(String method, JSONObject errorResponse) {
+                            Log.d("--Error ", method);
+                        }
+                    });
+                    httpClient.httpRequest(json.toString(), HttpHelper.Method.LOGIN_SERVER, HttpHelper.TypeRequest.TYPE_POST, true);
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-
-                @Override
-                public void onFailed(String method, JSONObject errorResponse) {
-
-                }
-            });
-            httpClient.httpRequest(json.toString(), HttpHelper.Method.LOGIN_SERVER, HttpHelper.TypeRequest.TYPE_POST, true);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+            }
+        };
+        mainHandler.post(myRunnable);
+        new Thread(myRunnable).start();
     }
 }
