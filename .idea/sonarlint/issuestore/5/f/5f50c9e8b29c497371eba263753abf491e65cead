@@ -1,19 +1,20 @@
 
-nsquid:UselessImportCheck"@Remove this unused import 'org.apache.http.entity.StringEntity'.(þ©Ú‹þÿÿÿÿ8²¯ßâõ,
-jsquid:UselessImportCheck"ARemove this unused import 'java.io.UnsupportedEncodingException'.(Ãµ…“8²¯ßâõ,
-jsquid:UselessImportCheck"ARemove this unused import 'android.preference.PreferenceManager'.(ìùÖõ8²¯ßâõ,
-¢squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(‡Ïû„ûÿÿÿÿ8²¯ßâõ,
-fsquid:UselessImportCheck">Remove this unused import 'android.content.SharedPreferences'.(íÎÉr8²¯ßâõ,
-asquid:UselessImportCheck"3Remove this unused import 'org.apache.http.Header'.(ËÇ¶òûÿÿÿÿ8²¯ßâõ,
-[squid:UselessImportCheck"-Remove this unused import 'android.util.Log'.(Ô¦Ø²øÿÿÿÿ8²¯ßâõ,
-bsquid:UselessImportCheck"4Remove this unused import 'android.hardware.Camera'.(¯É‡÷úÿÿÿÿ8²¯ßâõ,
-¢squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(üüÊºøÿÿÿÿ8²¯ßâõ,
-psquid:UselessImportCheck"BRemove this unused import 'com.loopj.android.http.SyncHttpClient'.(Øô¹Àùÿÿÿÿ8²¯ßâõ,
-¢squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(‡Ïû„ûÿÿÿÿ8²¯ßâõ,
-ysquid:UselessImportCheck"KRemove this unused import 'com.loopj.android.http.JsonHttpResponseHandler'.(Ž”äöúÿÿÿÿ8²¯ßâõ,
-_squid:UselessImportCheck"6Remove this unused import 'android.os.CountDownTimer'.(Ðˆ“ë8²¯ßâõ,
-¢squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(üüÊºøÿÿÿÿ8²¯ßâõ,
-lsquid:UselessImportCheck">Remove this unused import 'android.content.pm.PackageManager'.(€®¥õÿÿÿÿÿ8²¯ßâõ,
-[squid:S1118":Add a private constructor to hide the implicit public one.(ËõßÓûÿÿÿÿ8²¯ßâõ,
-qsquid:UselessImportCheck"CRemove this unused import 'com.loopj.android.http.AsyncHttpClient'.(¬¹×àúÿÿÿÿ8²¯ßâõ,
-csquid:UselessImportCheck"5Remove this unused import 'android.net.TrafficStats'.(¤Úâ‡ùÿÿÿÿ8²¯ßâõ,
+_squid:UselessImportCheck"6Remove this unused import 'android.os.CountDownTimer'.(Ðˆ“ë8Žª”Ú‹-
+asquid:UselessImportCheck"3Remove this unused import 'org.apache.http.Header'.(ËÇ¶òûÿÿÿÿ8Žª”Ú‹-
+qsquid:UselessImportCheck"CRemove this unused import 'com.loopj.android.http.AsyncHttpClient'.(¬¹×àúÿÿÿÿ8Žª”Ú‹-
+[squid:S1118":Add a private constructor to hide the implicit public one.(ËõßÓûÿÿÿÿ8Žª”Ú‹-
+nsquid:UselessImportCheck"@Remove this unused import 'org.apache.http.entity.StringEntity'.(þ©Ú‹þÿÿÿÿ8Žª”Ú‹-
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ÁñºÛøÿÿÿÿ8Žª”Ú‹-
+¢squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(‡Ïû„ûÿÿÿÿ8Žª”Ú‹-
+ysquid:UselessImportCheck"KRemove this unused import 'com.loopj.android.http.JsonHttpResponseHandler'.(Ž”äöúÿÿÿÿ8Žª”Ú‹-
+csquid:UselessImportCheck"5Remove this unused import 'android.net.TrafficStats'.(¤Úâ‡ùÿÿÿÿ8Žª”Ú‹-
+jsquid:UselessImportCheck"ARemove this unused import 'android.preference.PreferenceManager'.(ìùÖõ8Žª”Ú‹-
+[squid:UselessImportCheck"-Remove this unused import 'android.util.Log'.(Ô¦Ø²øÿÿÿÿ8Žª”Ú‹-
+bsquid:UselessImportCheck"4Remove this unused import 'android.hardware.Camera'.(¯É‡÷úÿÿÿÿ8Žª”Ú‹-
+¢squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(üüÊºøÿÿÿÿ8Žª”Ú‹-
+lsquid:UselessImportCheck">Remove this unused import 'android.content.pm.PackageManager'.(€®¥õÿÿÿÿÿ8Žª”Ú‹-
+¢squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(üüÊºøÿÿÿÿ8Žª”Ú‹-
+psquid:UselessImportCheck"BRemove this unused import 'com.loopj.android.http.SyncHttpClient'.(Øô¹Àùÿÿÿÿ8Žª”Ú‹-
+fsquid:UselessImportCheck">Remove this unused import 'android.content.SharedPreferences'.(íÎÉr8Žª”Ú‹-
+jsquid:UselessImportCheck"ARemove this unused import 'java.io.UnsupportedEncodingException'.(Ãµ…“8Žª”Ú‹-
+¢squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(‡Ïû„ûÿÿÿÿ8Žª”Ú‹-

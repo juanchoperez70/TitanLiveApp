@@ -598,7 +598,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (idDevice.isEmpty()) {
             tvIdCamera.setText("IdCamera: No configurado");
         } else {
-            tvIdCamera.setText("IdCamera: " + idDevice + " " + user);
+            tvIdCamera.setText("IdCamera: " + idDevice + " Usuario: " + user);
         }
     }
 
@@ -621,6 +621,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         }
                         editor.putBoolean("isLogin", true);
                         editor.apply();
+                        PreferencesHelper.setLoggedUser(this, username);
                         Toast.makeText(MainActivity.this, "Login realizado con éxito", Toast.LENGTH_LONG).show();
                         setIdStatus();
 
@@ -632,7 +633,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        HttpClient httpClient = new HttpClient(MainActivity.this);
+                        HttpClient httpClient = new HttpClient(MainActivity.this, this);
                         httpClient.httpRequest(json.toString(), HttpHelper.Method.LOGIN_SERVER, HttpHelper.TypeRequest.TYPE_POST, true);
 
                         /*

@@ -184,7 +184,7 @@ public class CameraHelper {
         }
     }
 
-    public static int getLocalVideoBitrate(Context context) {
+    /*public static int getLocalVideoBitrate(Context context) {
         int videoSize = PreferencesHelper.getLocalVideoSize(context);
         switch (videoSize) {
             case 0:
@@ -195,6 +195,26 @@ public class CameraHelper {
             case 4:
             case 5:
                 return 2500;
+            case 6:
+            case 7:
+            case 8:
+                return 1500;
+            default:
+                return 0;
+        }
+    }*/
+
+    public static int getLocalVideoBitrate(Context context) {
+        int videoSize = PreferencesHelper.getLocalVideoSize(context);
+        switch (videoSize) {
+            case 0:
+            case 1:
+            case 2:
+                return 5200;
+            case 3:
+            case 4:
+            case 5:
+                return 2200;
             case 6:
             case 7:
             case 8:

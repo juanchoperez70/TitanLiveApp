@@ -1,13 +1,18 @@
 
-‰"squid:ClassVariableVisibilityCheck"XMake firstConnect a static final constant or non-public and provide accessors if needed.(›ùÑ»ùÿÿÿÿ
-Psquid:S2696"6Make the enclosing method "static" or remove this set.(œý¥åüÿÿÿÿ
-usquid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(®ƒ§Ñþÿÿÿÿ
-Lsquid:S1444"2Make this "public static firstConnect" field final(›ùÑ»ùÿÿÿÿ
-`squid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(éêµñ
-esquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(šæµòûÿÿÿÿ
-esquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(æ²ÁÊýÿÿÿÿ
-–squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(îñë‡
-Psquid:S2696"6Make the enclosing method "static" or remove this set.(·£ü¦þÿÿÿÿ
+U"squid:SwitchLastCaseIsDefaultCheck""Add a default case to this switch.(ãØ´ú8©ˆÉ‹-
+Ssquid:S1444"2Make this "public static firstConnect" field final(›ùÑ»ùÿÿÿÿ8©ˆÉ‹-
+gsquid:S1301"KReplace this "switch" statement by "if" statements to increase readability.(ãØ´ú8©ˆÉ‹-
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(æ²ÁÊýÿÿÿÿ8©ˆÉ‹-
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ž‚¶üùÿÿÿÿ8©ˆÉ‹-
 Y
-squid:S106"9Replace this use of System.out or System.err by a logger.(ßŽ¶®ûÿÿÿÿ8ï–øÔŠ-
-Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8ï–øÔŠ-
+squid:S106"9Replace this use of System.out or System.err by a logger.(ßŽ¶®ûÿÿÿÿ8©ˆÉ‹-
+Wsquid:S2696"6Make the enclosing method "static" or remove this set.(œý¥åüÿÿÿÿ8©ˆÉ‹-
+Wsquid:S2696"6Make the enclosing method "static" or remove this set.(·£ü¦þÿÿÿÿ8©ˆÉ‹-
+"squid:ClassVariableVisibilityCheck"XMake firstConnect a static final constant or non-public and provide accessors if needed.(›ùÑ»ùÿÿÿÿ8©ˆÉ‹-
+nsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(ÃŸãù8©ˆÉ‹-
+squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(îñë‡8©ˆÉ‹-
+|squid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(®ƒ§Ñþÿÿÿÿ8©ˆÉ‹-
+tsquid:UselessImportCheck"FRemove this unused import 'com.bpt.tipi.streaming.model.MessageEvent'.(¥Ç’åýÿÿÿÿ8©ˆÉ‹-
+wsquid:UselessImportCheck"IRemove this unused import 'com.bpt.tipi.streaming.activity.MainActivity'.(žœ¸©úÿÿÿÿ8©ˆÉ‹-
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8©ˆÉ‹-
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8©ˆÉ‹-

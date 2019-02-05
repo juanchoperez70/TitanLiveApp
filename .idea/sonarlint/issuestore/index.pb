@@ -123,3 +123,9 @@ r
 Bapp/src/main/java/com/bpt/tipi/streaming/persistence/Database.java,4\e\4ecbc9e0f889ca49a942fde7eb149b73340ba23d
 p
 @app/src/main/java/com/bpt/tipi/streaming/network/HttpHelper.java,a\6\a6a7516f218aa03dfbec16a75ef6c9fc95e23f96
+r
+Bapp/src/main/java/com/bpt/tipi/streaming/receiver/SOSReceiver.java,7\6\762da1f25f1b513562198a4613085069c3ab8777
+s
+Capp/src/main/java/com/bpt/tipi/streaming/network/HttpInterface.java,5\9\59a8cd6b4dcd19380f53e0353a4527516cea84cc
+r
+Bapp/src/main/java/com/bpt/tipi/streaming/persistence/DbHelper.java,7\0\70690c1d363b212aea05cf5f374484aae2c6430c

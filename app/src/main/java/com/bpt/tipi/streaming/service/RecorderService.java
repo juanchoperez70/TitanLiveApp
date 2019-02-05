@@ -421,6 +421,25 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
             int height =CameraHelper.getLocalImageHeight(context);
             int width = CameraHelper.getLocalImageWidth(context);
 
+            switch (height) {
+                case 480:
+                    profile = CamcorderProfile.get(CamcorderProfile.QUALITY_480P);
+                    profile.videoFrameWidth = width;
+                    profile.videoFrameHeight = height;
+                    break;
+                case 720:
+                    profile = CamcorderProfile.get(CamcorderProfile.QUALITY_720P);
+                    break;
+                case 1080:
+                    profile = CamcorderProfile.get(CamcorderProfile.QUALITY_1080P);
+                    parameters.set("cam_mode", 1 );
+                    parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_INFINITY);
+                    break;
+                default:
+                    profile = CamcorderProfile.get(CamcorderProfile.QUALITY_480P);
+                    break;
+            }
+
             parameters.setPreviewSize(width, height);
             parameters.setPreviewFpsRange(fps*1000, fps*1000);
             parameters.setPreviewFrameRate(fps);
@@ -434,27 +453,12 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
             parameters.setPreviewFormat(ImageFormat.NV21);
             primaryCamera.setParameters(parameters);
 
-            switch (height) {
-                case 480:
-                    profile = CamcorderProfile.get(CamcorderProfile.QUALITY_480P);
-                    break;
-                case 720:
-                    profile = CamcorderProfile.get(CamcorderProfile.QUALITY_720P);
-                    break;
-                case 1080:
-                    profile = CamcorderProfile.get(CamcorderProfile.QUALITY_1080P);
-                    break;
-                default:
-                    profile = CamcorderProfile.get(CamcorderProfile.QUALITY_480P);
-                    break;
-            }
-
-            profile.videoBitRate = CameraHelper.getLocalVideoBitrate(context);
+            profile.videoBitRate = CameraHelper.getLocalVideoBitrate(context)*2000;
             profile.videoFrameRate = fps;
-            profile.videoFrameWidth = width;
-            profile.videoFrameHeight = height;
+            //profile.videoFrameWidth = width;
+            //profile.videoFrameHeight = height;
             profile.videoCodec = MediaRecorder.VideoEncoder.H264;
-            profile.audioCodec = MediaRecorder.AudioEncoder.AMR_NB;
+            //profile.audioCodec = MediaRecorder.AudioEncoder.AMR_NB;
 
             int size = width * height;
 
@@ -569,7 +573,7 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
 
         //mediaRecorder.setVideoEncodingBitRate(CameraHelper.getLocalVideoBitrate(context));
         int br = CameraHelper.getLocalVideoBitrate(context);
-        mediaRecorder.setVideoEncodingBitRate(CameraHelper.getLocalVideoBitrate(context));
+        mediaRecorder.setVideoEncodingBitRate(CameraHelper.getLocalVideoBitrate(context)*2000);
 
         //mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
 
