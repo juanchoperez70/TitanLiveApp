@@ -120,6 +120,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         lockStatusBar();
         showGradleVersion();
 
+        //loadLabels();
+
     }
 
     @Override
@@ -218,9 +220,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             tvTimeElapsed.setVisibility(View.INVISIBLE);
         }
         bindService();
-        if (getLabels().size() == 0) {
+        /*if (getLabels().size() == 0) {
             loadLabels();
-        }
+        }*/
         setupTagDialog();
 
         //ConfigReaderHelper.readFile(this);
@@ -302,6 +304,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     getLabels();
                 } else {
                     if (!tagDialog.isShowing()) {
+
+                        tagDialog.create();
                         tagDialog.show();
                     }
                 }
@@ -365,7 +369,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ServiceHelper.startRecorderService(MainActivity.this);
         ServiceHelper.startMqttService(MainActivity.this);
         ServiceHelper.startLocationService(MainActivity.this);
-        loadLabels();
+        //loadLabels();
     }
 
     public void showDialogPassword() {
@@ -506,8 +510,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tagDialog.setCancelable(true);
 
         final Spinner spOptions = tagDialog.findViewById(R.id.spOptions);
+        spOptions.setFocusableInTouchMode(false);
         Button btnAccept = tagDialog.findViewById(R.id.btnAccept);
+        btnAccept.setFocusableInTouchMode(false);
         Button btnCancel = tagDialog.findViewById(R.id.btnCancel);
+        btnCancel.setFocusableInTouchMode(false);
 
         final List<Label> labels = getLabels();
 
@@ -537,7 +544,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Label label = labels.get(spOptions.getSelectedItemPosition() - 1);
                     VideoNameHelper.taggedVideo(nameVideo, label.id);
                     tagDialog.dismiss();
-
                     //Etiquetado
                     CameraEventHandler.appendEventLog(MainActivity.this, "VIDEO ETIQUETADO");
                 } else {
@@ -565,6 +571,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         List<Label> labels = database.getLabels();
         List<String> ids = new ArrayList<>();
         if(labels.size()== 0){
+            //loadLabels();
             String[] defaultLabels = getResources().getStringArray(R.array.labels_tagging);
             String[] defaultLabelIds = getResources().getStringArray(R.array.ids_tagging);
 
@@ -738,7 +745,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     };
 
-    public void loadLabels() {
+    /*public void loadLabels() {
         List<Label> labels = getLabels();
         if (labels.size() == 0) {
             JSONObject json = new JSONObject();
@@ -747,10 +754,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            HttpClient httpClient = new HttpClient(MainActivity.this);
+            HttpClient httpClient = new HttpClient(MainActivity.this, this);
             httpClient.httpRequest(json.toString(), HttpHelper.Method.LABELS, HttpHelper.TypeRequest.TYPE_POST, true);
         }
-    }
+    }*/
 
     private void writeChargeCycleBattery(List<CycleCount> cycleCounts) {
         try {

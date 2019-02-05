@@ -1,6 +1,6 @@
 
-jsquid:ModifiersOrderCheck"EReorder the modifiers to comply with the Java Language Specification.(¯šúï
-osquid:ModifiersOrderCheck"EReorder the modifiers to comply with the Java Language Specification.(ÄÖº£øÿÿÿÿ
-Psquid:S1118":Add a private constructor to hide the implicit public one.(ë¶Ú_
-Qsquid:S1118":Add a private constructor to hide the implicit public one.(¯šúï
-Vsquid:S1118":Add a private constructor to hide the implicit public one.(ÄÖº£øÿÿÿÿ
+Osquid:S1118":Add a private constructor to hide the implicit public one.(¯šúï
+Tsquid:S1118":Add a private constructor to hide the implicit public one.(ÄÖº£øÿÿÿÿ
+Nsquid:S1118":Add a private constructor to hide the implicit public one.(ë¶Ú_
+msquid:ModifiersOrderCheck"EReorder the modifiers to comply with the Java Language Specification.(ÄÖº£øÿÿÿÿ
+hsquid:ModifiersOrderCheck"EReorder the modifiers to comply with the Java Language Specification.(¯šúï

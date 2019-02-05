@@ -1,10 +1,10 @@
 
-]squid:CallToDeprecatedMethod^".Remove this use of "Header"; it is deprecated.(‘ËÙï8°–ç‘ü,
-W"squid:SwitchLastCaseIsDefaultChecki""Add a default case to this switch.(¼ãúÿ8°–ç‘ü,
-]squid:CallToDeprecatedMethodd".Remove this use of "Header"; it is deprecated.(Ã´­ê8°–ç‘ü,
-hsquid:CallToDeprecatedMethodN"4Remove this use of "StringEntity"; it is deprecated.(ß´ôƒúÿÿÿÿ8°–ç‘ü,
-hsquid:CallToDeprecatedMethodP"4Remove this use of "StringEntity"; it is deprecated.(¬Ä¼òüÿÿÿÿ8°–ç‘ü,
-Fsquid:S1148R"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8°–ç‘ü,
-tsquid:S1192k"QDefine a constant instead of duplicating this literal "application/json" 3 times.(ŠÑ‚äýÿÿÿÿ8°–ç‘ü,
-bsquid:CallToDeprecatedMethodX".Remove this use of "Header"; it is deprecated.(ðÐ—öúÿÿÿÿ8°–ç‘ü,
-nsquid:S1192B"KDefine a constant instead of duplicating this literal "Depuracion" 5 times.(”¶“Žùÿÿÿÿ8°–ç‘ü,
+U"squid:SwitchLastCaseIsDefaultCheck""Add a default case to this switch.(¼ãúÿ8°–ç‘ü,
+lsquid:S1192"KDefine a constant instead of duplicating this literal "Depuracion" 5 times.(”¶“Žùÿÿÿÿ8°–ç‘ü,
+fsquid:CallToDeprecatedMethod"4Remove this use of "StringEntity"; it is deprecated.(ß´ôƒúÿÿÿÿ8°–ç‘ü,
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8°–ç‘ü,
+[squid:CallToDeprecatedMethod".Remove this use of "Header"; it is deprecated.(‘ËÙï8°–ç‘ü,
+`squid:CallToDeprecatedMethod".Remove this use of "Header"; it is deprecated.(ðÐ—öúÿÿÿÿ8°–ç‘ü,
+[squid:CallToDeprecatedMethod".Remove this use of "Header"; it is deprecated.(Ã´­ê8°–ç‘ü,
+rsquid:S1192"QDefine a constant instead of duplicating this literal "application/json" 3 times.(ŠÑ‚äýÿÿÿÿ8°–ç‘ü,
+fsquid:CallToDeprecatedMethod"4Remove this use of "StringEntity"; it is deprecated.(¬Ä¼òüÿÿÿÿ8°–ç‘ü,

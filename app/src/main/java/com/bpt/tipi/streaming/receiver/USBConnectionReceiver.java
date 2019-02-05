@@ -8,10 +8,24 @@ import android.widget.Toast;
 
 import com.bpt.tipi.streaming.ConfigReaderHelper;
 import com.bpt.tipi.streaming.ServiceHelper;
+import com.bpt.tipi.streaming.activity.MainActivity;
 import com.bpt.tipi.streaming.helper.IrHelper;
+import com.bpt.tipi.streaming.model.Label;
 import com.bpt.tipi.streaming.model.MessageEvent;
+import com.bpt.tipi.streaming.network.HttpClient;
+import com.bpt.tipi.streaming.network.HttpHelper;
+import com.bpt.tipi.streaming.network.HttpInterface;
+import com.bpt.tipi.streaming.persistence.Database;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.greenrobot.eventbus.EventBus;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.lang.reflect.Type;
+import java.util.List;
 
 public class USBConnectionReceiver extends BroadcastReceiver {
 
@@ -45,15 +59,14 @@ public class USBConnectionReceiver extends BroadcastReceiver {
                     if (action.equalsIgnoreCase(usbStateChangeAction)) { //Check if change in USB state
                         if (intent.getExtras().getBoolean("connected")) {
                             // USB was connected
-                            //bus.post(new MessageEvent(MessageEvent.FINISH_SERVICES));
                             ServiceHelper.stopAllServices(context);
                             IrHelper.setIrState(IrHelper.STATE_OFF);
                             Toast.makeText(context, ".:Se detienen los servicios:.", Toast.LENGTH_SHORT).show();
                         } else {
                             // USB was disconnected
                             leerConfiguracionUrls(context);
+                            loadLabels(context);
                             ServiceHelper.startAllServices(context);
-                            //bus.post(new MessageEvent(MessageEvent.START_SERVICES));
                             Toast.makeText(context, ".:Se inician los servicios:.", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -77,5 +90,49 @@ public class USBConnectionReceiver extends BroadcastReceiver {
             Toast.makeText(context, "Error al leer archivo de configuracion URL", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
+    }
+
+    public void loadLabels(final Context context) {
+        JSONObject json = new JSONObject();
+        try {
+            json.put("type", "0");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        HttpClient httpClient = new HttpClient(context,new HttpInterface() {
+            @Override
+            public void onSuccess(String method, JSONObject response) {
+                switch (method) {
+                    case HttpHelper.Method.LABELS:
+                        JSONObject object = response.optJSONObject("result");
+                        if (object != null && object.optString("code", "").equals("100")) {
+                            JSONArray jsonArray = response.optJSONArray("labelsList");
+                            if (jsonArray != null) {
+                                Database database = new Database(context);
+                                try {
+                                    database.open();
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+
+                                Gson gson = new Gson();
+                                Type collectionType = new TypeToken<List<Label>>() {
+                                }.getType();
+                                List<Label> labels = gson.fromJson(jsonArray.toString(), collectionType);
+                                database.insertLabels(labels);
+                                database.close();
+                            }
+                        }
+                    break;
+                }
+            }
+
+            @Override
+            public void onFailed(String method, JSONObject errorResponse) {
+                //Toast.makeText(context,"Error al consultar los tags " + errorResponse.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        httpClient.httpRequest(json.toString(), HttpHelper.Method.LABELS, HttpHelper.TypeRequest.TYPE_POST, true);
+
     }
 }

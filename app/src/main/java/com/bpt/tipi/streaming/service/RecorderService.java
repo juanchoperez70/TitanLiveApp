@@ -449,9 +449,12 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
                     break;
             }
 
+            profile.videoBitRate = CameraHelper.getLocalVideoBitrate(context);
             profile.videoFrameRate = fps;
             profile.videoFrameWidth = width;
             profile.videoFrameHeight = height;
+            profile.videoCodec = MediaRecorder.VideoEncoder.H264;
+            profile.audioCodec = MediaRecorder.AudioEncoder.AMR_NB;
 
             int size = width * height;
 
@@ -565,7 +568,8 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
         mediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
 
         //mediaRecorder.setVideoEncodingBitRate(CameraHelper.getLocalVideoBitrate(context));
-        mediaRecorder.setVideoEncodingBitRate(CameraHelper.getLocalVideoBitrate(context)*1024);
+        int br = CameraHelper.getLocalVideoBitrate(context);
+        mediaRecorder.setVideoEncodingBitRate(CameraHelper.getLocalVideoBitrate(context));
 
         //mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
 

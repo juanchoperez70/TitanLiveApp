@@ -117,3 +117,9 @@ n
 >app/src/main/java/com/bpt/tipi/streaming/model/UrlsConfig.java,9\c\9c4008bfe6fdf1e8d7017cdcf66ae93b3b956a5f
 v
 Fapp/src/main/java/com/bpt/tipi/streaming/mqtt/MqttCallbackHandler.java,4\d\4df8c704c842afc1ff85d01629db81c973cb73df
+<
+build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
+r
+Bapp/src/main/java/com/bpt/tipi/streaming/persistence/Database.java,4\e\4ecbc9e0f889ca49a942fde7eb149b73340ba23d
+p
+@app/src/main/java/com/bpt/tipi/streaming/network/HttpHelper.java,a\6\a6a7516f218aa03dfbec16a75ef6c9fc95e23f96
