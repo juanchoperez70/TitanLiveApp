@@ -409,6 +409,33 @@ public class SettingsActivity extends AppCompatActivity implements HttpInterface
         if (method.equals(HttpHelper.Method.SEND_CONFIG)) {
             Toast.makeText(context, response.optString("message"), Toast.LENGTH_LONG).show();
         }
+
+        if (method.equals(HttpHelper.Method.LOGIN_SERVER_STREAMING)){
+            try {
+                if (response.getJSONObject("result").optString("code", "").equals("100")) {
+                    String name = "";
+                    if (response.getJSONObject("deviceUser") != null) {
+                        JSONObject user = response.getJSONObject("deviceUser").getJSONObject("userId");
+                        name = user.getString("name") + " " + user.getString("lastname");
+                    }
+
+                    //Registrar usuario asociado al dispositivo
+                    JSONObject json = new JSONObject();
+                    try {
+                        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+                        json.put("deviceName", preferences.getString("device_id", ""));
+                        json.put("loggedUser", name);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    HttpClient httpClient = new HttpClient(SettingsActivity.this);
+                    httpClient.httpRequest(json.toString(), HttpHelper.Method.LOGIN_SERVER, HttpHelper.TypeRequest.TYPE_POST, true);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 
     @Override
