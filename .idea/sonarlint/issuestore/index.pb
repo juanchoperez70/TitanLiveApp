@@ -129,3 +129,5 @@ s
 Capp/src/main/java/com/bpt/tipi/streaming/network/HttpInterface.java,5\9\59a8cd6b4dcd19380f53e0353a4527516cea84cc
 r
 Bapp/src/main/java/com/bpt/tipi/streaming/persistence/DbHelper.java,7\0\70690c1d363b212aea05cf5f374484aae2c6430c
+~
+Napp/src/main/java/com/bpt/tipi/streaming/receiver/events/ShutdownReceiver.java,5\a\5ad033702ff15c81e7a254fbd9d56aa2633da8de

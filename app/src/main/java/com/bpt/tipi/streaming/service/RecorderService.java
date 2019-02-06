@@ -175,7 +175,14 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
             finishCameraDestroy();
         }
         else{
-            finishCamera();
+            //finishCamera();
+            if (camera != null) {
+                camera.stopPreview();
+                camera.setPreviewCallback(null);
+                camera.lock();
+                camera.release();
+                camera = null;
+            }
         }
         finishPrimaryCamera();
         super.onDestroy();

@@ -160,29 +160,12 @@ public class LocationService extends Service implements LocationListener, HttpIn
             try {
                 String idDevice = PreferencesHelper.getDeviceId(context);
                 if (mLocation != null && !idDevice.isEmpty()) {
-                    double latitude = mLocation.getLatitude();//
-                    double longitude = mLocation.getLongitude();//
-                    BatteryManager bm = (BatteryManager) getSystemService(BATTERY_SERVICE);
-                    int batLevel = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY);
-                    Device device = new Device(idDevice, "CONNECTED", latitude, longitude, batLevel);
-                    Gson gson = new Gson();
-                    String json = gson.toJson(device);
-
-                    HttpClient httpClient = new HttpClient(context, LocationService.this);
-                    httpClient.httpRequest(json, HttpHelper.Method.REPORT_STATUS, HttpHelper.TypeRequest.TYPE_POST, true);
+                    sendCurrentLocation(idDevice);
                 } else {
                     Log.i("Depuracion", "mLocation " + mLocation);
-                    /*if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                        // TODO: Consider calling
-                        //    ActivityCompat#requestPermissions
-                        // here to request the missing permissions, and then overriding
-                        //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                        //                                          int[] grantResults)
-                        // to handle the case where the user grants the permission. See the documentation
-                        // for ActivityCompat#requestPermissions for more details.
-                        return;
-                    }
-                    double latitude = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER).getLatitude();*/
+                    try {
+                        sendLastKnownLocation(idDevice);
+                    }catch (Exception e){}
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -219,5 +202,41 @@ public class LocationService extends Service implements LocationListener, HttpIn
     @Override
     public void onFailed(String method, JSONObject errorResponse) {
         Log.i("Depuracion", "onFailed location " + errorResponse);
+    }
+
+    void sendCurrentLocation(String idDevice) {
+        double latitude = mLocation.getLatitude();//
+        double longitude = mLocation.getLongitude();//
+        BatteryManager bm = (BatteryManager) getSystemService(BATTERY_SERVICE);
+        int batLevel = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY);
+        Device device = new Device(idDevice, "CONNECTED", latitude, longitude, batLevel);
+        Gson gson = new Gson();
+        String json = gson.toJson(device);
+
+        HttpClient httpClient = new HttpClient(context, LocationService.this);
+        httpClient.httpRequest(json, HttpHelper.Method.REPORT_STATUS, HttpHelper.TypeRequest.TYPE_POST, true);
+    }
+
+    void sendLastKnownLocation(String idDevice) {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        double latitude = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER).getLatitude();
+        double longitude = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER).getLongitude();
+        BatteryManager bm = (BatteryManager) getSystemService(BATTERY_SERVICE);
+        int batLevel = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY);
+        Device device = new Device(idDevice, "CONNECTED", latitude, longitude, batLevel);
+        Gson gson = new Gson();
+        String json = gson.toJson(device);
+
+        HttpClient httpClient = new HttpClient(context, LocationService.this);
+        httpClient.httpRequest(json, HttpHelper.Method.REPORT_STATUS, HttpHelper.TypeRequest.TYPE_POST, true);
     }
 }

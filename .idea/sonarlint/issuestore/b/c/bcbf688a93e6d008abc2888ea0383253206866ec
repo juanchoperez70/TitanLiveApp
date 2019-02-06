@@ -1,9 +1,11 @@
 
- squid:S1186¹"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÀÄŞ’8û¿’ü,
- squid:S1186³"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(îñë‡8û¿’ü,
-W"squid:SwitchLastCaseIsDefaultCheckX""Add a default case to this switch.(ÑË“8û¿’ü,
- squid:S1186¾"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(çÅğÙ8û¿’ü,
- squid:S1186Ã"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÁïÕÒ8û¿’ü,
-hsquid:S1192?"KDefine a constant instead of duplicating this literal "Depuracion" 4 times.(á¬èk8û¿’ü,
-Gsquid:S1148­"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8û¿’ü,
-isquid:S1301X"KReplace this "switch" statement by "if" statements to increase readability.(ÑË“8û¿’ü,
+W"squid:SwitchLastCaseIsDefaultCheck\""Add a default case to this switch.(ÑË“8È‡“€Œ-
+hsquid:S1192B"KDefine a constant instead of duplicating this literal "Depuracion" 4 times.(á¬èk8È‡“€Œ-
+isquid:S1301\"KReplace this "switch" statement by "if" statements to increase readability.(ÑË“8È‡“€Œ-
+jsquid:CommentedOutCodeLine¯"<This block of commented-out lines of code should be removed.(ÏŠš8È‡“€Œ-
+Vsquid:S1135°"2Complete the task associated to this TODO comment.(áÃæùÿÿÿÿ8È‡“€Œ-
+ squid:S1186È"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÀÄŞ’8È‡“€Œ-
+ squid:S1186Í"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(çÅğÙ8È‡“€Œ-
+ squid:S1186Ò"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÁïÕÒ8È‡“€Œ-
+ squid:S1186Â"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(îñë‡8È‡“€Œ-
+Gsquid:S1148¼"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8È‡“€Œ-

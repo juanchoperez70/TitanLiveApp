@@ -1,57 +1,57 @@
 
-Z"squid:SwitchLastCaseIsDefaultCheck""Add a default case to this switch.(×“¾ñùÿÿÿÿ8ÖÄğØ‹-
-U"squid:SwitchLastCaseIsDefaultCheck""Add a default case to this switch.(ÑË“8ÖÄğØ‹-
-U"squid:SwitchLastCaseIsDefaultCheck""Add a default case to this switch.(ãØ´ú8ÖÄğØ‹-
-Lsquid:S1659"+Declare "tvTimeElapsed" on a separate line.(‹áÔ½ûÿÿÿÿ8ÖÄğØ‹-
-Hsquid:S1659"'Declare "tvVersion" on a separate line.(‹áÔ½ûÿÿÿÿ8ÖÄğØ‹-
-hsquid:S1192"GDefine a constant instead of duplicating this literal "result" 3 times.(óù€üÿÿÿÿ8ÖÄğØ‹-
-esquid:S1192"JDefine a constant instead of duplicating this literal "device_id" 3 times.(ŠåÙ8ÖÄğØ‹-
-isquid:S1192"HDefine a constant instead of duplicating this literal "isLogin" 4 times.(‘Æè©ÿÿÿÿÿ8ÖÄğØ‹-
-esquid:S1192"IDefine a constant instead of duplicating this literal "lastname" 3 times.(Ğ¥Ûé8ÖÄğØ‹-
-Ksquid:S1066"/Merge this if statement with the enclosing one.(¨Ü©ä8ÖÄğØ‹-
-msquid:S2095"LUse try-with-resources or close this "BufferedWriter" in a "finally" clause.(Ù©›èøÿÿÿÿ8ÖÄğØ‹-
-lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(Ê˜š›ÿÿÿÿÿ8ÖÄğØ‹-
-lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(òšğµûÿÿÿÿ8ÖÄğØ‹-
-lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(µ¶¸õşÿÿÿÿ8ÖÄğØ‹-
-lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ñşœÇıÿÿÿÿ8ÖÄğØ‹-
-gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(¡Õ±š8ÖÄğØ‹-
-lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ùĞ·Èıÿÿÿÿ8ÖÄğØ‹-
-lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(áà´îúÿÿÿÿ8ÖÄğØ‹-
-lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ş·›øÿÿÿÿ8ÖÄğØ‹-
-lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(òšğµûÿÿÿÿ8ÖÄğØ‹-
-gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(×©ë8ÖÄğØ‹-
-lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(òšğµûÿÿÿÿ8ÖÄğØ‹-
-lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(İÙÌÙıÿÿÿÿ8ÖÄğØ‹-
-lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(°÷œŒşÿÿÿÿ8ÖÄğØ‹-
-lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(‡ãù½ıÿÿÿÿ8ÖÄğØ‹-
 Y
-squid:S106"9Replace this use of System.out or System.err by a logger.(ß¶®ûÿÿÿÿ8ÖÄğØ‹-
+squid:S106"9Replace this use of System.out or System.err by a logger.(ß¶®ûÿÿÿÿ8½Üßõ‹-
+_squid:S1155">Use isEmpty() to check whether the collection is empty or not.(ä·ƒáüÿÿÿÿ8½Üßõ‹-
+esquid:S1192"IDefine a constant instead of duplicating this literal "lastname" 3 times.(Ğ¥Ûé8½Üßõ‹-
+_squid:S1155">Use isEmpty() to check whether the collection is empty or not.(ñÎí†ıÿÿÿÿ8½Üßõ‹-
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(µ¶¸õşÿÿÿÿ8½Üßõ‹-
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ñşœÇıÿÿÿÿ8½Üßõ‹-
+U"squid:SwitchLastCaseIsDefaultCheck""Add a default case to this switch.(ÑË“8½Üßõ‹-
+_squid:UselessImportCheck"6Remove this unused import 'java.io.InputStreamReader'.(ãˆÎÉ8½Üßõ‹-
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8½Üßõ‹-
+\squid:UselessImportCheck"3Remove this unused import 'java.io.BufferedReader'.(€é²Å8½Üßõ‹-
+Esquid:S1481")Remove this unused "name" local variable.(ºÑÖÙ8½Üßõ‹-
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(°÷œŒşÿÿÿÿ8½Üßõ‹-
+Tsquid:S1854"8Remove this useless assignment to local variable "name".(ºÑÖÙ8½Üßõ‹-
+U"squid:SwitchLastCaseIsDefaultCheck""Add a default case to this switch.(ãØ´ú8½Üßõ‹-
+Lsquid:S1659"+Declare "tvTimeElapsed" on a separate line.(‹áÔ½ûÿÿÿÿ8½Üßõ‹-
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(áà´îúÿÿÿÿ8½Üßõ‹-
+ssquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 32 to the 15 allowed.(üüÊºøÿÿÿÿ8½Üßõ‹-
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(òšğµûÿÿÿÿ8½Üßõ‹-
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(Ê˜š›ÿÿÿÿÿ8½Üßõ‹-
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(òšğµûÿÿÿÿ8½Üßõ‹-
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8½Üßõ‹-
 T
-squid:S106"9Replace this use of System.out or System.err by a logger.(´ÿ¢8ÖÄğØ‹-
-Y
-squid:S106"9Replace this use of System.out or System.err by a logger.(‡©Äáüÿÿÿÿ8ÖÄğØ‹-
-Y
-squid:S106"9Replace this use of System.out or System.err by a logger.(‰í¤Áıÿÿÿÿ8ÖÄğØ‹-
-fsquid:HiddenFieldCheck"?Rename "etPassword" which hides the field declared at line 416.(É•èÓ8ÖÄğØ‹-
-Vsquid:S1141"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8ÖÄğØ‹-
-Vsquid:S1141"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8ÖÄğØ‹-
-Esquid:S1481")Remove this unused "name" local variable.(ºÑÖÙ8ÖÄğØ‹-
-ssquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 32 to the 15 allowed.(üüÊºøÿÿÿÿ8ÖÄğØ‹-
-¢squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(œƒƒ©ùÿÿÿÿ8ÖÄğØ‹-
-¢squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(½íµ”úÿÿÿÿ8ÖÄğØ‹-
-Tsquid:S1854"8Remove this useless assignment to local variable "name".(ºÑÖÙ8ÖÄğØ‹-
-[squid:UselessImportCheck"-Remove this unused import 'java.util.Arrays'.(î–˜Éüÿÿÿÿ8ÖÄğØ‹-
-]squid:UselessImportCheck"4Remove this unused import 'java.io.FileInputStream'.(˜³ÉÓ8ÖÄğØ‹-
-_squid:UselessImportCheck"6Remove this unused import 'java.io.InputStreamReader'.(ãˆÎÉ8ÖÄğØ‹-
-\squid:UselessImportCheck"3Remove this unused import 'java.io.BufferedReader'.(€é²Å8ÖÄğØ‹-
-Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ÖÄğØ‹-
-Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ÖÄğØ‹-
-Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ÖÄğØ‹-
-Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ÖÄğØ‹-
-Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ÖÄğØ‹-
-Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ÖÄğØ‹-
+squid:S106"9Replace this use of System.out or System.err by a logger.(´ÿ¢8½Üßõ‹-
+msquid:S2095"LUse try-with-resources or close this "BufferedWriter" in a "finally" clause.(Ù©›èøÿÿÿÿ8½Üßõ‹-
+[squid:UselessImportCheck"-Remove this unused import 'java.util.Arrays'.(î–˜Éüÿÿÿÿ8½Üßõ‹-
+hsquid:S1192"GDefine a constant instead of duplicating this literal "result" 3 times.(óù€üÿÿÿÿ8½Üßõ‹-
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(òšğµûÿÿÿÿ8½Üßõ‹-
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8½Üßõ‹-
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8½Üßõ‹-
 b
-squid:S899"BDo something with the "boolean" value returned by "createNewFile".(Ğ’Íùÿÿÿÿ8ÖÄğØ‹-
-_squid:S1155">Use isEmpty() to check whether the collection is empty or not.(ñÎí†ıÿÿÿÿ8ÖÄğØ‹-
-_squid:S1155">Use isEmpty() to check whether the collection is empty or not.(ä·ƒáüÿÿÿÿ8ÖÄğØ‹-
-_squid:S1155">Use isEmpty() to check whether the collection is empty or not.(¸õÉÙûÿÿÿÿ8ÖÄğØ‹-
+squid:S899"BDo something with the "boolean" value returned by "createNewFile".(Ğ’Íùÿÿÿÿ8½Üßõ‹-
+isquid:S1192"HDefine a constant instead of duplicating this literal "isLogin" 4 times.(‘Æè©ÿÿÿÿÿ8½Üßõ‹-
+gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(×©ë8½Üßõ‹-
+Ksquid:S1066"/Merge this if statement with the enclosing one.(¨Ü©ä8½Üßõ‹-
+gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(¡Õ±š8½Üßõ‹-
+¢squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(½íµ”úÿÿÿÿ8½Üßõ‹-
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(İÙÌÙıÿÿÿÿ8½Üßõ‹-
+fsquid:HiddenFieldCheck"?Rename "etPassword" which hides the field declared at line 416.(É•èÓ8½Üßõ‹-
+]squid:UselessImportCheck"4Remove this unused import 'java.io.FileInputStream'.(˜³ÉÓ8½Üßõ‹-
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8½Üßõ‹-
+esquid:S1192"JDefine a constant instead of duplicating this literal "device_id" 3 times.(ŠåÙ8½Üßõ‹-
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(‡ãù½ıÿÿÿÿ8½Üßõ‹-
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ùĞ·Èıÿÿÿÿ8½Üßõ‹-
+¢squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(œƒƒ©ùÿÿÿÿ8½Üßõ‹-
+Vsquid:S1141"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8½Üßõ‹-
+Y
+squid:S106"9Replace this use of System.out or System.err by a logger.(‰í¤Áıÿÿÿÿ8½Üßõ‹-
+Z"squid:SwitchLastCaseIsDefaultCheck""Add a default case to this switch.(×“¾ñùÿÿÿÿ8½Üßõ‹-
+Vsquid:S1141"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8½Üßõ‹-
+_squid:S1155">Use isEmpty() to check whether the collection is empty or not.(¸õÉÙûÿÿÿÿ8½Üßõ‹-
+Hsquid:S1659"'Declare "tvVersion" on a separate line.(‹áÔ½ûÿÿÿÿ8½Üßõ‹-
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8½Üßõ‹-
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ş·›øÿÿÿÿ8½Üßõ‹-
+Y
+squid:S106"9Replace this use of System.out or System.err by a logger.(‡©Äáüÿÿÿÿ8½Üßõ‹-

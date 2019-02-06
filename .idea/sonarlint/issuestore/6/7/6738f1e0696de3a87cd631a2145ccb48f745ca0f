@@ -1,12 +1,12 @@
 
-dsquid:S3027"JPut single-quotes around '.' to use the faster "lastIndexOf(char)" method.(Âêÿ‰úÿÿÿÿ
-fsquid:S1192"QDefine a constant instead of duplicating this literal "name_video_local" 3 times.(…âìî
+Isquid:S1066"/Merge this if statement with the enclosing one.(Çü»ßûÿÿÿÿ
+bsquid:S2259"MA "NullPointerException" could be thrown; "getMediaFolder()" can return null.(ŞËêû
 Q
 squid:S899"=Do something with the "boolean" value returned by "renameTo".(ŞˆÑ¯
-bsquid:S2259"MA "NullPointerException" could be thrown; "getMediaFolder()" can return null.(ŞËêû
-:squid:S1659"%Declare "newFile" on a separate line.(‘¯Í
-Tsquid:S1118":Add a private constructor to hide the implicit public one.(Ë‘Óùÿÿÿÿ
+dsquid:S3027"JPut single-quotes around '.' to use the faster "lastIndexOf(char)" method.(Âêÿ‰úÿÿÿÿ
+`squid:S1192"KDefine a constant instead of duplicating this literal "Depuracion" 3 times.(Ìø„Ü
+fsquid:S1192"QDefine a constant instead of duplicating this literal "name_video_local" 3 times.(…âìî
 Q
 squid:S899"=Do something with the "boolean" value returned by "renameTo".(µÎçÀ
-`squid:S1192"KDefine a constant instead of duplicating this literal "Depuracion" 3 times.(Ìø„Ü
-Isquid:S1066"/Merge this if statement with the enclosing one.(Çü»ßûÿÿÿÿ
+:squid:S1659"%Declare "newFile" on a separate line.(‘¯Í
+Tsquid:S1118":Add a private constructor to hide the implicit public one.(Ë‘Óùÿÿÿÿ

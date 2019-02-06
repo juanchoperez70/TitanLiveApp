@@ -38,7 +38,7 @@ public class USBConnectionReceiver extends BroadcastReceiver {
     public void onReceive(final Context context, final Intent intent) {
         if (firstConnect) {
             firstConnect = false;
-            new CountDownTimer(10000, 10000) {
+            new CountDownTimer(12000, 12000) {
                 public void onTick(long millisUntilFinished) {
                 }
 
