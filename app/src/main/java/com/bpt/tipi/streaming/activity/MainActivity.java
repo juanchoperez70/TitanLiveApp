@@ -493,6 +493,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 editor.putBoolean("isLogin", false);
                 editor.putString("user", "");
                 editor.apply();
+                PreferencesHelper.setLoggedUser(MainActivity.this, "");
                 linearLogin.setVisibility(View.VISIBLE);
                 linearExit.setVisibility(View.INVISIBLE);
                 setIdStatus();
@@ -609,7 +610,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (idDevice.isEmpty()) {
             tvIdCamera.setText("IdCamera: No configurado");
         } else {
-            tvIdCamera.setText("IdCamera: " + idDevice + " Usuario: " + user);
+            if(user.isEmpty()) {
+                tvIdCamera.setText("IdCamera: " + idDevice);
+            }
+            else {
+                tvIdCamera.setText("IdCamera: " + idDevice + " Usuario: " + user);
+            }
         }
     }
 

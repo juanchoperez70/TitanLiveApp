@@ -7,7 +7,9 @@ import android.os.Looper;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
+import com.bpt.tipi.streaming.activity.MainActivity;
 import com.bpt.tipi.streaming.activity.SettingsActivity;
+import com.bpt.tipi.streaming.helper.PreferencesHelper;
 import com.bpt.tipi.streaming.model.GeneralParameter;
 import com.bpt.tipi.streaming.model.RemoteConfig;
 import com.bpt.tipi.streaming.model.TitanUserDTO;
@@ -295,6 +297,7 @@ public class ConfigHelper {
         editor.putString("userTitan", user.getLogin());
         editor.putString("passwordTitan", user.getSecret());
         editor.apply();
+        PreferencesHelper.setLoggedUser(context, user.getLogin());
 
         final String deviceName = preferences.getString("device_id", "");
         final String loggedUser = user.getName() + " " + user.getLastname();
@@ -337,5 +340,6 @@ public class ConfigHelper {
         editor.putString("userTitan", "");
         editor.putString("passwordTitan", "");
         editor.apply();
+        PreferencesHelper.setLoggedUser(context, "");
     }
 }
