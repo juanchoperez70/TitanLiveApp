@@ -364,11 +364,9 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
             int height = CameraHelper.getStreamingImageHeight(context);
 
             parameters.setPreviewSize(width, height);
-            parameters.setPreviewFrameRate(CameraHelper.getStreamingFramerate(context));
-            /*if(parameters.isAutoExposureLockSupported() && parameters.isAutoWhiteBalanceLockSupported()){
-                parameters.setAutoExposureLock(true);
-                parameters.setAutoWhiteBalanceLock(true);
-            }*/
+            int fps = CameraHelper.getStreamingFramerate(context);
+            parameters.setPreviewFrameRate(fps);
+
             parameters.setPreviewFormat(ImageFormat.NV21);
             camera.setParameters(parameters);
 

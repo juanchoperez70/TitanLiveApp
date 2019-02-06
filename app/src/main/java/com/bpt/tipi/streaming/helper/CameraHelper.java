@@ -232,7 +232,8 @@ public class CameraHelper {
 
     public static FFmpegFrameRecorder initStreamingRecorder(Context context) {
         FFmpegFrameRecorder frameRecorder = new FFmpegFrameRecorder(CameraHelper.buildStreamEndpoint(context), getStreamingImageWidth(context), getStreamingImageHeight(context), 1);
-        frameRecorder.setFrameRate(ConfigHelper.getStreamingFramerate(context));
+        int fps = CameraHelper.getStreamingFramerate(context);
+        frameRecorder.setFrameRate(fps);
         frameRecorder.setVideoBitrate(getStreamingVideoBitrate(context));
 
         frameRecorder.setFormat("flv");
