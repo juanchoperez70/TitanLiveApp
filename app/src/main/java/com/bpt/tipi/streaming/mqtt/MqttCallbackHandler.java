@@ -25,6 +25,7 @@ public class MqttCallbackHandler implements MqttCallback {
     private static final String TYPE_START_STREAMING = "START_STREAMING";
     private static final String TYPE_STOP_STREAMING = "STOP_STREAMING";
     private static final String TYPE_UPDATE_USER_LOGIN = "UPDATE_USER_LOGIN";
+    private static final String TYPE_DELETE_USER_LOGIN = "DELETE_USER_LOGIN";
 
     private Context mContext;
 
@@ -65,6 +66,17 @@ public class MqttCallbackHandler implements MqttCallback {
                     Gson gsonBody = new Gson();
                     TitanUserDTO user = gsonBody.fromJson(jsonObject.optString("body"), TitanUserDTO.class);
                     ConfigHelper.updateUserLogin(mContext, user);
+                } catch (Exception e) {
+                    Log.e("MqttCallbackHandler", "--Error: " + e.getMessage());
+                }
+
+                break;
+            case TYPE_DELETE_USER_LOGIN:
+                try {
+                    Log.d("MqttCallbackHandler", "--TYPE_DELETE_USER_LOGIN: " + jsonObject);
+                    Gson gsonBody = new Gson();
+                    TitanUserDTO user = gsonBody.fromJson(jsonObject.optString("body"), TitanUserDTO.class);
+                    ConfigHelper.deleteUserLogin(mContext);
                 } catch (Exception e) {
                     Log.e("MqttCallbackHandler", "--Error: " + e.getMessage());
                 }

@@ -498,6 +498,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 setIdStatus();
                 //Logout del usuario
                 CameraEventHandler.appendEventLog(MainActivity.this, "CIERRE SESION");
+
+                //Registrar usuario asociado al dispositivo
+                JSONObject json = new JSONObject();
+                try {
+                    json.put("deviceName", preferences.getString("device_id", ""));
+                    json.put("loggedUser", "");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                HttpClient httpClient = new HttpClient(MainActivity.this, MainActivity.this);
+                httpClient.httpRequest(json.toString(), HttpHelper.Method.LOGIN_SERVER, HttpHelper.TypeRequest.TYPE_POST, true);
             }
         });
         dialog.show();

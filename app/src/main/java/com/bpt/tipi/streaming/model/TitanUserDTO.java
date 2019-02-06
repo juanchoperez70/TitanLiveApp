@@ -8,6 +8,7 @@ public class TitanUserDTO implements Serializable {
     private String name;
     private String lastname;
     private String cameraId;
+    private Boolean associate;
 
     public String getLogin() {
         return login;
@@ -38,5 +39,13 @@ public class TitanUserDTO implements Serializable {
     }
     public void setCameraId(String cameraId) {
         this.cameraId = cameraId;
+    }
+
+    public Boolean getAssociate() {
+        return associate;
+    }
+
+    public void setAssociate(Boolean associate) {
+        this.associate = associate;
     }
 }

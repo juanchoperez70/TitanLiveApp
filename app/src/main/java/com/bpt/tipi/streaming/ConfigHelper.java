@@ -328,4 +328,14 @@ public class ConfigHelper {
         mainHandler.post(myRunnable);
         new Thread(myRunnable).start();
     }
+
+    public static void deleteUserLogin(final Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("user", "");
+        editor.putBoolean("isLogin", false);
+        editor.putString("userTitan", "");
+        editor.putString("passwordTitan", "");
+        editor.apply();
+    }
 }
