@@ -45,7 +45,7 @@ public class ServiceHelper {
 
         if (!Utils.isServiceRunning(context, LocationService.class)) {
             context.startService(new Intent(context, LocationService.class));
-            Toast.makeText(context, ".:startLocationService:.", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, ".:startLocationService:.", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -67,7 +67,7 @@ public class ServiceHelper {
         if (!idDevice.isEmpty()) {
             if (!Utils.isServiceRunning(context, MqttService.class)) {
                 context.startService(new Intent(context, MqttService.class));
-                Toast.makeText(context, ".:startMqttService:.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, ".:startMqttService:.", Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -81,7 +81,7 @@ public class ServiceHelper {
     public static synchronized void startRecorderService(Context context) {
         if (!Utils.isServiceRunning(context, RecorderService.class)) {
             context.startService(new Intent(context, RecorderService.class));
-            Toast.makeText(context, ".:startRecorderService:.", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, ".:startRecorderService:.", Toast.LENGTH_SHORT).show();
         }
     }
 

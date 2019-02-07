@@ -46,12 +46,16 @@ public class MqttCallbackHandler implements MqttCallback {
         MessageEvent event;
         switch (jsonObject.optString("type")) {
             case TYPE_PARAMS:
-                Gson gson = new Gson();
-                RemoteConfig remoteConfig = gson.fromJson(jsonObject.optString("body"), RemoteConfig.class);
-                PreferencesHelper.saveConfig(mContext, remoteConfig);
-                //ServiceHelper.stopLocationService(mContext);
-                //ServiceHelper.startLocationService(mContext);
-                break;
+                try {
+                    Gson gson = new Gson();
+                    RemoteConfig remoteConfig = gson.fromJson(jsonObject.optString("body"), RemoteConfig.class);
+                    PreferencesHelper.saveConfig(mContext, remoteConfig);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+                finally {
+                    break;
+                }
             case TYPE_START_STREAMING:
                 event = new MessageEvent(MessageEvent.START_STREAMING);
                 bus.post(event);

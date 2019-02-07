@@ -358,7 +358,7 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
         if (camera != null) {
             Camera.Parameters parameters = camera.getParameters();
 
-            //List<Camera.Size> previewSizes = camera.getParameters().getSupportedPreviewSizes();
+            List<Camera.Size> previewSizes = camera.getParameters().getSupportedPreviewSizes();
 
             int width = CameraHelper.getStreamingImageWidth(context);
             int height = CameraHelper.getStreamingImageHeight(context);

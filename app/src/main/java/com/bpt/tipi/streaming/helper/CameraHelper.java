@@ -64,7 +64,7 @@ public class CameraHelper {
             case 15:
             case 16:
             case 17:
-                return 1280;
+                return 960;
             default:
                 return 0;
         }
@@ -97,7 +97,7 @@ public class CameraHelper {
             case 15:
             case 16:
             case 17:
-                return 720;
+                return 540;
             default:
                 return 0;
         }
