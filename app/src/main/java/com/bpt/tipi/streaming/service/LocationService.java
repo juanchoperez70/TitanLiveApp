@@ -164,7 +164,9 @@ public class LocationService extends Service implements LocationListener, HttpIn
                 } else {
                     Log.i("Depuracion", "mLocation " + mLocation);
                     try {
-                        sendLastKnownLocation(idDevice);
+                        if(!idDevice.isEmpty()) {
+                            sendLastKnownLocation(idDevice);
+                        }
                     }catch (Exception e){}
                 }
             } catch (Exception e) {
