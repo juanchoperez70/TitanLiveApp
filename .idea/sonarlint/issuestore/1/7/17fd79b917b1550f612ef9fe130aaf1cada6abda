@@ -1,22 +1,22 @@
 
-Z"squid:SwitchLastCaseIsDefaultCheck""Add a default case to this switch.(«ü”ùÿÿÿÿ8íÎğØ‹-
-lsquid:UselessImportCheck">Remove this unused import 'android.preference.ListPreference'.(€œ™§ûÿÿÿÿ8íÎğØ‹-
-ksquid:UselessImportCheck"BRemove this unused import 'android.preference.PreferenceFragment'.(ƒ–Ü8íÎğØ‹-
-[squid:UselessImportCheck"-Remove this unused import 'android.os.Build'.(ãÇ¤Úıÿÿÿÿ8íÎğØ‹-
-nsquid:UselessImportCheck"@Remove this unused import 'android.preference.SwitchPreference'.(–²ó¼ÿÿÿÿÿ8íÎğØ‹-
-Ysquid:UselessImportCheck"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8íÎğØ‹-
-`squid:UselessImportCheck"7Remove this unused import 'java.security.spec.ECField'.(“¢á¯8íÎğØ‹-
-bsquid:UselessImportCheck"9Remove this unused import 'android.annotation.TargetApi'.(¥Îì‘8íÎğØ‹-
-[squid:UselessImportCheck"3Remove this unused import 'android.content.Intent'.(³ğ‹G8íÎğØ‹-
-nsquid:UselessImportCheck"ERemove this unused import 'com.bpt.tipi.streaming.UnCaughtException'.(ø­è8íÎğØ‹-
-lsquid:UselessImportCheck">Remove this unused import 'android.content.res.Configuration'.(ßºÊƒûÿÿÿÿ8íÎğØ‹-
-Bsquid:S1168"&Return an empty array instead of null.(¥¹ï8íÎğØ‹-
-tsquid:UselessImportCheck"KRemove this unused import 'com.bpt.tipi.streaming.service.RecorderService'.(ÉÊ–Û8íÎğØ‹-
-msquid:UselessImportCheck"DRemove this unused import 'com.bpt.tipi.streaming.mqtt.MqttService'.(¡’ªÇ8íÎğØ‹-
-csquid:UselessImportCheck":Remove this unused import 'android.preference.Preference'.(ÆÖ¿•8íÎğØ‹-
-U"squid:SwitchLastCaseIsDefaultCheck""Add a default case to this switch.(°Ó÷8íÎğØ‹-
-ssquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 29 to the 15 allowed.(üüÊºøÿÿÿÿ8íÎğØ‹-
-_squid:UselessImportCheck"6Remove this unused import 'android.provider.Settings'.(Š¯„8íÎğØ‹-
-Vsquid:S1141"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8íÎğØ‹-
-isquid:UselessImportCheck"@Remove this unused import 'com.bpt.tipi.streaming.ConfigHelper'.(ŠÖş8íÎğØ‹-
-fsquid:UselessImportCheck"=Remove this unused import 'android.support.v7.app.ActionBar'.(¬­çô8íÎğØ‹-
+dsquid:UselessImportCheck"9Remove this unused import 'android.annotation.TargetApi'.(¥Îì‘8íÎğØ‹-
+psquid:UselessImportCheck"ERemove this unused import 'com.bpt.tipi.streaming.UnCaughtException'.(ø­è8íÎğØ‹-
+vsquid:S3776ù"RRefactor this method to reduce its Cognitive Complexity from 29 to the 15 allowed.(üüÊºøÿÿÿÿ8íÎğØ‹-
+nsquid:UselessImportCheck">Remove this unused import 'android.preference.ListPreference'.(€œ™§ûÿÿÿÿ8íÎğØ‹-
+[squid:UselessImportCheck5"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8íÎğØ‹-
+msquid:UselessImportCheck"BRemove this unused import 'android.preference.PreferenceFragment'.(ƒ–Ü8íÎğØ‹-
+]squid:UselessImportCheck	"-Remove this unused import 'android.os.Build'.(ãÇ¤Úıÿÿÿÿ8íÎğØ‹-
+X"squid:SwitchLastCaseIsDefaultCheckş""Add a default case to this switch.(°Ó÷8íÎğØ‹-
+Ysquid:S1141¨"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8íÎğØ‹-
+Esquid:S1168ø"&Return an empty array instead of null.(¥¹ï8íÎğØ‹-
+vsquid:UselessImportCheck-"KRemove this unused import 'com.bpt.tipi.streaming.service.RecorderService'.(ÉÊ–Û8íÎğØ‹-
+ksquid:UselessImportCheck"@Remove this unused import 'com.bpt.tipi.streaming.ConfigHelper'.(ŠÖş8íÎğØ‹-
+esquid:UselessImportCheck":Remove this unused import 'android.preference.Preference'.(ÆÖ¿•8íÎğØ‹-
+nsquid:UselessImportCheck">Remove this unused import 'android.content.res.Configuration'.(ßºÊƒûÿÿÿÿ8íÎğØ‹-
+asquid:UselessImportCheck"6Remove this unused import 'android.provider.Settings'.(Š¯„8íÎğØ‹-
+\"squid:SwitchLastCaseIsDefaultCheckS""Add a default case to this switch.(«ü”ùÿÿÿÿ8íÎğØ‹-
+]squid:UselessImportCheck"3Remove this unused import 'android.content.Intent'.(³ğ‹G8íÎğØ‹-
+bsquid:UselessImportCheck4"7Remove this unused import 'java.security.spec.ECField'.(“¢á¯8íÎğØ‹-
+psquid:UselessImportCheck"@Remove this unused import 'android.preference.SwitchPreference'.(–²ó¼ÿÿÿÿÿ8íÎğØ‹-
+osquid:UselessImportCheck("DRemove this unused import 'com.bpt.tipi.streaming.mqtt.MqttService'.(¡’ªÇ8íÎğØ‹-
+hsquid:UselessImportCheck"=Remove this unused import 'android.support.v7.app.ActionBar'.(¬­çô8íÎğØ‹-

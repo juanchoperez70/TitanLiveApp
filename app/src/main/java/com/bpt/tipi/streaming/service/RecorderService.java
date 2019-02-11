@@ -182,6 +182,11 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
                 camera.lock();
                 camera.release();
                 camera = null;
+                isStreamingRecording = false;
+                isSos = false;
+                isLocalRecording = false;
+                streamingRunAudioThread = false;
+
             }
         }
         finishPrimaryCamera();
@@ -422,6 +427,7 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
         }
         if (primaryCamera != null) {
             Camera.Parameters parameters = primaryCamera.getParameters();
+            List<int[]> supported =  parameters.getSupportedPreviewFpsRange ();
             int fps =  CameraHelper.getLocalFramerate(context);
             int height =CameraHelper.getLocalImageHeight(context);
             int width = CameraHelper.getLocalImageWidth(context);
@@ -446,8 +452,8 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
             }
 
             parameters.setPreviewSize(width, height);
-            parameters.setPreviewFpsRange(fps*1000, fps*1000);
-            parameters.setPreviewFrameRate(fps);
+            parameters.setPreviewFpsRange((fps)*1000, (fps)*1000);
+            //parameters.setPreviewFrameRate(fps);
             /*if(parameters.isAutoExposureLockSupported() && parameters.isAutoWhiteBalanceLockSupported()){
                 parameters.setAutoExposureLock(true);
                 parameters.setAutoWhiteBalanceLock(true);
@@ -459,7 +465,7 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
             primaryCamera.setParameters(parameters);
 
             profile.videoBitRate = CameraHelper.getLocalVideoBitrate(context)*2000;
-            profile.videoFrameRate = fps;
+            //profile.videoFrameRate = fps;
             //profile.videoFrameWidth = width;
             //profile.videoFrameHeight = height;
             profile.videoCodec = MediaRecorder.VideoEncoder.H264;
@@ -586,7 +592,7 @@ public class RecorderService extends Service implements Camera.PreviewCallback {
         //mediaRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.H264);
 
         mediaRecorder.setProfile(profile);
-        mediaRecorder.setVideoFrameRate(fps);
+        //mediaRecorder.setVideoFrameRate(fps);
         //mediaRecorder.setCaptureRate(fps * 100);
 
         mediaRecorder.setOutputFile(VideoNameHelper.getOutputFile(context, sequence).getAbsolutePath());

@@ -1,7 +1,8 @@
 
-Vsquid:S1118":Add a private constructor to hide the implicit public one.(•«ÔÔøÿÿÿÿ
-{squid:S14884"dImmediately return this expression instead of assigning it to the temporary variable "remoteConfig".(’ğ«ï
-xsquid:UselessImportCheck
-"MRemove this unused import 'com.bpt.tipi.streaming.activity.SettingsActivity'.(äì‘8ğó¡ƒŒ-
-csquid:UselessImportCheck"3Remove this unused import 'org.json.JSONException'.(¹Ó·úÿÿÿÿ8ğó¡ƒŒ-
-Gsquid:S1148Ä"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ğó¡ƒŒ-
+csquid:UselessImportCheck"3Remove this unused import 'org.json.JSONException'.(¹Ó·úÿÿÿÿ8úã‘§Œ-
+ysquid:UselessImportCheck
+"IRemove this unused import 'com.bpt.tipi.streaming.activity.MainActivity'.(œ¸©úÿÿÿÿ8ÄŠ’§Œ-
+xsquid:UselessImportCheck"MRemove this unused import 'com.bpt.tipi.streaming.activity.SettingsActivity'.(äì‘8úã‘§Œ-
+‚squid:S14886"dImmediately return this expression instead of assigning it to the temporary variable "remoteConfig".(’ğ«ï8úã‘§Œ-
+]squid:S1118":Add a private constructor to hide the implicit public one.(•«ÔÔøÿÿÿÿ8úã‘§Œ-
+Gsquid:S1148Ç"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8úã‘§Œ-
